@@ -6,12 +6,25 @@
 ```html
 <div>
 	<but-button>默认</but-button>
-	<but-button type="success">成功</but-button>
 	<but-button type="primary">主要</but-button>
 	<but-button type="info">信息</but-button>
+	<but-button type="success">成功</but-button>
 	<but-button type="danger">注意</but-button>
 	<but-button type="warning">警告</but-button>
 	<but-button icon="#chrome" type="primary">图标</but-button>
+</div>
+```
+
+添加属性可变更为平淡样式
+```html
+<div>
+	<but-button plain>默认</but-button>
+	<but-button type="primary" plain>主要</but-button>
+	<but-button type="info" plain>信息</but-button>
+	<but-button type="success" plain>成功</but-button>
+	<but-button type="danger" plain>注意</but-button>
+	<but-button type="warning" plain>警告</but-button>
+	<but-button icon="#chrome" type="primary" plain>图标</but-button>
 </div>
 ```
 
@@ -22,9 +35,9 @@
 ```html
 <div>
 	<but-button disabled>默认</but-button>
-	<but-button type="success" disabled>成功</but-button>
 	<but-button type="primary" disabled>主要</but-button>
 	<but-button type="info" disabled>信息</but-button>
+	<but-button type="success" disabled>成功</but-button>
 	<but-button type="danger" disabled>注意</but-button>
 	<but-button type="warning" disabled>警告</but-button>
 	<but-button icon="#chrome" type="primary" disabled>图标</but-button>
@@ -35,7 +48,7 @@
 ## 图标
 组件允许指定src属性来设置一个图标
 
-如果要使用内置的图标,请在类名前加上 '#' 符号单独指定
+如果要使用内置的图标,请在类名前加上 '#' 标识符单独指定
 ```html
 <div style="display: flex; align-content: center;">
 	<but-button icon="#emoCry" type="primary">图标</but-button>

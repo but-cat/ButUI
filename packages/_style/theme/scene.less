@@ -1,7 +1,28 @@
 @import '../variables/color-dark.less';
 @import '../variables/color-light.less';
 
-.bg-primary[color=light] {
+// 默认
+.bg-default {
+	&[color=light]{
+		color: @light-text-primary;
+		background-color: @light-background;
+	}
+	&[color=dark] {
+		color: @light-text-primary;
+		background-color: @dark-background;
+	}
+}
+.text-default {
+	&[color=light] {
+		color: @light-text-primary;
+	}
+	&[color=dark] {
+		color: @light-text-primary;
+	}
+}
+
+// 主要
+.bg-primary {
 	&[color=light]{
 		color: @light-sceneText;
 		background-color: @light-primary;
@@ -11,6 +32,16 @@
 		background-color: @dark-primary;
 	}
 }
+.text-primary {
+	&[color=light] {
+		color: @dark-primary;
+	}
+	&[color=dark] {
+		color: @dark-primary;
+	}
+}
+
+// 成功
 .bg-success {
 	&[color=light] {
 		color: @light-sceneText;
@@ -21,6 +52,16 @@
 		background-color: @dark-success;
 	}
 }
+.text-success {
+	&[color=light] {
+		color: @dark-success;
+	}
+	&[color=dark] {
+		color: @dark-success;
+	}
+}
+
+// 信息
 .bg-info {
 	&[color=light] {
 		color: @light-sceneText;
@@ -31,6 +72,16 @@
 		background-color: @dark-info;
 	}
 }
+.text-info {
+	&[color=light] {
+		color: @dark-info;
+	}
+	&[color=dark] {
+		color: @dark-info;
+	}
+}
+
+// 警告
 .bg-warning {
 	&[color=light] {
 		color: @light-sceneText;
@@ -41,6 +92,16 @@
 		background-color: @dark-warning;
 	}
 }
+.text-warning {
+	&[color=light] {
+		color: @dark-warning;
+	}
+	&[color=dark] {
+		color: @dark-warning;
+	}
+}
+
+// 危险
 .bg-danger {
 	&[color=light] {
 		color: @light-sceneText;
@@ -49,39 +110,6 @@
 	&[color=dark] {
 		color: @dark-sceneText;
 		background-color: @dark-danger;
-	}
-}
-
-.text-primary {
-	&[color=light] {
-		color: @dark-primary;
-	}
-	&[color=dark] {
-		color: @dark-primary;
-	}
-}
-.text-success {
-	&[color=light] {
-		color: @dark-success;
-	}
-	&[color=dark] {
-		color: @dark-success;
-	}
-}
-.text-info {
-	&[color=light] {
-		color: @dark-info;
-	}
-	&[color=dark] {
-		color: @dark-info;
-	}
-}
-.text-warning {
-	&[color=light] {
-		color: @dark-warning;
-	}
-	&[color=dark] {
-		color: @dark-warning;
 	}
 }
 .text-danger {

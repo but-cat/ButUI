@@ -1,5 +1,5 @@
 <template>
-<button class="but-button" :class="types" :color="color">
+<button :class="types" :color="color">
 	<img v-if="!!icons" :src="icons" class="imgs"><slot/>
 </button>
 </template>
@@ -20,7 +20,9 @@ export default {
 		icon: {
 			value: String,
 			default: ''
-		}
+		},
+		plain: Boolean,
+		circle: Boolean
 	},
 	computed: {
 		icons() {
@@ -34,13 +36,33 @@ export default {
 			
 		},
 		types() {
-			if(this.type){
-				let Strings = 'bg-';
-				return Strings += this.type;
-			}else {
-				return '';
-			}
+			
+			// if(this.type){
+			// 	let Strings;
+			// 	if(!this.plain) Strings = 'bg-';
+			// 	else Strings = 'plain-';
+			// 	return Strings += this.type;
+			// }else {
+			// 	let Strings = 'plain-';
+			// 	return Strings += 'default';
+			// }
 
+			if(this.plain){
+				let Strings = 'plain-';
+				if(this.type){
+					return Strings += this.type;
+				}else {
+					return Strings += 'default';
+				}
+
+			}else {
+				let Strings = 'bg-';
+				if(this.type){
+					return Strings += this.type;
+				}else {
+					return Strings += 'default';
+				}
+			}
 		},
 		color() {
 			return this.$color;
@@ -51,16 +73,17 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
+@import './scene.less';
 
-.but-button {
+.button {
     height: auto;
-	padding: 0 2rem;
+	padding: 0 1.5rem;
 	
 	margin: 0 6px;
 	height: 28px;
 	border-radius: 2px;
 	transition: .2s ease-out;
-	box-shadow: @elevation-2;
+	
 	line-height: 22px;
 
 	display: inline-flex;
@@ -76,8 +99,19 @@ export default {
 		display: inline-block;
 	}
 
+
+}
+
+
+.default(@color, @background)  {
+	.button;
+	color: @color;
+	background-color: @background;
+
+	box-shadow: @elevation-2;
 	&:hover {																	// 悬浮
-	box-shadow: @elevation-3;
+		box-shadow: @elevation-3;
+		cursor: pointer;
 	}
 	&:active {																	// 点击
 		transition: .1s ease-out;
@@ -89,16 +123,28 @@ export default {
 		pointer-events: none;
 		cursor: default;
 		opacity: 0.5;
+		
 	}
 }
 
+.plain(@color, @background) {
+	.button;
+	color: @color;
 
-.color {
-	&[color=ligth] {
-
+	&:hover {																	// 悬浮
+		background-color: fadeout(@color, 80%);
+		cursor: pointer;
 	}
-	&[color=dark] {
-
+	&:active {																	// 点击
+		transition: .1s ease-out;
+		opacity: 0.5;
+	}
+	&:disabled {																// 禁用状态
+		box-shadow: none;
+		pointer-events: none;
+		opacity: 0.5;
+		text-decoration:line-through;
+		cursor: not-allowed;
 	}
 }
 </style>

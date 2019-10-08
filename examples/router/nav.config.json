@@ -1,10 +1,10 @@
 {
 	"list": [
 		{
-			"desc": "REM",
-			"name": "REM",
+			"desc": "自述",
+			"name": "README",
 			"path": "/",
-			"component": "basic/REM"
+			"component": "basic/README"
 		},
 		{
 			"desc": "卡片",
@@ -20,7 +20,7 @@
 		},
 
 		{
-			"desc": "基础组件",
+			"desc": "按钮",
 			"name": "Button",
 			"path": "/Button",
 			"component": "basic/button"

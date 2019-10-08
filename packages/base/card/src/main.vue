@@ -42,6 +42,17 @@ export default {
 // }
 // .generate-columns(23);
 
+.but-card {
+	&[color=light]{
+		color: @light-text-primary;
+		background-color: @light-background;
+	}
+	&[color=dark] {
+		color: @dark-text-primary;
+		background-color: @dark-background;
+	}
+}
+
 .box {
 	position: relative;
 	left: 30px;

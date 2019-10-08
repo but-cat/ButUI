@@ -1,0 +1,109 @@
+@import '../../../_style/variables.less';
+
+// 默认
+.bg-default {
+	&[color=light]{
+		.default(@light-text-primary, @light-background);
+	}
+	&[color=dark] {
+		.default(@light-text-primary, @light-background);
+	}
+}
+.plain-default {
+	&[color=light] {
+		.plain(@light-text-primary, @light-background);
+	}
+	&[color=dark] {
+		.plain(@dark-text-primary, @dark-background);
+	}
+}
+
+// 主要
+.bg-primary {
+	&[color=light]{
+		.default(@light-sceneText, @light-primary);
+	}
+	&[color=dark] {
+		.default(@dark-sceneText, @dark-primary);
+	}
+}
+.plain-primary {
+	&[color=light] {
+		.plain(@light-primary, @light-background);
+	}
+	&[color=dark] {
+		.plain(@dark-primary, @dark-background);
+	}
+}
+
+// 成功
+.bg-success {
+	&[color=light] {
+		.default(@light-sceneText, @light-success);
+	}
+	&[color=dark] {
+		.default(@dark-sceneText, @dark-success);
+	}
+}
+.plain-success {
+	&[color=light] {
+		.plain(@light-success, @light-background);
+	}
+	&[color=dark] {
+		.plain(@dark-success, @dark-background);
+	}
+}
+
+// 信息
+.bg-info {
+	&[color=light] {
+		.default(@light-sceneText, @light-info);
+	}
+	&[color=dark] {
+		.default(@dark-sceneText, @dark-info);
+	}
+}
+.plain-info {
+	&[color=light] {
+		.plain(@light-info, @light-background);
+	}
+	&[color=dark] {
+		.plain(@dark-info, @dark-background);
+	}
+}
+
+// 警告
+.bg-warning {
+	&[color=light] {
+		.default(@light-sceneText, @light-warning);
+	}
+	&[color=dark] {
+		.default(@dark-sceneText, @dark-warning);
+	}
+}
+.plain-warning {
+	&[color=light] {
+		.plain(@light-warning, @light-background);
+	}
+	&[color=dark] {
+		.plain(@dark-warning, @dark-background);
+	}
+}
+
+// 危险
+.bg-danger {
+	&[color=light] {
+		.default(@light-sceneText, @light-danger);
+	}
+	&[color=dark] {
+		.default(@dark-sceneText, @dark-danger);
+	}
+}
+.plain-danger {
+	&[color=light] {
+		.plain(@light-danger, @light-background);
+	}
+	&[color=dark] {
+		.plain(@dark-danger, @dark-background);
+	}
+}

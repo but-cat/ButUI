@@ -5,7 +5,7 @@
 			<router-link :to="item.path">{{item.name}}</router-link>
 		</div>
 	</div>
-	<div class="body">
+	<div class="body" :color="color">
 		<router-view/>
 	</div>
 </div>
@@ -17,6 +17,11 @@ export default {
 	data() {
 		return {
 			navList: []
+		}
+	},
+	computed: {
+		color() {
+			return this.$color;
 		}
 	},
 	methods: {
@@ -36,22 +41,42 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// @import "../../examples/_style/variables.less";
+@import "../../packages/_style/variables.less";
+
 .Container {
 	width: 100%;
 	height: 100%;
 	display: flex;
-	
+}
 
-	>.nav {
-		width: 300px;
-		height: 100%;
-		background-color: #eef0f4;
-		overflow: auto;
+.nav {
+	width: 300px;
+	height: 100%;
+	background-color: #eef0f4;
+	overflow: auto;
+
+	// &[color=light]{
+	// 	color: @light-text-primary;
+	// 	background-color: @light-background;
+	// }
+	// &[color=dark] {
+	// 	color: @dark-text-primary;
+	// 	background-color: @dark-background;
+	// }
+}
+
+.body {
+	overflow: auto;
+	flex: 1;
+
+	&[color=light]{
+		color: @light-text-primary;
+		background-color: @light-background-variant;
 	}
-
-	>.body {
-		overflow: auto;
-		flex: 1;
+	&[color=dark] {
+		color: @dark-text-primary;
+		background-color: @dark-background-variant;
 	}
 }
 </style>

@@ -2,8 +2,8 @@
 这是一个基于 Vue 2.0 的桌面端组件库
 
 ## 项目设置
-```vue
-
+```bash
+$ yarn
 ```
 
 ### Customize configuration
