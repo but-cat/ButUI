@@ -1,0 +1,29 @@
+{
+	"list": [
+		{
+			"desc": "REM",
+			"name": "REM",
+			"path": "/",
+			"component": "basic/REM"
+		},
+		{
+			"desc": "卡片",
+			"name": "card",
+			"path": "/card",
+			"component": "basic/card"
+		},
+		{
+			"desc": "布局",
+			"name": "layout",
+			"path": "/layout",
+			"component": "basic/layout"
+		},
+
+		{
+			"desc": "基础组件",
+			"name": "Button",
+			"path": "/Button",
+			"component": "basic/button"
+		}
+	]
+}
