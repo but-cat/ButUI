@@ -1,29 +1,76 @@
-{
-	"list": [
-		{
-			"desc": "自述",
-			"name": "README",
-			"path": "/",
-			"component": "basic/README"
-		},
-		{
-			"desc": "卡片",
-			"name": "card",
-			"path": "/card",
-			"component": "basic/card"
-		},
-		{
-			"desc": "布局",
-			"name": "layout",
-			"path": "/layout",
-			"component": "basic/layout"
-		},
+[
+	{
+		"name": "概览",
+		"path": "/",
+		"component": "README",
+		"list": []
+	},
 
-		{
-			"desc": "按钮",
-			"name": "Button",
-			"path": "/Button",
-			"component": "basic/button"
-		}
-	]
-}
+	{
+		"name": "基础组件",
+		"path": "/basic/index",
+		"component": "basic/index",
+		"list": [
+			{
+				"desc": "卡片",
+				"name": "Card",
+				"path": "/basic/card",
+				"component": "basic/card"
+			},
+
+			{
+				"desc": "按钮",
+				"name": "Button",
+				"path": "/basic/Button",
+				"component": "basic/button"
+			},
+			{
+				"desc": "超链接",
+				"name": "Link",
+				"path": "/basic/link",
+				"component": "basic/link"
+			},
+			{
+				"desc": "排版",
+				"name": "Typesetting",
+				"path": "/basic/typesetting",
+				"component": "basic/typesetting"
+			}
+		]
+	},
+
+	{
+		"name": "布局",
+		"path": "/layout/index",
+		"component": "layout/index",
+		"list": [
+			{
+				"desc": "栅格布局",
+				"name": "Grid",
+				"path": "/layout/grid",
+				"component": "layout/grid"
+			},
+			{
+				"desc": "视图布局",
+				"name": "View",
+				"path": "/layout/view",
+				"component": "layout/view"
+			}
+		]
+	},
+
+	{
+		"name": "数据",
+		"path": "/data/index",
+		"component": "data/index",
+		"list": [
+			{
+				"desc": "表格",
+				"name": "Table",
+				"path": "/data/table",
+				"component": "data/table"
+			}
+		]
+	}
+
+]

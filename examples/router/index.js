@@ -10,13 +10,21 @@ Vue.use(Router)
 // var component = './../docs/basic/button/README.md'
 const registerRoute = (config) => {
 	let route = [];
-	config.list.map(item =>
-		route.push({
-			name: item.name,
-			path: item.path,
-			component: require(`../docs/${item.component}.md`).default
-		})
-	);
+	config.map(Chapter => {
+		route.push({																		// 添加章节
+			name: Chapter.name,
+			path: Chapter.path,
+			component: require(`../docs/${Chapter.component}.md`).default
+		});
+		Chapter.list.map(item =>
+			route.push({																	// 添加文档
+				name: item.name,
+				path: item.path,
+				component: require(`../docs/${item.component}.md`).default
+			})
+		)
+	})
+
 	return route;
 };
 

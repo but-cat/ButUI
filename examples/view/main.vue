@@ -1,10 +1,18 @@
 <template>
-<div class="Container">
-	<div class="nav">
-		<div v-for="(item, index) in navList" :key="index">
-			<router-link :to="item.path">{{item.name}}</router-link>
+<div class="Container" :color="color">
+	<div class="nav" :color="color">
+		<div v-for="(Chapter, index) in navList" :key="index">
+			<router-link :to="Chapter.path">
+				<but-link target="_blank">{{Chapter.name}}</but-link>
+			</router-link>
+			<div v-for="(item, index) in Chapter.list" :key="index" class="ChapterList">
+				<router-link :to="item.path">
+					<but-link target="_blank">{{item.desc}}</but-link>
+				</router-link>
+			</div>
 		</div>
 	</div>
+
 	<div class="body" :color="color">
 		<router-view/>
 	</div>
@@ -26,12 +34,15 @@ export default {
 	},
 	methods: {
 		createNav(config) {
-			config.list.map(item =>
-				this.navList.push({
-					name: item.desc,
-					path: item.path
-				})
-			);
+			// config.map(Chapter => 
+			// 	Chapter.list.map(item =>
+			// 		this.navList.push({
+			// 			name: item.desc,
+			// 			path: item.path
+			// 		})
+			// 	)
+			// );
+			this.navList = config;
 		}
 	},
 	created() {
@@ -56,14 +67,14 @@ export default {
 	background-color: #eef0f4;
 	overflow: auto;
 
-	// &[color=light]{
-	// 	color: @light-text-primary;
-	// 	background-color: @light-background;
-	// }
-	// &[color=dark] {
-	// 	color: @dark-text-primary;
-	// 	background-color: @dark-background;
-	// }
+	&[color=light]{
+		color: @light-text-primary;
+		background-color: @light-background;
+	}
+	&[color=dark] {
+		color: @dark-text-primary;
+		background-color: @dark-background;
+	}
 }
 
 .body {
@@ -78,5 +89,9 @@ export default {
 		color: @dark-text-primary;
 		background-color: @dark-background-variant;
 	}
+}
+
+.ChapterList {
+	text-indent: 14px;
 }
 </style>

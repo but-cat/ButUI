@@ -1,6 +1,7 @@
 const components = [															// 所有组件列表
 	require('&/base/button').default,
 	require('&/base/card').default,
+	require('&/base/link').default
 ];
 
 const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数
@@ -16,14 +17,15 @@ const install = function (Vue) {												// 定义 install 方法，接收 Vu
 	});
 }
 
-function darkMode() {
-	// let now = new Date(),hour = now.getHours();
-	// if(hour > 6 && hour < 19){
-	// 	return 'light';															// 启动夜间模式									
-	// }else {
-	// 	return 'dark';
-	// }
-	return 'dark';
+function darkMode(color) {
+	if(!color){
+		let now = new Date(),hour = now.getHours();
+		if(hour > 6 && hour < 19){
+			return 'light';															// 启动夜间模式									
+		}else {
+			return 'dark';
+		}
+	}else return color;
 }
 
 if (typeof window !== 'undefined' && window.Vue) {								// 检测到 Vue 才执行，毕竟我们是基于 Vue 的
