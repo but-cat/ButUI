@@ -89,6 +89,7 @@ export default {
 	display: inline-flex;
 	justify-content: center;
 	align-content: center;
+	user-select: none;
 	
 	vertical-align: middle;
 

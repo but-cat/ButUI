@@ -1,7 +1,8 @@
 const components = [															// 所有组件列表
 	require('&/base/button').default,
 	require('&/base/card').default,
-	require('&/base/link').default
+	require('&/base/link').default,
+	require('&/data/table').default
 ];
 
 const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数

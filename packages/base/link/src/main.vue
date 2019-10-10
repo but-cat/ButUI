@@ -1,5 +1,5 @@
 <template>
-<a :href="href" :color="color" :class="types"><slot/></a>
+<a :href="href" :color="color" :class="types" class="link"><slot/></a>
 </template>
 
 <script>
@@ -48,6 +48,10 @@ export default {
     cursor: pointer;
     padding: 0;
     font-size: 14px;
-    font-weight: 500;
+	font-weight: 500;
+}
+
+.link:hover {
+	color: #409eff;
 }
 </style>

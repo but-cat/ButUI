@@ -9,17 +9,39 @@
 export default {
 	data() {
 		return {
-			data: [
+			fields: [
+				{
+					key: 'age',
+					label: '值',
+					sortable: true
+				},
+				{
+					key: 'first_name',
+					label: 'first',
+					sortable: true
+				},
 				{
 					key: 'last_name',
 					label: '列表名',
 					sortable: true
 				}
 			],
-			fields: [
+			data: [
 				{
 					isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald'
-				}
+				},
+				{
+					isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald'
+				},
+				{
+					isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald'
+				},
+				{
+					isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald'
+				},
+				{
+					isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald'
+				},
 			]
 		};
 	},
