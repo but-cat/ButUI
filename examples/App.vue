@@ -1,22 +1,27 @@
 <template>
-<div id="app">
+<div id="app" :color="color">
 	<views/>
 </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-
 export default {
 	name: 'app',
+	computed: {
+		color() {
+				return this.$color;
+		}
+	},
 	components: {
 		// HelloWorld
 		views: require('./view/main.vue').default
 	}
 }
 </script>
+<style lang="less">
+@import "./assets/style/table.less";
+@import "./assets/style/variables.less";
 
-<style>
 body {
 	margin: 0;
 	width: 100%;
@@ -32,5 +37,27 @@ body {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px; */
+	&[color=light]{
+		.light(@light-text, @light-background);
+	}
+	&[color=dark] {
+		.light(@dark-text, @dark-background);
+	}
+	
+}
+
+.light(@color, @background) {
+	color: @color;
+
+	table {
+		.tableStyle(@color, @background);
+	}
+}
+.dark(@color, @background) {
+	color: @color;
+
+	table {
+		.tableStyle(@color, @background);
+	}
 }
 </style>

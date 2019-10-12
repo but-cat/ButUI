@@ -79,6 +79,7 @@ export default {
 
 .body {
 	overflow: auto;
+	padding: 0 2rem;
 	flex: 1;
 
 	&[color=light]{
@@ -94,4 +95,6 @@ export default {
 .ChapterList {
 	text-indent: 14px;
 }
+
+
 </style>

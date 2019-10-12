@@ -1,5 +1,5 @@
 section {
-  color: #3f536e;
+  /* color: #3f536e; */
   font-size: 14px;
 }
 /* section div{
@@ -39,7 +39,7 @@ section hr {
 section p {
   padding: 0;
   line-height: 1.7;
-  color: #3f536e;
+  /* color: #3f536e; */
   font-size: 14px;
   margin: 10px 0px;
 }

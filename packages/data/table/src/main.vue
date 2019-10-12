@@ -62,9 +62,6 @@ export default {
 			})
 			return data;
 		}
-	},
-	mounted() {
-		console.log(this.fields);
 	}
 }
 </script>
@@ -82,7 +79,7 @@ export default {
 	// border-color: #666666;
 	border-collapse: collapse;
 	& tr:not(:last-child) {
-		border-bottom:1px solid darken(@color, 50%);
+		border-bottom:1px solid fade(@color, 50%);
 	}
 	& tr:hover:not(:first-child) {
 		background-color: @background;

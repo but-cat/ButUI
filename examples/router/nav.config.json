@@ -69,6 +69,12 @@
 				"name": "Table",
 				"path": "/data/table",
 				"component": "data/table"
+			},
+			{
+				"desc": "树形组件",
+				"name": "Tree",
+				"path": "/data/tree",
+				"component": "data/tree"
 			}
 		]
 	}

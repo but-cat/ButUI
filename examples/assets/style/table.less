@@ -1,0 +1,20 @@
+.tableStyle(@color, @background) {
+	width: 100%;
+	font-family: verdana,arial,sans-serif;
+	font-size: @font-size-base;
+	color: @color;
+	border-collapse: collapse;
+	
+	& tr:not(:last-child) {
+		border-bottom:1px solid fade(@color, 50%);
+	}
+	& th {
+		padding: 8px;
+		background-color: darken(@background, 10%);
+	}
+	& td {
+		padding: 8px;
+		// background-color: @background;
+	}
+
+}
