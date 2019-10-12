@@ -38,7 +38,19 @@
 			}
 		]
 	},
-
+	{
+		"name": "表单",
+		"path": "/from/index",
+		"component": "from/index",
+		"list": [
+			{
+				"desc": "基本输入组件",
+				"name": "Input",
+				"path": "/from/input",
+				"component": "from/input"
+			}
+		]
+	},
 	{
 		"name": "布局",
 		"path": "/layout/index",
