@@ -21,6 +21,7 @@ export default {
 <style lang="less">
 @import "./assets/style/table.less";
 @import "./assets/style/variables.less";
+@import "./assets/style/typesetting.less";
 
 body {
 	margin: 0;
@@ -48,14 +49,14 @@ body {
 
 .light(@color, @background) {
 	color: @color;
-
+	.typesetting(@color, @background);
 	table {
 		.tableStyle(@color, @background);
 	}
 }
 .dark(@color, @background) {
 	color: @color;
-
+	.typesetting(@color, @background);
 	table {
 		.tableStyle(@color, @background);
 	}

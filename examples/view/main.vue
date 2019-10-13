@@ -13,14 +13,15 @@
 		</div>
 	</div>
 
-	<div class="body" :color="color">
+	<!-- <div class="body" :color="color"> -->
+	<but-docs class="body">
 		<router-view/>
-	</div>
+	</but-docs>
+	<!-- </div> -->
 </div>
 </template>
 
 <script>
-import '../assets/style/md.css'
 export default {
 	data() {
 		return {
@@ -81,15 +82,6 @@ export default {
 	overflow: auto;
 	padding: 0 2rem;
 	flex: 1;
-
-	&[color=light]{
-		color: @light-text-primary;
-		background-color: @light-background-variant;
-	}
-	&[color=dark] {
-		color: @dark-text-primary;
-		background-color: @dark-background-variant;
-	}
 }
 
 .ChapterList {

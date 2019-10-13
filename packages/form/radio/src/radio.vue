@@ -13,6 +13,7 @@
 
 <script>
 export default {
+	name: "ButRadio",
 	props: {
 		size: {
 			value: String,
@@ -43,8 +44,9 @@ export default {
 	}
 }
 </script>
+<style lang="less" scoped>
+@import '../../../_style/variables.less';
 
-<style scoped>
 .radio[type="radio"] {
 	-webkit-appearance: none;										/*去除默认样式*/
 	margin: 0;
@@ -57,6 +59,12 @@ export default {
 	transition: .2s ease-out;
 	outline: none;
 	/*input的长度为80%，margin-left的长度为10%*/
+
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	&:focus {
+		color: #495057;
+		.focus();
+	}
 }
 .radio[type="radio"]:checked {
 	border: 5px solid #66ccff;

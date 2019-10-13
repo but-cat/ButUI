@@ -44,10 +44,22 @@
 		"component": "from/index",
 		"list": [
 			{
-				"desc": "基本输入组件",
+				"desc": "输入框",
 				"name": "Input",
 				"path": "/from/input",
 				"component": "from/input"
+			},
+			{
+				"desc": "单选",
+				"name": "Radio",
+				"path": "/from/radio",
+				"component": "from/radio"
+			},
+			{
+				"desc": "滑动条",
+				"name": "Range",
+				"path": "/from/range",
+				"component": "from/range"
 			}
 		]
 	},

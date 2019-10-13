@@ -7,6 +7,8 @@
 @light-text: #3b3b3b;									// 主体文本色
 
 
+//== 排版
+//
 //## 正文，标题等的字体，行高和颜色。
 
 @font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -25,3 +27,22 @@
 @font-size-h4:            ceil((@font-size-base * 1.25));				// ~18px
 @font-size-h5:            @font-size-base;								// ~14px
 @font-size-h6:            ceil((@font-size-base * 0.85));				// ~12px
+
+
+
+//** 默认情况下，它继承自 `<body>` 元素.
+@headings-font-family:    inherit;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+// 组件样式
+@fillet: 3px;															// 圆角3px
+
+//** 无单位的“行高”，用于按钮等组件.
+@line-height-base:        1.428571429;									// 20/14
+//** 计算的“行高”（“字体大小” *“行高”），用于“页边距”，“填充”等.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+// @line-height-: @font-size-base * 2;									// 28px
