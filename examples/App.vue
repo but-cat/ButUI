@@ -23,6 +23,10 @@ export default {
 @import "./assets/style/variables.less";
 @import "./assets/style/typesetting.less";
 
+:root {
+  --main-color: #06c;
+}
+
 body {
 	margin: 0;
 	width: 100%;

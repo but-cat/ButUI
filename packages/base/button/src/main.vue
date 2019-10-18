@@ -103,11 +103,10 @@ export default {
 
 }
 
-
 .default(@color, @background)  {
 	.button;
 	color: @color;
-	background-color: @background;
+	background-color: fadeout(@background, 10%);
 
 	box-shadow: @elevation-2;
 	&:hover {																	// 悬浮
