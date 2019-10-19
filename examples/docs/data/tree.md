@@ -9,47 +9,42 @@
 	export default {
 		data() {
 			return {
-				data: {
-					name: '梨',
-					type: 'fruit',
-					icon: 'icon',
-					children: [
-						{
-							name: '香蕉',
-							type: 'fruit',
-							icon: 'icon',
-							children: [
-								{
-									name: '梨',
-									type: 'fruit',
-									icon: 'icon'
-								},
-								{
-									name: '香蕉',
-									type: 'fruit',
-									icon: 'icon',
-									children: [
-										{
-											name: '梨',
-											type: 'fruit',
-											icon: 'icon'
-										}
-									]
-								},
-								{
-									name: '香蕉',
-									type: 'fruit',
-									icon: 'icon'
-								}
-							]
-						},
-						{
-							name: '香蕉',
-							type: 'fruit',
-							icon: 'icon'
-						}
-					]
-				},
+				data: [
+					{
+						name: '香蕉',
+						type: 'fruit',
+						icon: 'icon',
+						children: [
+							{
+								name: '梨',
+								type: 'fruit',
+								icon: 'icon'
+							},
+							{
+								name: '香蕉',
+								type: 'fruit',
+								icon: 'icon',
+								children: [
+									{
+										name: '梨',
+										type: 'fruit',
+										icon: 'icon'
+									}
+								]
+							},
+							{
+								name: '香蕉',
+								type: 'fruit',
+								icon: 'icon'
+							}
+						]
+					},
+					{
+						name: '香蕉',
+						type: 'fruit',
+						icon: 'icon'
+					}
+				],
 				icon: {
 					iconKey: 'icon',
 					iconFilter: {
@@ -74,5 +69,8 @@
 ### 属性
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| data | 展示数据 | Object| — | — |
+| data | 展示数据 | Object/Array | — | — |
+| nameKey | 设置节点名的键值 | String | — | name |
 | childrenKey | 设置用于迭代子级对象的键值 | String | — | — |
+| icon | 设置类型图标 | Object | — | — |
+| size | 设置大小 | Object | small/medium | small |

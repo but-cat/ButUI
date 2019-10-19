@@ -1,5 +1,5 @@
 <template>
-<button :class="types" :color="color">
+<button :class="[types, disableds]" :color="color" @click="handleClick">
 	<img v-if="!!icons" :src="icons" class="imgs"><slot/>
 </button>
 </template>
@@ -22,6 +22,7 @@ export default {
 			default: ''
 		},
 		plain: Boolean,
+		disabled: Boolean,
 		circle: Boolean
 	},
 	computed: {
@@ -64,8 +65,17 @@ export default {
 				}
 			}
 		},
+		disableds() {
+			return this.disabled ? "disabled" : "";
+		},
 		color() {
 			return this.$color;
+		}
+	},
+	methods: {
+		handleClick(evt) {
+			if(!this.disabled)
+				this.$emit('click', evt);
 		}
 	}
 }
@@ -99,8 +109,6 @@ export default {
 		margin-right: 5px;
 		display: inline-block;
 	}
-
-
 }
 
 .default(@color, @background)  {
@@ -111,19 +119,12 @@ export default {
 	box-shadow: @elevation-2;
 	&:hover {																	// 悬浮
 		box-shadow: @elevation-3;
-		cursor: pointer;
+		// cursor: pointer;
 	}
 	&:active {																	// 点击
 		transition: .1s ease-out;
 		opacity: 0.5;
 		box-shadow: @elevation-1;
-	}
-	&:disabled {																// 禁用状态
-		box-shadow: none;
-		pointer-events: none;
-		cursor: default;
-		opacity: 0.5;
-		
 	}
 }
 
@@ -133,18 +134,20 @@ export default {
 
 	&:hover {																	// 悬浮
 		background-color: fadeout(@color, 80%);
-		cursor: pointer;
+		// cursor: pointer;
 	}
 	&:active {																	// 点击
 		transition: .1s ease-out;
 		opacity: 0.5;
 	}
-	&:disabled {																// 禁用状态
-		box-shadow: none;
-		pointer-events: none;
-		opacity: 0.5;
-		text-decoration:line-through;
-		cursor: not-allowed;
-	}
+}
+
+/* 禁用状态 */
+.disabled {
+	box-shadow: none;
+	// pointer-events: none;
+	opacity: 0.5;
+	// text-decoration:line-through;
+	cursor: not-allowed;
 }
 </style>

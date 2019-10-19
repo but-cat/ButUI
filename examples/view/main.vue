@@ -1,16 +1,7 @@
 <template>
 <div class="Container" :color="color">
 	<div class="nav" :color="color">
-		<div v-for="(Chapter, index) in navList" :key="index">
-			<router-link :to="Chapter.path">
-				<but-link target="_blank">{{Chapter.name}}</but-link>
-			</router-link>
-			<div v-for="(item, index) in Chapter.list" :key="index" class="ChapterList">
-				<router-link :to="item.path">
-					<but-link target="_blank">{{item.desc}}</but-link>
-				</router-link>
-			</div>
-		</div>
+		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list"/>
 	</div>
 
 	<!-- <div class="body" :color="color"> -->
@@ -44,6 +35,11 @@ export default {
 			// 	)
 			// );
 			this.navList = config;
+		},
+		eventPre(node) {
+			this.$router.push({
+				path: node.path
+			})
 		}
 	},
 	created() {
