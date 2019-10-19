@@ -45,7 +45,7 @@ export default {
 
 	border-radius: 3px;
 
-    font-size: @font-size-base;
+    font-size: @font-size-large;
 	height: @font-size-base * 2;
 	
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -89,6 +89,6 @@ input{
     overflow: hidden;
 	outline: 0px;
     border: none;
-    box-shadow: none;
+	box-shadow: none;
 }
 </style>

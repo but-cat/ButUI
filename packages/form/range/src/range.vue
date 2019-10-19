@@ -50,7 +50,11 @@ export default {
 		// background-color: @dark-background;
 		.rangeStyle(@dark-scrollbar, @dark-scrollbar-background);
 	}
+	&:focus {
+		outline: 0;
+	}
 }
+
 
 .rangeStyle(@color, @background) {
 	transition: 0.15s;
@@ -83,5 +87,6 @@ export default {
 		transition: .3s;
 		.focus();
 	}
+
 }
 </style>
