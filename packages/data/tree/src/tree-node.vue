@@ -126,6 +126,11 @@ export default {
 			margin-left: @size/4;
 			cursor: pointer;
 			user-select: none;
+			transition: .1s ease-out;
+			&:active {																	// 点击
+				transition: .1s ease-out;
+				opacity: 0.5;
+			}
 		}
 
 		// 展开按钮旋转动画

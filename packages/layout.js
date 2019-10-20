@@ -1,6 +1,8 @@
 const components = [															// 所有组件列表
-	require('./layout/Container').default,
-	require('./layout/View').default,
+	require('&/layout/Container').default,
+	require('&/layout/sandwich').default,
+
+	require('&/layout/card').default,
 ];
 
 const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数

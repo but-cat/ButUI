@@ -16,7 +16,10 @@
 export default {
 	data() {
 		return {
-			navList: []
+			navList: [{
+				name: "测试",
+				path: "/test"
+			}]
 		}
 	},
 	computed: {
@@ -26,15 +29,7 @@ export default {
 	},
 	methods: {
 		createNav(config) {
-			// config.map(Chapter => 
-			// 	Chapter.list.map(item =>
-			// 		this.navList.push({
-			// 			name: item.desc,
-			// 			path: item.path
-			// 		})
-			// 	)
-			// );
-			this.navList = config;
+			this.navList = this.navList.concat(config);
 		},
 		eventPre(node) {
 			this.$router.push({

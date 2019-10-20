@@ -1,6 +1,5 @@
 const components = [															// 所有组件列表
 	require('&/base/button').default,
-	require('&/base/card').default,
 	require('&/base/link').default,
 	require('&/base/docs').default,
 	require('&/base/collapse').default,											// 折叠组件

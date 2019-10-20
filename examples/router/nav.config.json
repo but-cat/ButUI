@@ -2,8 +2,7 @@
 	{
 		"name": "概览",
 		"path": "/",
-		"component": "README",
-		"list": []
+		"component": "README"
 	},
 
 	{
@@ -11,12 +10,6 @@
 		"path": "/basic/index",
 		"component": "basic/index",
 		"list": [
-			{
-				"desc": "卡片",
-				"name": "Card",
-				"path": "/basic/card",
-				"component": "basic/card"
-			},
 
 			{
 				"desc": "按钮",
@@ -75,10 +68,16 @@
 				"component": "layout/grid"
 			},
 			{
-				"desc": "视图布局",
-				"name": "View",
-				"path": "/layout/view",
-				"component": "layout/view"
+				"desc": "弹性盒布局",
+				"name": "Sandwich",
+				"path": "/layout/sandwich",
+				"component": "layout/sandwich"
+			},
+			{
+				"desc": "卡片",
+				"name": "Card",
+				"path": "/layout/card",
+				"component": "layout/card"
 			}
 		]
 	},

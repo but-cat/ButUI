@@ -47,11 +47,6 @@ export default {
 			default: 'small'
 		}
 	},
-	data() {
-        return {
-            Te: 'Hello?'
-        }
-	},
 	computed: {
 		datas() {
 			if(this.data instanceof Array)
