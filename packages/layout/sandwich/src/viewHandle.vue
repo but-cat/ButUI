@@ -1,19 +1,32 @@
 <template>
-<button class="viewHandle" 
+<div :class="[viewHandleState ? 'viewHandleOpen' : '', direction ? 'row' : 'column']" 
+	:style="viewHandleState ? '' : distance" class="viewHandle" 
 	@mousemove="viewHandle" 
-	@mousedown="headHandleState = true"
-	@mouseup="headHandleState = false"
-	:style="{left: viewHandleX-5 +'px'}"/>
+	@mousedown="viewHandleState = true"
+	@mouseup="viewHandleState = false"
+	@mouseout="viewHandleState = false"/>
 </template>
 
 <script>
 export default {
 	props: {
-		position: {
+		value: {																		// 偏移量
 			type: Number,
 			default: 0
 		},
-		direction: {
+		valueOpposite: {																// 对向容器的尺寸 用于限制手柄的滑动距离
+			type: Number,
+			default: 0
+		},
+		limits: {																		// 限制范围 如果超出设定的范围将停止滑动
+			type: Number,
+			default: 10
+		},
+		offsetDirection: {																// 偏移方向 true为头部 false为尾部
+			type: Boolean,
+			default: true
+		},
+		direction: {																	// 主轴方向 true为横向 false为纵向
 			type: Boolean,
 			default: true
 		}
@@ -21,27 +34,50 @@ export default {
 	data() {
         return {
 			headSize: 300,
-			viewHandleState: false,												// 视图手柄是否处于活跃状态
+			viewHandleState: false,														// 视图手柄是否处于活跃状态
         }
 	},
 	computed: {
-		distance() {
+		distance() {																	// 在手柄不活跃时设置浮动的位置
+			return (this.direction) ? {[this.offsetDirection ? 'left' : 'right']: `${this.value-4}px`} : {[this.offsetDirection ? 'top' : 'bottom']: `${this.value-4}px`}
+		},
+
+		viewSize() {																	// 返回当前视图主轴方向上的尺寸
 			if(this.direction)
-				return {
-					width: "8px",
-					height: "100%",
-					left: `${this.position}px`
-				}
+				return this.$el.clientWidth;											// 如果主轴方向为横向,返回宽度
 			else
-				return {
-					width: "100%",
-					height: "8px",
-					left: `${this.position}px`
-				}
+				return this.$el.clientHeight;											// 如果主轴方向为纵向,返回高度
 		}
 	},
 	methods: {
-
+		// 向外广播指针位置偏移量
+		viewHandle(event) {
+			if(this.viewHandleState){													// 当视图手柄被激活后
+				if(this.direction)														// 以主轴方向确定传递的值
+					if(this.offsetDirection)											// 
+					this.$emit("input", this.viewHandleXLimits(event.offsetX));
+					else
+					this.$emit("input", this.viewHandleXLimits(this.viewSize - event.offsetX));
+				else
+					if(this.offsetDirection)
+					this.$emit("input", this.viewHandleXLimits(event.offsetY));
+					else
+					this.$emit("input", this.viewHandleXLimits(this.viewSize - event.offsetY));
+			}
+		},
+		// 限制手柄的滑动范围
+		viewHandleXLimits(value) {
+			let min = this.limits,
+				max = this.viewSize-(this.limits+this.valueOpposite);
+			if(value <= min)
+				return min;
+			else if(value >= max)
+				return max;
+			else return value;
+		},
+	},
+	beforeMount() {
+		this.$el.ondragstart = (event) => event.preventDefault();
 	}
 }
 </script>
@@ -49,24 +85,34 @@ export default {
 <style lang="less" scoped>
 /* 视图手柄 */
 .viewHandle {
-	bottom: 0px;
+	// bottom: 0px;
+	background-color: rgb(5, 51, 51);
+}
+.row {
+	width: 8px;
+	height: 100%;
 	cursor: w-resize;
-	padding: 0;
-	border: none;															/*不渲染边框*/
-	box-shadow: none;
-	outline: none;															/*禁止选中高亮*/
-	border-radius: 0;
-	background: transparent;												/*背景颜色透明*/
-
 	position: absolute;
+	top: 0;
+}
+.column {
+	width: 100%;
+	height: 8px;
+	cursor: n-resize;
+	position: absolute;
+	left: 0;
+}
 
-	// &:hover {
-	// 	background-image: url(../../../../build/icons/view/viewHandle.svg);
-	// 	background-size: cover;
-	// }
-	// &:active {
-	// 	background-image: url(../../../../build/icons/view/viewHandle.svg);
-	// 	background-size: cover;
-	// }
+// 视图手柄活跃
+.viewHandleOpen {
+	width: 100%;
+	height: 100%;
+	// position: relative;
+	position: absolute;
+	left: 0;
+	top: 0;
+	
+	background-color: aqua;
+	opacity: 0.1;
 }
 </style>

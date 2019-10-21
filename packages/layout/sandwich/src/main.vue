@@ -1,23 +1,33 @@
 <template>
 <div :style="{flexDirection: direction ? 'row' : 'column'}" class="container">
-	<div :style="{flex: '0 1 '+ value + 'px'}" class="head">
+	<!-- 头部区块 -->
+	<div v-if="$slots.head" :style="{flex: '0 1 '+ headSize + 'px'}" class="head">
 		<slot name="head"/>
 	</div>
-	<!-- 手柄 -->
 
+	<!-- 手柄  :maxValue="$el.clientHeight - (tailSize+30)"-->
+	<view-handle v-if="$slots.head" class="viewHandle" 
+		:direction="direction"
+		:limits="limits"
+		:valueOpposite="tailSizeTs"
+		v-model="headSize"/>
 
+	<!-- 主体区块 -->
 	<div class="body">
 		<!-- <slot/> -->
-		<button @click="headAdd">headAdd</button>
+		<button @click="coordinatea">{{tailSizes}}</button>
 	</div>
-	<!-- 手柄 -->
-	<button class="viewHandle" 
-		@mousemove="viewHandle" 
-		@mousedown="headHandleState = false"
-		@mouseup="headHandleState = true"
-		:style="{left: viewHandleX-5 +'px'}"/>
 
-	<div :style="{flex: '0 1 '+ tailSize + 'px'}" class="tail">
+	<!-- 手柄 -->
+	<view-handle v-if="$slots.tail" class="viewHandle" 
+		:offsetDirection="false"
+		:direction="direction"
+		:limits="limits"
+		:valueOpposite="headSize"
+		v-model="tailSize"/>
+
+	<!-- 尾部区块 -->
+	<div v-if="$slots.tail" :style="{flex: '0 1 '+ tailSize + 'px'}" class="tail">
 		<slot name="tail"/>
 	</div>
 </div>
@@ -27,14 +37,18 @@
 export default {
 	name: "ButSandwich",
 	props: {
-		// value: {
-		// 	type: Number,
-		// 	default: 300
-		// },
-		// tail: {
-		// 	type: Number,
-		// 	default: 300
-		// },
+		head: {
+			type: Number,
+			default: 0
+		},
+		tail: {
+			type: Number,
+			default: 0
+		},
+		limits: {																			// 限制范围 如果超出设定的范围将停止滑动
+			type: Number,
+			default: 50
+		},
 		direction: {
 			type: Boolean,
 			default: true
@@ -42,31 +56,28 @@ export default {
 	},
 	data() {
         return {
-			headSize: 300,
-			tailSize: 300,
-			headHandleState: false,												// 视图手柄是否处于活跃状态
-			tailHandleState: false,												// 视图手柄是否处于活跃状态
+			headSize: 50,
+			tailSize: 50
         }
 	},
 	computed: {
-		/* 计算属性 */
+		// headSizeTs() {
+		// 	return this.$slots.head ? this.headSize : 0;
+		// },
+		tailSizeTs() {
+			return this.$slots.tail ? this.tailSize : 0;
+		}
 	},
 	methods: {
-		headAdd() {
-			// this.headSize += 10;
-			this.$emit("input", 10)
+		headSizes() {
+			return this.$slots.head ? this.headSize : 0;
 		},
-
-		/* 视图手柄位置赋值 */
-		viewHandle(event) {
-			if(this.viewHandleState){
-				this.viewHandleX = event.clientX;
-			}
+		tailSizes() {
+			return this.$slots.tail ? this.tailSize : 0;
 		},
-		// 禁止拖动
-		dragenter(event) {
-			event.preventDefault();
-		},
+		coordinatea() {
+			console.log(this.tailSizes);
+		}
 	},
 	directives: {
 		head: {
@@ -80,6 +91,21 @@ export default {
 			inserted: function (el, binding, vnode) {
 				this.tailSize = binding.value;
 				// el.focus()
+			}
+		}
+	},
+	components: {
+		viewHandle: require("./viewHandle").default
+	},
+	watch: {
+		headSize: {
+			handler(newName) {
+				this.tailSize = this.$slots.head ? this.tailSize : 0;
+			}
+		},
+		tailSize: {
+			handler(newName) {
+				this.headSize = this.$slots.head ? this.headSize : 0;
 			}
 		}
 	}
@@ -97,6 +123,10 @@ export default {
 	box-sizing: border-box;
 	align-items: stretch;
 	min-width: 0;
+
+	position: relative;
+	left: 0;
+	top: 0;
 
 	// background-color: blueviolet;
 
