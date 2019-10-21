@@ -56,16 +56,16 @@ export default {
 	},
 	data() {
         return {
-			headSize: 50,
-			tailSize: 50
+			// headSize: 50,
+			// tailSize: 50
         }
 	},
 	computed: {
-		// headSizeTs() {
-		// 	return this.$slots.head ? this.headSize : 0;
-		// },
-		tailSizeTs() {
-			return this.$slots.tail ? this.tailSize : 0;
+		headSize() {
+			return this.$slots.head ? this.head : 0;
+		},
+		tailSize() {
+			return this.$slots.tail ? this.tail : 0;
 		}
 	},
 	methods: {
@@ -83,7 +83,19 @@ export default {
 		head: {
 			// 指令的定义
 			inserted: function (el, binding, vnode) {
-				this.headSize = binding.value;
+				// this.headSize = binding.value;
+
+				var me = this,
+					val = this._getVMVal(vm, exp);
+				node.addEventListener('input', function(e) {
+					var newValue = e.target.value;
+					if (val === newValue) {
+						return;
+					}
+
+					me._setVMVal(vm, exp, newValue);
+					val = newValue;
+				});
 			}
 		},
 		tail: {
@@ -96,18 +108,6 @@ export default {
 	},
 	components: {
 		viewHandle: require("./viewHandle").default
-	},
-	watch: {
-		headSize: {
-			handler(newName) {
-				this.tailSize = this.$slots.head ? this.tailSize : 0;
-			}
-		},
-		tailSize: {
-			handler(newName) {
-				this.headSize = this.$slots.head ? this.headSize : 0;
-			}
-		}
 	}
 }
 </script>
