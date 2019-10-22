@@ -1,5 +1,5 @@
 <template>
-<div class="sizeListen" :class="shadow" :style="bodyStyle" :color="color">
+<div class="sizeListen">
 	<slot/>
 	<object class="object" type="text/html" data="about:blank"/>
 </div>
@@ -8,12 +8,17 @@
 <script>
 export default {
 	name: 'ButListen',
+	methods: {
+		resize() {
+			this.$emit("resize", this.$el.clientWidth, this.$el.clientHeight);
+		}
+	},
 	mounted() {
-		const that = this;
-		this.$emit("resize", this.$el.clientWidth, this.$el.clientHeight);
-		this.$el.getElementsByClassName("object")[0].contentDocument.defaultView.addEventListener("resize", function(){
-			that.$emit("resize", that.$el.clientWidth, that.$el.clientHeight);
-		});
+		this.resize();
+		this.$el.getElementsByClassName("object")[0].contentDocument.defaultView.addEventListener("resize", this.resize);
+	},
+	beforeDestroy() {
+		this.$el.getElementsByClassName("object")[0].contentDocument.defaultView.removeEventListener("resize", this.resize);
 	}
 }
 </script>
