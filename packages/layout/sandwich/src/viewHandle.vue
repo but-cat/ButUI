@@ -10,7 +10,7 @@
 <script>
 export default {
 	props: {
-		value: {																		// 偏移量
+		value: {																		// 接收的容器尺寸,被用于指定手柄的位置
 			type: Number,
 			default: 0
 		},
@@ -33,7 +33,6 @@ export default {
 	},
 	data() {
         return {
-			headSize: 300,
 			viewHandleState: false,														// 视图手柄是否处于活跃状态
         }
 	},
@@ -76,17 +75,21 @@ export default {
 			else return value;
 		},
 	},
-	beforeMount() {
-		this.$el.ondragstart = (event) => event.preventDefault();
-	}
+	// beforeMount() {
+	// 	this.$el.ondragstart = (event) => event.preventDefault();
+	// }
 }
 </script>
 
 <style lang="less" scoped>
+@import '../../../_style/variables.less';
+
 /* 视图手柄 */
 .viewHandle {
 	// bottom: 0px;
-	background-color: rgb(5, 51, 51);
+	&:hover {
+		background-color: rgba(75, 75, 75, 0.2);
+	}
 }
 .row {
 	width: 8px;
@@ -112,7 +115,7 @@ export default {
 	left: 0;
 	top: 0;
 	
-	background-color: aqua;
-	opacity: 0.1;
+	// background-color: aqua;
+	opacity: 0;
 }
 </style>

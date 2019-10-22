@@ -14,8 +14,7 @@
 
 	<!-- 主体区块 -->
 	<div class="body">
-		<!-- <slot/> -->
-		<button @click="test">{{tailSizes}}</button>
+		<slot/>
 	</div>
 
 	<!-- 手柄 -->
@@ -56,43 +55,42 @@ export default {
 	},
 	data() {
         return {
+			// headSize: 0,
+			// tailSize: 0,
 			size: {
-				head: 0,
-				tail: 0
+				head: this.head,
+				tail: this.tail
 			}
         }
 	},
 	computed: {
-		headSize() {
-			return this.$slots.head ? this.head : 0;
-		},
-		tailSize() {
-			return this.$slots.tail ? this.tail : 0;
-		}
+		// headSize() {
+		// 	return this.$slots.head ? this.head : 0;
+		// },
+		// tailSize() {
+		// 	return this.$slots.tail ? this.tail : 0;
+		// }
 	},
 	methods: {
-		test() {
-			console.log(this.tailSizes);
+		viewHandleXLimits(value) {
+			let min = this.limits,
+				max = this.viewSize-(this.limits+this.valueOpposite);
+			if(value <= min)
+				return min;
+			else if(value >= max)
+				return max;
+			else return value;
 		},
-
-		// headCommit() {
-		// 	this.$emit("head", this.headSize);
-		// },
-		// tailCommit() {
-		// 	this.$emit("tail", this.tailSize);
-		// },
 	},
 	components: {
 		viewHandle: require("./viewHandle").default
 	},
-	width: {
+	watch: {
 		size: {
 			handler(newName, oldName) {
-				this.size = newName;
 				this.$emit("head", newName.head);
 				this.$emit("tail", newName.tail);
-			},immediate: true,
-			deep: true
+			},immediate: true, deep: true
 		}
 	}
 }

@@ -78,6 +78,12 @@
 				"name": "Card",
 				"path": "/layout/card",
 				"component": "layout/card"
+			},
+			{
+				"desc": "重绘监听容器",
+				"name": "Listen",
+				"path": "/layout/listen",
+				"component": "layout/listen"
 			}
 		]
 	},

@@ -1,6 +1,7 @@
 const components = [															// 所有组件列表
 	require('&/layout/Container').default,
 	require('&/layout/sandwich').default,
+	require('&/layout/sizeListen').default,										// 容器监听组件
 
 	require('&/layout/card').default,
 ];
