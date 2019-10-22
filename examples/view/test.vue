@@ -1,6 +1,6 @@
 <template>
 <div style="height: 100%;">
-	<but-sandwich v-model="headValue">
+	<but-sandwich :head="head" @head="headSize" :tail="tail" @tail="tailSize">
 		<div slot="head" style="background-color: #39c5bb; height: 100%;">{{headValue}}</div>
 		<div style="background-color: #66ccff; height: 100%;">???</div>
 		<div slot="tail" v-if="tes" @click="Te" style="background-color: #dfdfdf; height: 100%;">???</div>
@@ -14,7 +14,8 @@ export default {
 	data() {
 		return {
 			navList: [],
-			headValue: 300,
+			head: 300,
+			tail: 300,
 			tes: 1
 		}
 	},
@@ -24,6 +25,13 @@ export default {
 		}
 	},
 	methods: {
+		headSize(value) {
+			this.head = value;
+		},
+		tailSize(value) {
+			this.tail = value;
+		},
+
 		eventPre(node) {
 			this.$router.push({
 				path: node.path
@@ -40,6 +48,7 @@ export default {
 	},
 	beforeMount() {
 		this.$el.ondragstart = () => false;
+		event.preventDefault();
 	}
 }
 </script>

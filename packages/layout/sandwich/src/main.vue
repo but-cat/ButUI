@@ -1,7 +1,7 @@
 <template>
 <div :style="{flexDirection: direction ? 'row' : 'column'}" class="container">
 	<!-- 头部区块 -->
-	<div v-if="$slots.head" :style="{flex: '0 1 '+ headSize + 'px'}" class="head">
+	<div v-if="$slots.head" :style="{flex: '0 1 '+ size.head + 'px'}" class="head">
 		<slot name="head"/>
 	</div>
 
@@ -9,13 +9,13 @@
 	<view-handle v-if="$slots.head" class="viewHandle" 
 		:direction="direction"
 		:limits="limits"
-		:valueOpposite="tailSizeTs"
-		v-model="headSize"/>
+		:valueOpposite="size.tail"
+		v-model="size.head"/>
 
 	<!-- 主体区块 -->
 	<div class="body">
 		<!-- <slot/> -->
-		<button @click="coordinatea">{{tailSizes}}</button>
+		<button @click="test">{{tailSizes}}</button>
 	</div>
 
 	<!-- 手柄 -->
@@ -23,11 +23,11 @@
 		:offsetDirection="false"
 		:direction="direction"
 		:limits="limits"
-		:valueOpposite="headSize"
-		v-model="tailSize"/>
+		:valueOpposite="size.head"
+		v-model="size.tail"/>
 
 	<!-- 尾部区块 -->
-	<div v-if="$slots.tail" :style="{flex: '0 1 '+ tailSize + 'px'}" class="tail">
+	<div v-if="$slots.tail" :style="{flex: '0 1 '+ size.tail + 'px'}" class="tail">
 		<slot name="tail"/>
 	</div>
 </div>
@@ -49,15 +49,17 @@ export default {
 			type: Number,
 			default: 50
 		},
-		direction: {
+		direction: {																		// 主轴方向 true为横向 false为纵向
 			type: Boolean,
 			default: true
 		}
 	},
 	data() {
         return {
-			// headSize: 50,
-			// tailSize: 50
+			size: {
+				head: 0,
+				tail: 0
+			}
         }
 	},
 	computed: {
@@ -69,45 +71,29 @@ export default {
 		}
 	},
 	methods: {
-		headSizes() {
-			return this.$slots.head ? this.headSize : 0;
-		},
-		tailSizes() {
-			return this.$slots.tail ? this.tailSize : 0;
-		},
-		coordinatea() {
+		test() {
 			console.log(this.tailSizes);
-		}
-	},
-	directives: {
-		head: {
-			// 指令的定义
-			inserted: function (el, binding, vnode) {
-				// this.headSize = binding.value;
-
-				var me = this,
-					val = this._getVMVal(vm, exp);
-				node.addEventListener('input', function(e) {
-					var newValue = e.target.value;
-					if (val === newValue) {
-						return;
-					}
-
-					me._setVMVal(vm, exp, newValue);
-					val = newValue;
-				});
-			}
 		},
-		tail: {
-			// 指令的定义
-			inserted: function (el, binding, vnode) {
-				this.tailSize = binding.value;
-				// el.focus()
-			}
-		}
+
+		// headCommit() {
+		// 	this.$emit("head", this.headSize);
+		// },
+		// tailCommit() {
+		// 	this.$emit("tail", this.tailSize);
+		// },
 	},
 	components: {
 		viewHandle: require("./viewHandle").default
+	},
+	width: {
+		size: {
+			handler(newName, oldName) {
+				this.size = newName;
+				this.$emit("head", newName.head);
+				this.$emit("tail", newName.tail);
+			},immediate: true,
+			deep: true
+		}
 	}
 }
 </script>
