@@ -1,10 +1,10 @@
 <template>
 <div style="height: 100%;">
-	<!-- <but-sandwich :head="head" @head="headSize" :tail="tail" @tail="tailSize" >
+	<but-sandwich :head="head" @head="headSize" :tail="tail" @tail="tailSize" >
 		<div slot="head" style="background-color: #FF0000; height: 100%;">{{head}}</div>
 		<div style="background-color: #FFF; height: 100%;">???</div>
 		<div slot="tail" v-if="tes" @click="Te" style="background-color: #0000FF; height: 100%;">{{tail}}</div>
-	</but-sandwich> -->
+	</but-sandwich>
 
 	<but-listen/>
 </div>

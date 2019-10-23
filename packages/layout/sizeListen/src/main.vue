@@ -1,5 +1,5 @@
 <template>
-<div class="sizeListen">
+<div class="sizeRedraw">
 	<slot/>
 	<object class="object" type="text/html" data="about:blank"/>
 </div>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-	name: 'ButListen',
+	name: 'ButRedraw',
 	methods: {
 		resize() {
 			this.$emit("resize", this.$el.clientWidth, this.$el.clientHeight);
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.sizeListen {
+.sizeRedraw {
 	width:100%;
 	height:100%;
 	overflow: auto;

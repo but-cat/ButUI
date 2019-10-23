@@ -1,15 +1,13 @@
 <template>
-<div class="Container" :color="color">
-	<div class="nav" :color="color">
+<but-sandwich :head="head" @head="headSize" :color="color">
+	<div slot="head" class="nav">
 		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list"/>
 	</div>
-
-	<!-- <div class="body" :color="color"> -->
-	<but-docs class="body">
+	
+	<div class="body">
 		<router-view/>
-	</but-docs>
-	<!-- </div> -->
-</div>
+	</div>
+</but-sandwich>
 </template>
 
 <script>
@@ -19,7 +17,8 @@ export default {
 			navList: [{
 				name: "测试",
 				path: "/test"
-			}]
+			}],
+			head: 300
 		}
 	},
 	computed: {
@@ -35,7 +34,14 @@ export default {
 			this.$router.push({
 				path: node.path
 			})
-		}
+		},
+		headSize(value) {
+			this.head = value;
+		},
+		tailSize(value) {
+			this.tail = value;
+		},
+
 	},
 	created() {
 		this.createNav(require('@/router/nav.config.json'));
@@ -50,11 +56,10 @@ export default {
 .Container {
 	width: 100%;
 	height: 100%;
-	display: flex;
 }
 
 .nav {
-	width: 300px;
+	height: 100%;
 	height: 100%;
 	background-color: #eef0f4;
 	overflow: auto;

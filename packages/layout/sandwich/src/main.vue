@@ -6,7 +6,7 @@
 	</div>
 
 	<!-- 手柄  :maxValue="$el.clientHeight - (tailSize+30)"-->
-	<view-handle v-if="$slots.head" class="viewHandle" 
+	<view-handle v-if="$slots.head || head==0" class="viewHandle" 
 		:direction="direction"
 		:limits="limits"
 		:valueOpposite="size.tail"
@@ -26,7 +26,7 @@
 		v-model="size.tail"/>
 
 	<!-- 尾部区块 -->
-	<div v-if="$slots.tail" :style="{flex: '0 1 '+ size.tail + 'px'}" class="tail">
+	<div v-if="$slots.tail || tail==0" :style="{flex: '0 1 '+ size.tail + 'px'}" class="tail">
 		<slot name="tail"/>
 	</div>
 </div>
@@ -36,11 +36,11 @@
 export default {
 	name: "ButSandwich",
 	props: {
-		head: {
+		head: {																				// 头部容器大小
 			type: Number,
 			default: 0
 		},
-		tail: {
+		tail: {																				// 尾部容器尺寸
 			type: Number,
 			default: 0
 		},
@@ -55,8 +55,10 @@ export default {
 	},
 	data() {
         return {
-			// headSize: 0,
-			// tailSize: 0,
+			// size: {
+			// 	head: this.headSize,
+			// 	tail: this.tailSize
+			// },
 			size: {
 				head: this.head,
 				tail: this.tail
@@ -64,17 +66,20 @@ export default {
         }
 	},
 	computed: {
-		// headSize() {
-		// 	return this.$slots.head ? this.head : 0;
-		// },
-		// tailSize() {
-		// 	return this.$slots.tail ? this.tail : 0;
-		// }
+		headSize() {
+			return this.viewHandleXLimits(this.head, this.tail);
+		},
+		tailSize() {
+			return this.viewHandleXLimits(this.tail, this.head);
+		}
 	},
 	methods: {
-		viewHandleXLimits(value) {
+		// 窗口限位
+		viewHandleXLimits(value, valueOpposite) {
+			let viewSize = this.direction ? this.$el.clientWidth : this.$el.clientHeight;	// 视图尺寸
 			let min = this.limits,
-				max = this.viewSize-(this.limits+this.valueOpposite);
+				max = viewSize-(this.limits+valueOpposite);
+
 			if(value <= min)
 				return min;
 			else if(value >= max)
@@ -108,6 +113,7 @@ export default {
 	align-items: stretch;
 	min-width: 0;
 
+	transition: .3s;
 	position: relative;
 	left: 0;
 	top: 0;
@@ -116,12 +122,15 @@ export default {
 
 	.head {
 		flex: 1;
+		overflow: hidden;
 	}
 	.body {
 		flex: 1;
+		overflow: hidden;
 	}
 	.tail {
 		flex: 1;
+		overflow: hidden;
 	}
 }
 

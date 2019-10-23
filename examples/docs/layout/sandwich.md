@@ -6,11 +6,15 @@
 
 ```vue
 <template>
-<div style="height: 100%;">
+<div style="height: 360px;">
 	<but-sandwich :head="head" @head="headSize" :tail="tail" @tail="tailSize" >
-		<div slot="head" style="background-color: #FF0000; height: 100%;">{{head}}</div>
+		<div slot="head" style="background-color: #FF0000; height: 100%;">
+			<h1>头部容器尺寸为{{head}}px</h1>
+		</div>
 		<div style="background-color: #FFF; height: 100%;">???</div>
-		<div slot="tail" style="background-color: #0000FF; height: 100%;">{{tail}}</div>
+		<div slot="tail" style="background-color: #0000FF; height: 100%;">
+			<h1>尾部容器尺寸为{{tail}}px</h1>
+		</div>
 	</but-sandwich>
 </div>
 </template>

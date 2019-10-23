@@ -1,10 +1,10 @@
 <template>
 <div :class="[viewHandleState ? 'viewHandleOpen' : '', direction ? 'row' : 'column']" 
 	:style="viewHandleState ? '' : distance" class="viewHandle" 
-	@mousemove="viewHandle" 
-	@mousedown="viewHandleState = true"
-	@mouseup="viewHandleState = false"
-	@mouseout="viewHandleState = false"/>
+	@mousemove.stop="viewHandle" 
+	@mousedown.stop="viewHandleState = true"
+	@mouseup.stop="viewHandleState = false"
+	@mouseout.stop="viewHandleState = false"/>
 </template>
 
 <script>
@@ -42,10 +42,7 @@ export default {
 		},
 
 		viewSize() {																	// 返回当前视图主轴方向上的尺寸
-			if(this.direction)
-				return this.$el.clientWidth;											// 如果主轴方向为横向,返回宽度
-			else
-				return this.$el.clientHeight;											// 如果主轴方向为纵向,返回高度
+			return this.direction ? this.$el.clientWidth : this.$el.clientHeight;											// 如果主轴方向为纵向,返回高度
 		}
 	},
 	methods: {
@@ -117,5 +114,7 @@ export default {
 	
 	// background-color: aqua;
 	opacity: 0;
+	user-select: none;
+	z-index: 100000;
 }
 </style>

@@ -57,7 +57,7 @@
 		]
 	},
 	{
-		"name": "布局",
+		"name": "布局容器",
 		"path": "/layout/index",
 		"component": "layout/index",
 		"list": [
@@ -81,9 +81,9 @@
 			},
 			{
 				"desc": "重绘监听容器",
-				"name": "Listen",
-				"path": "/layout/listen",
-				"component": "layout/listen"
+				"name": "Redraw",
+				"path": "/layout/redraw",
+				"component": "layout/redraw"
 			}
 		]
 	},

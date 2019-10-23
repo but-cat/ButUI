@@ -1,5 +1,5 @@
-import ButListen from './src/main'
-ButListen.install = function (Vue) {
-	Vue.component(ButListen.name, ButListen)
+import ButRedraw from './src/main'
+ButRedraw.install = function (Vue) {
+	Vue.component(ButRedraw.name, ButRedraw)
 }
-export default ButListen;
+export default ButRedraw;
