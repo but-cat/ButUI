@@ -105,6 +105,7 @@ export default {
 		justify-content: flex-start;
 		height: @size;
 		padding-left: @size;
+		user-select: none;
 
 		// 展开按钮
 		.arrow {
@@ -112,9 +113,11 @@ export default {
 			margin-left: -@size;
 			padding: .2 * @size;
 			box-sizing: border-box;
+			cursor: pointer;
 		}
 		.icon {
 			width: @size;
+			cursor: pointer;
 		}
 		.name {
 			height: @size;
@@ -125,7 +128,6 @@ export default {
 			font-size: 0.8 * @size;
 			margin-left: @size/4;
 			cursor: pointer;
-			user-select: none;
 			transition: .1s ease-out;
 			&:active {																	// 点击
 				transition: .1s ease-out;

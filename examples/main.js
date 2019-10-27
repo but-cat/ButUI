@@ -10,7 +10,6 @@ Vue.use(vueHljs);
 
 // import ButUI from './../packages'
 Vue.use(require('./../packages/index').default);
-Vue.use(require('./../packages/layout').default);
 
 new Vue({
 	render: h => h(App),

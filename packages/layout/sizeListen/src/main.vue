@@ -15,10 +15,12 @@ export default {
 	},
 	mounted() {
 		this.resize();
-		this.$el.getElementsByClassName("object")[0].contentDocument.defaultView.addEventListener("resize", this.resize);
+		this.$el.getElementsByClassName("object")[0]
+			.contentDocument.defaultView.addEventListener("resize", this.resize);
 	},
 	beforeDestroy() {
-		this.$el.getElementsByClassName("object")[0].contentDocument.defaultView.removeEventListener("resize", this.resize);
+		this.$el.getElementsByClassName("object")[0]
+			.contentDocument.defaultView.removeEventListener("resize", this.resize);
 	}
 }
 </script>

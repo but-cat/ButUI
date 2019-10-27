@@ -115,6 +115,6 @@ export default {
 	// background-color: aqua;
 	opacity: 0;
 	user-select: none;
-	z-index: 100000;
+	z-index: 1;
 }
 </style>

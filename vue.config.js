@@ -4,7 +4,8 @@ module.exports = {
 		index: {
 			entry: 'examples/main.js',									// 入口
 			template: 'public/index.html',								// 模板
-			filename: 'index.html'										// 输出文件
+			filename: 'index.html',										// 输出文件
+			title: 'ButUI'
 		}
 	},
 	chainWebpack: config => {											// 扩展 webpack 配置
@@ -12,7 +13,7 @@ module.exports = {
 			.set('@', path.resolve('examples'))							// @ 指向 examples 目录
 			.set('&', path.resolve('packages'))							// & 指向 packages 目录
 
-		config.module													// 把 packages 和 examples 加入编译，因为新增的文件默认是不被 webpack 处理的
+		config.module													// 将 packages 和 examples 加入编译
 			.rule('js')
 			.include.add(/packages/).end()
 			.include.add(/examples/).end()
@@ -32,4 +33,7 @@ module.exports = {
 			.loader('@vusion/md-vue-loader')
 			.end();
 	},
+
+	baseUrl: './',
+	outputDir: 'docs',													// 输出文件目录
 }

@@ -11,7 +11,9 @@
 		<div slot="head" style="background-color: #FF0000; height: 100%;">
 			<h1>头部容器尺寸为{{head}}px</h1>
 		</div>
-		<div style="background-color: #FFF; height: 100%;">???</div>
+		<div style="background-color: #FFF; height: 100%;">
+			<h1>sandwich容器</h1>
+		</div>
 		<div slot="tail" style="background-color: #0000FF; height: 100%;">
 			<h1>尾部容器尺寸为{{tail}}px</h1>
 		</div>

@@ -1,17 +1,8 @@
 const components = [															// 所有组件列表
-	require('&/base/button').default,
-	require('&/base/link').default,
-	require('&/base/docs').default,
-	require('&/base/collapse').default,											// 折叠组件
-
-	// data类
-	require('&/data/table').default,
-	require('&/data/tree').default,
-
-	// 表单组件
-	require('&/form/input').default,
-	require('&/form/radio').default,
-	require('&/form/range').default
+	require('&/base').default,													// 基础类
+	require('&/data').default,													// 数据类
+	require('&/form').default,													// 表单类
+	require('&/layout').default,												// 表单类
 ];
 
 const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数
@@ -20,8 +11,6 @@ const install = function (Vue) {												// 定义 install 方法，接收 Vu
 
 	Vue.prototype.$color = darkMode();											// 混入暗色模式全局变量
 
-	// components.map(component => Vue.component(component.name, component))		// 遍历注册所有组件
-	// components.map(component => Vue.use(component))							// 下面这个写法也可以
 	components.map(component => {
 		component.install(Vue);
 	});
@@ -31,7 +20,7 @@ function darkMode(color) {
 	if(!color){
 		let now = new Date(),hour = now.getHours();
 		if(hour > 6 && hour < 19){
-			return 'light';															// 启动夜间模式									
+			return 'light';														// 启动夜间模式									
 		}else {
 			return 'dark';
 		}

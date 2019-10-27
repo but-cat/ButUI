@@ -61,7 +61,7 @@ export default {
 .nav {
 	height: 100%;
 	height: 100%;
-	background-color: #eef0f4;
+	background-color: #eef0f411;
 	overflow: auto;
 
 	&[color=light]{
