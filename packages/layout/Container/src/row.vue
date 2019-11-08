@@ -1,5 +1,5 @@
 <template>
-<main class="but-row">
+<main class="but-row" :style="{justifyContent: alignment}">
 	<slot></slot>
 </main>
 </template>
@@ -12,15 +12,9 @@ export default {
 			type: String,
 			default: 'row'
 		},
-		col: {
-			type: Object,
-			default: function () {
-				return {
-					// xs: 1,
-					// sm: 1,
-					// md: 1,
-					// lg: 1
-				}
+		alignment: {
+			validator: function (value) {
+				return value == ("start" || "end" || "center" || "between" || "around") ? value : "center";
 			}
 		},
 		
@@ -37,6 +31,7 @@ export default {
 //   margin-right: -15px;
 //   margin-left: -15px;
 	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-content: center;
 	margin-bottom: 20px;

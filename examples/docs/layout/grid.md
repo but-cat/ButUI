@@ -7,12 +7,12 @@
 ```vue
 <template>
 <but-row>
-	<but-col :col="col" style="background-color: #39c5bb;">???</but-col>
-	<but-col :col="col" style="background-color: #66ccff;">???</but-col>
-	<but-col :col="col" style="background-color: #39c5bb;">???</but-col>
-	<but-col :col="col" style="background-color: #66ccff;">???</but-col>
-	<but-col :col="col" style="background-color: #39c5bb;">???</but-col>
-	<but-col :col="col" style="background-color: #66ccff;">???</but-col>
+	<but-col :col="col"><div class="grid-content bg-purple-light"></div></but-col>
+	<but-col :col="col"><div class="grid-content bg-purple"></div></but-col>
+	<but-col :col="col"><div class="grid-content bg-purple-light"></div></but-col>
+	<but-col :col="col"><div class="grid-content bg-purple"></div></but-col>
+	<but-col :col="col"><div class="grid-content bg-purple-light"></div></but-col>
+	<but-col :col="col"><div class="grid-content bg-purple"></div></but-col>
 </but-row>
 </template>
 <script>
@@ -27,10 +27,32 @@ export default {
 	},
 };
 </script>
-<style module>
-.root {
-	width: 200px;
-	background: #eee;
+<style>
+.but-row {
+	margin-bottom: 20px;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+.but-col {
+	border-radius: 4px;
+}
+.bg-purple-dark {
+	background: #99a9bf;
+}
+.bg-purple {
+	background: #d3dce6;
+}
+.bg-purple-light {
+	background: #e5e9f2;
+}
+.grid-content {
+	border-radius: 4px;
+	min-height: 36px;
+}
+.row-bg {
+	padding: 10px 0;
+	background-color: #f9fafc;
 }
 </style>
 ```

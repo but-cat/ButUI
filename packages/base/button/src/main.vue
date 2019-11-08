@@ -109,23 +109,19 @@ export default {
 		margin-right: 5px;
 		display: inline-block;
 	}
+	&:active {																	// 点击
+		transition: .1s ease-out;
+		opacity: 0.5;
+	}
 }
+
+
 
 .default(@color, @background)  {
 	.button;
 	color: @color;
 	background-color: fadeout(@background, 10%);
 
-	box-shadow: @elevation-2;
-	&:hover {																	// 悬浮
-		box-shadow: @elevation-3;
-		// cursor: pointer;
-	}
-	&:active {																	// 点击
-		transition: .1s ease-out;
-		opacity: 0.5;
-		box-shadow: @elevation-1;
-	}
 }
 
 .plain(@color, @background) {
@@ -133,7 +129,8 @@ export default {
 	color: @color;
 
 	&:hover {																	// 悬浮
-		background-color: fadeout(@color, 80%);
+		// background-color: fadeout(@color, 80%);
+		background-color: var(--color);
 		// cursor: pointer;
 	}
 	&:active {																	// 点击

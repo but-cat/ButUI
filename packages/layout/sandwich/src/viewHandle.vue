@@ -14,19 +14,11 @@ export default {
 			type: Number,
 			default: 0
 		},
-		valueOpposite: {																// 对向容器的尺寸 用于限制手柄的滑动距离
-			type: Number,
-			default: 0
-		},
-		limits: {																		// 限制范围 如果超出设定的范围将停止滑动
-			type: Number,
-			default: 10
-		},
-		offsetDirection: {																// 偏移方向 true为头部 false为尾部
+		direction: {																	// 主轴方向 true为横向 false为纵向
 			type: Boolean,
 			default: true
 		},
-		direction: {																	// 主轴方向 true为横向 false为纵向
+		offsetDirection: {
 			type: Boolean,
 			default: true
 		}
@@ -38,11 +30,12 @@ export default {
 	},
 	computed: {
 		distance() {																	// 在手柄不活跃时设置浮动的位置
-			return (this.direction) ? {[this.offsetDirection ? 'left' : 'right']: `${this.value-4}px`} : {[this.offsetDirection ? 'top' : 'bottom']: `${this.value-4}px`}
+			return (this.direction) ? {left: `${this.value-4}px`} : {top: `${this.value-4}px`};
+			// return (this.direction) ? {[this.offsetDirection ? 'left' : 'right']: `${this.value-4}px`} : {[this.offsetDirection ? 'top' : 'bottom']: `${this.value-4}px`}
 		},
 
 		viewSize() {																	// 返回当前视图主轴方向上的尺寸
-			return this.direction ? this.$el.clientWidth : this.$el.clientHeight;											// 如果主轴方向为纵向,返回高度
+			return this.direction ? this.$el.scrollWidth : this.$el.scrollHeight;											// 如果主轴方向为纵向,返回高度
 		}
 	},
 	methods: {
@@ -50,26 +43,10 @@ export default {
 		viewHandle(event) {
 			if(this.viewHandleState){													// 当视图手柄被激活后
 				if(this.direction)														// 以主轴方向确定传递的值
-					if(this.offsetDirection)											// 
-					this.$emit("input", this.viewHandleXLimits(event.offsetX));
-					else
-					this.$emit("input", this.viewHandleXLimits(this.viewSize - event.offsetX));
+					this.$emit("handle", event.offsetX);
 				else
-					if(this.offsetDirection)
-					this.$emit("input", this.viewHandleXLimits(event.offsetY));
-					else
-					this.$emit("input", this.viewHandleXLimits(this.viewSize - event.offsetY));
+					this.$emit("handle", event.offsetY);
 			}
-		},
-		// 限制手柄的滑动范围
-		viewHandleXLimits(value) {
-			let min = this.limits,
-				max = this.viewSize-(this.limits+this.valueOpposite);
-			if(value <= min)
-				return min;
-			else if(value >= max)
-				return max;
-			else return value;
 		},
 	},
 	// beforeMount() {
@@ -84,6 +61,7 @@ export default {
 /* 视图手柄 */
 .viewHandle {
 	// bottom: 0px;
+	background-color: rgba(75, 75, 75, 0.2);
 	&:hover {
 		background-color: rgba(75, 75, 75, 0.2);
 	}

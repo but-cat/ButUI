@@ -1,5 +1,5 @@
 <template>
-<but-sandwich :head="head" @head="headSize" :color="color">
+<but-sandwich :head="head" :tail="tail" @head="headSize" @tail="tailSize" :color="color">
 	<div slot="head" class="nav">
 		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list"/>
 	</div>
@@ -18,7 +18,8 @@ export default {
 				name: "测试",
 				path: "/test"
 			}],
-			head: 300
+			head: 300,
+			tail: "none",
 		}
 	},
 	computed: {
@@ -61,7 +62,7 @@ export default {
 .nav {
 	height: 100%;
 	height: 100%;
-	background-color: #eef0f411;
+	background-color: rgba(240, 240, 240, 0.067);
 	overflow: auto;
 
 	&[color=light]{
@@ -75,6 +76,9 @@ export default {
 }
 
 .body {
+	height: 100%;
+	// overflow-y: auto;
+	// overflow-x: hidden;
 	overflow: auto;
 	padding: 0 2rem;
 	flex: 1;

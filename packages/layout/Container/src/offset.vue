@@ -1,12 +1,11 @@
 <template>
 <div :class="colClass">
-<slot/>
 </div>
 </template>
 
 <script>
 export default {
-	name: 'ButCol',
+	name: 'ButOffset',
 	props: {
 		col: {
 			type: Object,
@@ -57,34 +56,23 @@ export default {
 /* 循环创建列填充 */
 .cont(@index) when (@index > 0) {
 	.cont((@index - 1));
-	.xs-@{index} {
+	
+	.sm-offset-@{index} {
 		width: percentage((@index / @grid-columns));
 	}
-	.sm-offset-@{index} {
-		margin-left: percentage((@index / @grid-columns));
-	}
 	@media (min-width: @screen-sm) {										/*当宽度大于768px时触发*/
-		.sm-@{index} {
-			width: percentage((@index / @grid-columns));
-		}
 		.sm-offset-@{index} {
-			margin-left: percentage((@index / @grid-columns));
+			width: percentage((@index / @grid-columns));
 		}
 	}
 	@media (min-width: @screen-md) {										/*当宽度大于992px时触发*/
-		.md-@{index} {
-			width: percentage((@index / @grid-columns));
-		}
 		.md-offset-@{index} {
-			margin-left: percentage((@index / @grid-columns));
+			width: percentage((@index / @grid-columns));
 		}
 	}
 	@media (min-width: @screen-lg) {										/*当宽度大于1200px时触发*/
-		.lg-@{index} {
-			width: percentage((@index / @grid-columns));
-		}
 		.lg-offset-@{index} {
-			margin-left: percentage((@index / @grid-columns));
+			width: percentage((@index / @grid-columns));
 		}
 	}
 

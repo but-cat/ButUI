@@ -11,7 +11,12 @@ const install = function (Vue) {												// 定义 install 方法，接收 Vu
 
 	Vue.prototype.$color = darkMode();											// 混入暗色模式全局变量
 
+	let componentsList = new Array;
 	components.map(component => {
+		componentsList = componentsList.concat(component.components);
+	});
+
+	componentsList.map(component => {
 		component.install(Vue);
 	});
 }

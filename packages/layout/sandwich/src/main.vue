@@ -1,35 +1,32 @@
 <template>
-<div :style="{flexDirection: direction ? 'row' : 'column'}" class="container">
-	<!-- 头部区块 -->
-	<div v-if="$slots.head" :style="{flex: '0 1 '+ size.head + 'px'}" class="head">
-		<slot name="head"/>
+	<div :style="{flexDirection: direction ? 'row' : 'column'}" class="container">
+		<!-- 头部区块 -->
+		<div v-if="$slots.head" :style="{flex: '0 1 '+ view.headSize + 'px'}" class="head">
+			<slot name="head"/>
+		</div>
+
+		<!-- 手柄 -->
+		<view-handle v-if="$slots.head || head==0" class="viewHandle" 
+			:direction="direction"
+			:value="view.head" @handle="listeningHead"/>
+
+		<!-- 主体区块 -->
+		<div class="bodys">
+			<slot/>
+		</div>
+
+		<!-- 手柄 -->
+		<view-handle v-if="$slots.tail" class="viewHandle" 
+			:direction="direction"
+			:value="view.tail" @handle="listeningTail"/>
+
+		<!-- 尾部区块 -->
+		<div v-if="$slots.tail || tail== 'none'" :style="{flex: '0 1 '+ view.tailSize + 'px'}" class="tail">
+			<slot name="tail"/>
+		</div>
+
+		<object class="object" type="text/html" data="about:blank"/>
 	</div>
-
-	<!-- 手柄  :maxValue="$el.clientHeight - (tailSize+30)"-->
-	<view-handle v-if="$slots.head || head==0" class="viewHandle" 
-		:direction="direction"
-		:limits="limits"
-		:valueOpposite="size.tail"
-		v-model="size.head"/>
-
-	<!-- 主体区块 -->
-	<div class="body">
-		<slot/>
-	</div>
-
-	<!-- 手柄 -->
-	<view-handle v-if="$slots.tail" class="viewHandle" 
-		:offsetDirection="false"
-		:direction="direction"
-		:limits="limits"
-		:valueOpposite="size.head"
-		v-model="size.tail"/>
-
-	<!-- 尾部区块 -->
-	<div v-if="$slots.tail || tail==0" :style="{flex: '0 1 '+ size.tail + 'px'}" class="tail">
-		<slot name="tail"/>
-	</div>
-</div>
 </template>
 
 <script>
@@ -37,12 +34,18 @@ export default {
 	name: "ButSandwich",
 	props: {
 		head: {																				// 头部容器大小
-			type: Number,
-			default: 0
+			// type: Number,
+			// default: 0
+			validator(value) {
+				return (typeof value) == 'number' ? value : "none";
+			}
 		},
 		tail: {																				// 尾部容器尺寸
-			type: Number,
-			default: 0
+			// type: Number,
+			// default: 0
+			validator(value) {
+				return (typeof value) == 'number' ? value : "none";
+			}
 		},
 		limits: {																			// 限制范围 如果超出设定的范围将停止滑动
 			type: Number,
@@ -55,48 +58,110 @@ export default {
 	},
 	data() {
         return {
-			// size: {
-			// 	head: this.headSize,
-			// 	tail: this.tailSize
-			// },
-			size: {
-				head: this.head,
-				tail: this.tail
-			}
+			view: {
+				viewSize: 1161,																// 视图尺寸
+
+				head: this.head,															// 头部容器手柄
+				headSize: 0,																// 尾部容器手柄
+
+				tail: this.tail,
+				tailSize: 0
+			},
         }
 	},
 	computed: {
-		headSize() {
-			return this.viewHandleXLimits(this.head, this.tail);
+		// 计算属性的属性对
+		tails() {
+			// 当计算属性中有相应数据时,vue会找出其中的依赖,在数据变化时执行这个方法
+			return this.view.viewSize - this.view.tail;
 		},
 		tailSize() {
-			return this.viewHandleXLimits(this.tail, this.head);
+			return this.view.viewSize - this.view.tail;
 		}
 	},
 	methods: {
-		// 窗口限位
-		viewHandleXLimits(value, valueOpposite) {
-			let viewSize = this.direction ? this.$el.clientWidth : this.$el.clientHeight;	// 视图尺寸
-			let min = this.limits,
-				max = viewSize-(this.limits+valueOpposite);
-
+		// 手柄位置检查
+		check(value, min, max) {
 			if(value <= min)
 				return min;
 			else if(value >= max)
 				return max;
 			else return value;
 		},
+
+
+		// 监听手柄抛出的值
+		listeningHead(value) {
+			this.view.head = this.check(value, this.limits, this.view.viewSize - this.limits - this.view.tailSize);
+			this.view.headSize = this.view.head;
+		},
+		listeningTail(value) {
+			this.view.tail = this.view.viewSize - this.check(value, this.limits + this.view.headSize, this.view.viewSize - this.limits);
+			this.view.tailSize = this.view.tail;
+		},
+
+		// 抛出数据
+		upData(size) {
+			this.$emit("head", size.headSize);
+			this.$emit("tail", size.tailSize);
+		},
+
+		// 响应容器变化
+		resize() {
+			this.view.viewSize = this.direction ? this.$el.scrollWidth : this.$el.scrollHeight;
+		}
 	},
 	components: {
-		viewHandle: require("./viewHandle").default
+		viewHandle: require("./viewHandle").default,
+		// redraw: require("../../redraw").default
 	},
 	watch: {
-		size: {
+		view: {
 			handler(newName, oldName) {
-				this.$emit("head", newName.head);
-				this.$emit("tail", newName.tail);
+				let limits = this.limits,
+					viewSize = newName.viewSize;
+
+				console.log("nix", viewSize / (this.view.headSize + this.view.tailSize + limits))
+				if((viewSize - (this.view.headSize + this.view.tailSize + limits)) <= 0) {
+					// nix = (viewSize - limits) / (this.handle.head + this.handle.tail + limits);
+					let nix = viewSize / (this.view.headSize + this.view.tailSize + limits);
+					
+					
+					let head = this.view.headSize * nix;
+					this.view.headSize = this.check(head, this.limits, this.view.viewSize - this.limits - this.view.tailSize);
+					this.view.head = this.view.headSize;
+
+					let tail = this.view.tailSize * nix;
+					this.view.tailSize = this.view.viewSize - this.check(tail, this.limits + this.view.headSize, this.view.viewSize - this.limits);
+					this.view.tail = viewSize - this.view.tailSize;
+				}else {
+					this.view.tail = viewSize - this.view.tailSize;
+				}
+				this.upData(newName);
 			},immediate: true, deep: true
-		}
+		},
+		// head: {
+		// 	handler(newName) {
+		// 		this.listeningHead(newName);
+		// 	},immediate: true, deep: true
+		// },
+		// tail: {
+		// 	handler(newName) {
+		// 		this.listeningTail(newName);
+		// 	},immediate: true, deep: true
+		// }
+	},
+	mounted() {
+		this.resize();
+		this.$el.getElementsByClassName("object")[0]
+			.contentDocument.defaultView.addEventListener("resize", this.resize);
+
+		this.listeningHead(this.head);
+		this.listeningTail(this.tail);
+	},
+	beforeDestroy() {
+		this.$el.getElementsByClassName("object")[0]
+			.contentDocument.defaultView.removeEventListener("resize", this.resize);
 	}
 }
 </script>
@@ -121,19 +186,34 @@ export default {
 	// background-color: blueviolet;
 
 	.head {
+		height: 100%;
 		flex: 1;
 		overflow: hidden;
 	}
-	.body {
+	.bodys {
 		flex: 1;
+		height: 100%;
 		overflow: hidden;
 	}
 	.tail {
 		flex: 1;
+		height: 100%;
 		overflow: hidden;
 	}
 }
 
-
+.object {
+	display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+	z-index: -100;
+	opacity: 0;
+}
 
 </style>

@@ -1,6 +1,8 @@
 <template>
-<div class="sizeRedraw">
-	<slot/>
+<div class="redraw">
+	<div class="con">
+		<slot/>
+	</div>
 	<object class="object" type="text/html" data="about:blank"/>
 </div>
 </template>
@@ -10,7 +12,9 @@ export default {
 	name: 'ButRedraw',
 	methods: {
 		resize() {
-			this.$emit("resize", this.$el.clientWidth, this.$el.clientHeight);
+			// this.$emit("resize", this.$el.clientWidth, this.$el.clientHeight);
+			let size = this.$el.getBoundingClientRect();
+			this.$emit("resize", size.width, size.height);
 		}
 	},
 	mounted() {
@@ -26,11 +30,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.sizeRedraw {
+.redraw {
 	width:100%;
 	height:100%;
 	overflow: auto;
 	position: relative;
+}
+.con {
+	width:100%;
+	height:100%;
+	position: static;
 }
 .object {
 	display: block;
