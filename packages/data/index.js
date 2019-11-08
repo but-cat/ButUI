@@ -1,4 +1,4 @@
-const components = [															// data类所有组件列表
+export default [															// data类所有组件列表
 	require('./table').default,
 	require('./tree').default,
 ];
@@ -16,8 +16,8 @@ const components = [															// data类所有组件列表
 // 	install(window.Vue)
 // }
 
-export default {
-	// install,
-	// 所有组件，必须具有 install，才能使用 Vue.use()
-	components
-}
+// export default {
+// 	// install,
+// 	// 所有组件，必须具有 install，才能使用 Vue.use()
+// 	components
+// }

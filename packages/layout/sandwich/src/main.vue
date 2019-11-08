@@ -1,12 +1,12 @@
 <template>
 	<div :style="{flexDirection: direction ? 'row' : 'column'}" class="container">
 		<!-- 头部区块 -->
-		<div v-if="$slots.head" :style="{flex: '0 1 '+ view.headSize + 'px'}" class="head">
+		<div v-if="view.headSize > 0" :style="{flex: '0 1 '+ view.headSize + 'px'}" class="head">
 			<slot name="head"/>
 		</div>
 
 		<!-- 手柄 -->
-		<view-handle v-if="$slots.head || head==0" class="viewHandle" 
+		<view-handle v-if="headHandle" class="viewHandle" 
 			:direction="direction"
 			:value="view.head" @handle="listeningHead"/>
 
@@ -16,12 +16,12 @@
 		</div>
 
 		<!-- 手柄 -->
-		<view-handle v-if="$slots.tail" class="viewHandle" 
+		<view-handle v-if="tailHandle" class="viewHandle" 
 			:direction="direction"
 			:value="view.tail" @handle="listeningTail"/>
 
 		<!-- 尾部区块 -->
-		<div v-if="$slots.tail || tail== 'none'" :style="{flex: '0 1 '+ view.tailSize + 'px'}" class="tail">
+		<div v-if="view.tailSize > 0" :style="{flex: '0 1 '+ view.tailSize + 'px'}" class="tail">
 			<slot name="tail"/>
 		</div>
 
@@ -34,19 +34,23 @@ export default {
 	name: "ButSandwich",
 	props: {
 		head: {																				// 头部容器大小
-			// type: Number,
-			// default: 0
-			validator(value) {
-				return (typeof value) == 'number' ? value : "none";
-			}
+			type: Number,
+			default: 0
 		},
+		headHandle: {																			// 显示头部容器
+			type: Boolean,
+			default: true
+		},
+
 		tail: {																				// 尾部容器尺寸
-			// type: Number,
-			// default: 0
-			validator(value) {
-				return (typeof value) == 'number' ? value : "none";
-			}
+			type: Number,
+			default: 0
 		},
+		tailHandle: {																			// 显示尾部容器
+			type: Boolean,
+			default: true
+		},
+
 		limits: {																			// 限制范围 如果超出设定的范围将停止滑动
 			type: Number,
 			default: 50
@@ -61,22 +65,29 @@ export default {
 			view: {
 				viewSize: 1161,																// 视图尺寸
 
-				head: this.head,															// 头部容器手柄
+				head: this.heads,															// 头部容器手柄
 				headSize: 0,																// 尾部容器手柄
 
-				tail: this.tail,
+				tail: this.tails,
 				tailSize: 0
 			},
         }
 	},
 	computed: {
 		// 计算属性的属性对
-		tails() {
+		headOpen() {
 			// 当计算属性中有相应数据时,vue会找出其中的依赖,在数据变化时执行这个方法
-			return this.view.viewSize - this.view.tail;
+			return (this.head > 0) ? true : false;
 		},
-		tailSize() {
-			return this.view.viewSize - this.view.tail;
+		tailOpen() {
+			return (this.tail > 0) ? true : false;
+		},
+
+		heads() {
+			return this.headOpen ? this.head : 0;
+		},
+		tails() {
+			return this.tailOpen ? this.tail : 0;
 		}
 	},
 	methods: {
@@ -92,12 +103,23 @@ export default {
 
 		// 监听手柄抛出的值
 		listeningHead(value) {
-			this.view.head = this.check(value, this.limits, this.view.viewSize - this.limits - this.view.tailSize);
-			this.view.headSize = this.view.head;
+			if (this.headOpen){
+				this.view.head = this.check(value, this.limits, this.view.viewSize - this.limits - this.view.tailSize);
+				this.view.headSize = this.view.head;
+			}else {
+				this.view.head = 0;
+				this.view.headSize = 0;	
+			}
+
 		},
 		listeningTail(value) {
-			this.view.tail = this.view.viewSize - this.check(value, this.limits + this.view.headSize, this.view.viewSize - this.limits);
-			this.view.tailSize = this.view.tail;
+			if (this.tailOpen){
+				this.view.tail = this.view.viewSize - this.check(value, this.limits + this.view.headSize, this.view.viewSize - this.limits);
+				this.view.tailSize = this.view.tail;
+			}else {
+				this.view.tail = this.view.viewSize;
+				this.view.tailSize = 0;	
+			}
 		},
 
 		// 抛出数据
@@ -119,23 +141,24 @@ export default {
 		view: {
 			handler(newName, oldName) {
 				let limits = this.limits,
-					viewSize = newName.viewSize;
+					viewSize = newName.viewSize,
+					headSize = this.headOpen ? this.view.headSize : 0,
+					tailSize = this.tailOpen ? this.view.tailSize : 0;
 
-				console.log("nix", viewSize / (this.view.headSize + this.view.tailSize + limits))
-				if((viewSize - (this.view.headSize + this.view.tailSize + limits)) <= 0) {
+				if((viewSize - (headSize + tailSize + limits)) <= 0) {
 					// nix = (viewSize - limits) / (this.handle.head + this.handle.tail + limits);
-					let nix = viewSize / (this.view.headSize + this.view.tailSize + limits);
+					let nix = viewSize / (headSize + tailSize + limits);
 					
 					
-					let head = this.view.headSize * nix;
-					this.view.headSize = this.check(head, this.limits, this.view.viewSize - this.limits - this.view.tailSize);
+					let head = headSize * nix;
+					this.view.headSize = this.check(head, limits, viewSize - limits - tailSize);
 					this.view.head = this.view.headSize;
 
-					let tail = this.view.tailSize * nix;
-					this.view.tailSize = this.view.viewSize - this.check(tail, this.limits + this.view.headSize, this.view.viewSize - this.limits);
+					let tail = tailSize * nix;
+					this.view.tailSize = viewSize - this.check(tail, limits + tailSize, viewSize - limits);
 					this.view.tail = viewSize - this.view.tailSize;
 				}else {
-					this.view.tail = viewSize - this.view.tailSize;
+					this.view.tail = viewSize - tailSize;
 				}
 				this.upData(newName);
 			},immediate: true, deep: true
@@ -156,8 +179,8 @@ export default {
 		this.$el.getElementsByClassName("object")[0]
 			.contentDocument.defaultView.addEventListener("resize", this.resize);
 
-		this.listeningHead(this.head);
-		this.listeningTail(this.tail);
+		this.listeningHead(this.heads);
+		this.listeningTail(this.tails);
 	},
 	beforeDestroy() {
 		this.$el.getElementsByClassName("object")[0]

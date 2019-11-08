@@ -1,6 +1,5 @@
 // 导入组件，组件必须声明 name
 import Collapse from './src/main'
-Collapse.install = function (Vue) {
+export default Vue => {
     Vue.component(Collapse.name, Collapse)
 }
-export default Collapse

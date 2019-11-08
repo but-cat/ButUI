@@ -1,4 +1,4 @@
-const components = [															// 所有组件列表
+export default [															// 所有组件列表
 	require('./Container').default,												// 栅格布局容器
 	require('./sandwich').default,												// 三明治布局容器
 	require('./redraw').default,												// 容器监听组件
@@ -16,7 +16,3 @@ const components = [															// 所有组件列表
 // 	});
 // })(window.Vue)
 
-export default {
-	// install,																	// 所有组件，必须具有 install，才能使用 Vue.use()
-	components
-}

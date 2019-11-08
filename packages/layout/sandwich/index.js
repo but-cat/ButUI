@@ -1,5 +1,4 @@
 import Sandwich from './src/main';
-Sandwich.install = function(Vue) {
+export default Vue => {
 	Vue.component(Sandwich.name, Sandwich);
 };
-export default Sandwich;

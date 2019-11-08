@@ -1,5 +1,4 @@
 import ButRedraw from './src/main'
-ButRedraw.install = function (Vue) {
+export default Vue => {
 	Vue.component(ButRedraw.name, ButRedraw)
 }
-export default ButRedraw;

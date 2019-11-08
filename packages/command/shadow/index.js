@@ -5,8 +5,7 @@
  * 用于动态绑定阴影类
  */
 
-var Shadow;
-Shadow.install = function(Vue) {
+export default Vue => {
 	var shadow = "shadow";
 	Vue.directive('shadow', {
 		bind(el, binding) {
@@ -23,4 +22,3 @@ Shadow.install = function(Vue) {
 		}
 	});
 }
-export default Shadow;

@@ -1,5 +1,4 @@
 import Docs from './src/main.vue'
-Docs.install = function(Vue) {
+export default Vue => {
 	Vue.component(Docs.name, Docs)
 }
-export default Docs

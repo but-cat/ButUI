@@ -9,16 +9,16 @@ const install = function (Vue) {												// 定义 install 方法，接收 Vu
 	if (install.installed) return												// 判断是否安装，安装过就不继续往下执行
 	install.installed = true
 
-	Vue.prototype.$color = darkMode();											// 混入暗色模式全局变量
+	Vue.prototype.$color = {
+		darkMode: darkMode(),																// 混入暗色模式全局变量
+		color: "light"
+	} 
 
-	let componentsList = new Array;
-	components.map(component => {
-		componentsList = componentsList.concat(component.components);
+	components.map(item => {
+		item.map(component => component(Vue));
 	});
 
-	componentsList.map(component => {
-		component.install(Vue);
-	});
+
 }
 
 function darkMode(color) {

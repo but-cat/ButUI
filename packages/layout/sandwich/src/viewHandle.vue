@@ -61,7 +61,6 @@ export default {
 /* 视图手柄 */
 .viewHandle {
 	// bottom: 0px;
-	background-color: rgba(75, 75, 75, 0.2);
 	&:hover {
 		background-color: rgba(75, 75, 75, 0.2);
 	}

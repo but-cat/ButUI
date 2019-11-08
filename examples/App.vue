@@ -1,5 +1,5 @@
 <template>
-<div id="app" :color="color">
+<div id="app" color="dark">
 	<views/>
 </div>
 </template>
@@ -9,7 +9,7 @@ export default {
 	name: 'app',
 	computed: {
 		color() {
-				return this.$color;
+			return this.$color;
 		}
 	},
 	components: {

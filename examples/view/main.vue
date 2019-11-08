@@ -1,5 +1,5 @@
 <template>
-<but-sandwich :head="head" :tail="tail" @head="headSize" @tail="tailSize" :color="color">
+<but-sandwich :head="300" @head="headSize" :tailHandle="false" :color="color">
 	<div slot="head" class="nav">
 		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list"/>
 	</div>
@@ -18,8 +18,7 @@ export default {
 				name: "测试",
 				path: "/test"
 			}],
-			head: 300,
-			tail: "none",
+			head: 300
 		}
 	},
 	computed: {

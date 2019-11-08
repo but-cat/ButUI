@@ -1,5 +1,4 @@
 import Tree from './src/main.vue'
-Tree.install = function(Vue) {
+export default Vue => {
 	Vue.component(Tree.name, Tree)
 }
-export default Tree

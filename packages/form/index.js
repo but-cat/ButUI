@@ -1,4 +1,4 @@
-const components = [															// 表单组件
+export default [															// 表单组件
 	require('./input').default,
 	require('./radio').default,
 	require('./range').default
@@ -17,8 +17,8 @@ const components = [															// 表单组件
 // 	install(window.Vue)
 // }
 
-export default {
-	// install,
-	// 所有组件，必须具有 install，才能使用 Vue.use()
-	components
-}
+// export default {
+// 	// install,
+// 	// 所有组件，必须具有 install，才能使用 Vue.use()
+// 	components
+// }
