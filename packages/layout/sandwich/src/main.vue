@@ -139,7 +139,7 @@ export default {
 	},
 	watch: {
 		view: {
-			handler(newName, oldName) {
+			handler(newName) {
 				let limits = this.limits,
 					viewSize = newName.viewSize,
 					headSize = this.headOpen ? this.view.headSize : 0,

@@ -1,12 +1,14 @@
 [
 	{
-		"name": "概览",
+		"desc": "概览",
+		"name": "Overview",
 		"path": "/",
 		"component": "README"
 	},
 
 	{
-		"name": "基础组件",
+		"desc": "基础组件",
+		"name": "Basic",
 		"path": "/basic/index",
 		"component": "basic/index",
 		"list": [
@@ -32,7 +34,8 @@
 		]
 	},
 	{
-		"name": "表单",
+		"desc": "表单",
+		"name": "From",
 		"path": "/from/index",
 		"component": "from/index",
 		"list": [
@@ -57,7 +60,8 @@
 		]
 	},
 	{
-		"name": "布局容器",
+		"desc": "布局容器",
+		"name": "Layout",
 		"path": "/layout/index",
 		"component": "layout/index",
 		"list": [
@@ -74,12 +78,6 @@
 				"component": "layout/sandwich"
 			},
 			{
-				"desc": "卡片",
-				"name": "Card",
-				"path": "/layout/card",
-				"component": "layout/card"
-			},
-			{
 				"desc": "重绘监听容器",
 				"name": "Redraw",
 				"path": "/layout/redraw",
@@ -89,7 +87,8 @@
 	},
 
 	{
-		"name": "数据",
+		"desc": "数据",
+		"name": "Data",
 		"path": "/data/index",
 		"component": "data/index",
 		"list": [
@@ -106,6 +105,41 @@
 				"component": "data/tree"
 			}
 		]
-	}
+	},
+	
+	{
+		"desc": "媒体",
+		"name": "Media",
+		"path": "/media/index",
+		"component": "media/index",
+		"list": [
+			{
+				"desc": "图片",
+				"name": "Image",
+				"path": "/media/image",
+				"component": "media/image"
+			}
+		]
+	},
 
+	{
+		"desc": "UI",
+		"name": "ui",
+		"path": "/ui/index",
+		"component": "ui/index",
+		"list": [
+			{
+				"desc": "轮播",
+				"name": "Carousel",
+				"path": "/ui/carousel",
+				"component": "ui/carousel"
+			},
+			{
+				"desc": "卡片",
+				"name": "Card",
+				"path": "/ui/card",
+				"component": "ui/card"
+			}
+		]
+	}
 ]

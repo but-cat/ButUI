@@ -1,9 +1,7 @@
-export default [															// 所有组件列表
+export default [																// 所有组件列表
 	require('./Container').default,												// 栅格布局容器
 	require('./sandwich').default,												// 三明治布局容器
 	require('./redraw').default,												// 容器监听组件
-
-	require('./card').default,													// 卡片内容展示组件
 ];
 
 // (function(Vue) {

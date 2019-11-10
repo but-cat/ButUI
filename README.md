@@ -23,7 +23,7 @@ $ yarn install
 $ yarn run serve
 
 # 编译压缩后的说明文档
-$ yarn run build
+$ yarn run docs
 
 # 编译压缩后的生产版本
 $ yarn run lib
@@ -40,3 +40,5 @@ $ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+每一个优雅的接口背后都有一个龌龊的实现.....(╯‵□′)╯︵┻━┻

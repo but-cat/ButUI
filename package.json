@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --mode build",
+    "docs": "vue-cli-service build --mode build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name but-ui --dest lib packages/index.js"
   },

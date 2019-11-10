@@ -1,4 +1,4 @@
-import Carousel from './src/main.vue'
+import Image from './src/main.vue'
 export default Vue => {
-	Vue.component(Carousel.name, Carousel);
+	Vue.component(Image.name, Image);
 }

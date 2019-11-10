@@ -1,7 +1,7 @@
 <template>
 <but-sandwich :head="300" @head="headSize" :tailHandle="false" :color="color">
 	<div slot="head" class="nav">
-		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list"/>
+		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list" nameKey="desc" />
 	</div>
 	
 	<div class="body">

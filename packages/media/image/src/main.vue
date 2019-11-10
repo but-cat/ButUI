@@ -1,73 +1,99 @@
 <template>
-<img :src="src" :alt="alt" class=""/>
+<div :class="[shape=='circle' ? 'circle-container' : 'container']">
+	<img :src="source" :alt="alt" @error="notimgfound" :class="shape"/>
+</div>
 </template>
 
 <script>
 export default {
-	name: 'ButCarousel',
+	name: 'ButImage',
 	props: {
 		src: {
 			type: String,
-			default: ''
+			default: "@/assets/image/65040104_p0.jpg"
 		},
 		alt: {
 			type: String,
-			default: 'Responsive image'
+			default: "Responsive image"
+		},
+		shape: {
+			validator: function (value) {										// 样式类型 自适应图像:responsive, 带边框:thumbnail, 圆角:rounded, 圆形:circle
+				return ["responsive", "thumbnail", "rounded", "circle"]
+				.some(item => item == value) ? value : "responsive";
+			},
+			default: "responsive"
 		}
 	},
 	data() {
         return {
-			size: {
-				head: this.head,
-				tail: this.tail
-			}
+			source: this.src
         }
-	}
+	},
+	methods: {
+		notimgfound() {
+			this.source = require('&/assets/image/pictures.svg').default;
+		}
+	},
+	// mounted() {
+	// 	this.source = require('&/assets/image/pictures.svg');
+	// }
 }
 </script>
 
 <style lang="less" scoped>
-// .container {
-// 	width: 300px;
-// 	height: 100px;
-// 	position: relative;
-// 	overflow: hidden;
-// }
-
-// Images
-
-img {
-	vertical-align: middle;
+@import '../../../_style/variables.less';
+.container {
+	width: 100%;
+	height: auto;
+	// position: relative;
+	// overflow: hidden;
+}
+.circle-container {
+	width: 100%;
+	height: 0px;
+	padding-bottom: 100%;
+	overflow:hidden;
+	margin: 0;
+	position:relative;
 }
 
 // 自适应图像（确保图像不会超出其父级）
-.img-responsive {
-	.img-responsive();
+.responsive {
+	.img-responsive(inline-block);
 }
-
 // 圆角
-.img-rounded {
+.rounded {
 	border-radius: @border-radius-large;
-}
-
-// 图片缩略图
-//
-// Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
-.img-thumbnail {
-	padding: @thumbnail-padding;
-	line-height: @line-height-base;
-	background-color: @thumbnail-bg;
-	border: 1px solid @thumbnail-border;
-	border-radius: @thumbnail-border-radius;
-	.transition(all .2s ease-in-out);
-
-	// Keep them at most 100% wide
 	.img-responsive(inline-block);
 }
 
+// 带边框
+// Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
+.thumbnail {
+	padding: 4px;
+	line-height: @line-height-base;
+	background-color: var(--background);
+	border: 1px solid #ddd;
+	border-radius: @border-radius-base;
+	// .transition(all .2s ease-in-out);
+
+	.img-responsive(inline-block);												// 保持最大宽度为100％
+}
+
 // 圆形图片
-.img-circle {
+.circle {
 	border-radius: 50%; // 以百分比设置半径
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	// .img-responsive(inline-block);
+}
+
+// 图片
+img {
+	vertical-align: middle;
+	width: 100%;
 }
 
 // 响应图像
@@ -77,4 +103,5 @@ img {
 	max-width: 100%;															// 第1部分：设置相对于父对象的最大值
 	height: auto;																// 第2部分：根据宽度缩放高度，否则会拉伸
 }
+
 </style>

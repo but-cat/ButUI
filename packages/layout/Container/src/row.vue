@@ -14,7 +14,8 @@ export default {
 		},
 		alignment: {
 			validator: function (value) {
-				return value == ("start" || "end" || "center" || "between" || "around") ? value : "center";
+				return ["start", "end", "center", "between", "around"]
+				.some(item => item == value) ? value : "center";
 			}
 		},
 		
