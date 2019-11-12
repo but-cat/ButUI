@@ -15,9 +15,9 @@
 @screen-md-max:              (@screen-lg - 1);
 @screen-lg-max:              (@screen-xl - 1);
 
-//== Container sizes
+//== 容器尺寸
 //
-//## Define the maximum width of `.container` for different screen sizes.
+//## 为不同的屏幕尺寸定义".container"类的最大宽度。
 
 // Small screen / tablet
 // @container-tablet:             (720px + @grid-gutter-width);
@@ -33,3 +33,19 @@
 // @container-large-desktop:      (1140px + @grid-gutter-width);
 //** For `@screen-lg-min` and up.
 // @container-lg:                 @container-large-desktop;
+
+
+
+
+//-- Z-index 配置列表
+@zindex:					1000;												// 初始位置
+@zindex-navbar:				@zindex + 10;										// 导航栏
+@zindex-dropdown:			@zindex + 10;										// dropdown??
+@zindex-navbar-fixed:		@zindex + 30;										// 固定定位的导航栏
+
+@zindex-modal-background:	@zindex + 40;										// 模态窗背景层
+@zindex-modal:				@zindex + 45;										// 模态窗容器层
+
+@zindex-popover:			@zindex + 60;										// 弹出框
+@zindex-tooltip:			@zindex + 70;										// 工具提示
+

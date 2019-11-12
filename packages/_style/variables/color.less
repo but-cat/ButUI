@@ -1,72 +1,33 @@
 // 情景
 // @primary:         #409EFF;								// 主要 #337ab7
-@primary:			--primary;								// 主要 #4c6575
-@success:			--success;								// 成功
-@info:				--info;									// 信息
-@warning:			--warning;								// 警告
-@danger:			--danger;								// 错误
-@sceneText:			--sceneText;
+@primary:			 var(--primary);						// 主要 #4c6575
+@success:			 var(--success);						// 成功
+@info:				 var(--info);							// 信息
+@warning:			 var(--warning);						// 警告
+@danger:			 var(--danger);							// 错误
+@sceneText:			 var(--sceneText);
 
 // 背景
-@background:		--background;							// 背景色
-@background-variant:--background-variant;					// 背景主题色
+@background:		 var(--background);						// 背景色
+@background-variant: var(--background-variant);				// 背景主题色
 
 // 文本
-@text-primary:		--text-primary;							// 主体文本色
-@text-accent:		--text-accent;							// 着重,强调性文本
-@text-hint:			--text-hint;							// 暗示文本
+@text-primary:		 var(--text-primary);					// 主体文本色
+@text-accent:		 var(--text-accent);					// 着重,强调性文本
+@text-hint:			 var(--text-hint);						// 暗示文本
 
 // 禁用元素
-@disabled:			--disabled;								// 被禁用的元素
-@disabled-background:--disabled-background;					// 被禁用的元素 背景
+@disabled:			 var(--disabled);						// 被禁用的元素
+@disabled-background: var(--disabled-background);			// 被禁用的元素 背景
 
 // 杂项
-@highlight:			--highlight;						// 突出
-@icon:				--icon;							// 图标颜色
-@divider:			--divider;						// 分隔线
+@highlight:			 var(--highlight);						// 突出
+@icon:				 var(--icon);							// 图标颜色
+@divider:			 var(--divider);						// 分隔线
 
 // 滚动条
-@scrollbar:			--scrollbar;										// 滚动条
-@scrollbar-background:--scrollbar-background;					// 滚动条 背景
+@scrollbar:			 var(--scrollbar);						// 滚动条
+@scrollbar-background: var(--scrollbar-background);			// 滚动条 背景
 
 // 提示
-@tooltip:			--tooltip;										// 工具提示
-
-:root {
-	//== 颜色 亮色模式
-	//	命名规则: 主题-用途-作用范围
-	//## Gray and brand colors for use across Bootstrap.
-
-	// 情景颜色
-	--primary:			#5c87a1;								// 主要 #4c6575
-	--success:			#67C23A;								// 成功
-	--info:				#65ceee;								// 信息
-	--warning:			#f0ad4e;								// 警告
-	--danger:			#F56C6C;								// 错误
-	--sceneText:		#FFFFFF;
-
-	// 背景
-	--background: #fff;											// 背景色
-	--background-variant: #f7f7f7;								// 背景主题色
-
-	// 文本
-	--text-primary: #6e6e6e;									// 主体文本色
-	--text-accent: #3b3b3b;										// 着重,强调性文本
-	--text-hint: #1a1a1a;										// 暗示文本
-
-	// 禁用元素
-	--disabled: rgba(0.0,0.0,0.0, 0.26);						// 被禁用的元素
-	--disabled-background: rgba(0.0,0.0,0.0, 0.12);				// 被禁用的元素 背景
-
-	// 杂项
-	--highlight: rgba(0.0,0.0,0.0, 0.12);						// 突出
-	--icon: rgba(0.0,0.0,0.0, 0.54);							// 图标颜色
-	--divider: rgba(0.0,0.0,0.0, 0.12);							// 分隔线
-
-	// 滚动条
-	--scrollbar: #757575;										// 滚动条
-	--scrollbar-background: darken(#eee, 5%);					// 滚动条 背景
-
-	// 提示
-	--tooltip: #616161;											// 工具提示
-}
+@tooltip:			 var(--tooltip);						// 工具提示

@@ -72,7 +72,7 @@
 				"component": "layout/grid"
 			},
 			{
-				"desc": "弹性盒布局",
+				"desc": "三段式布局",
 				"name": "Sandwich",
 				"path": "/layout/sandwich",
 				"component": "layout/sandwich"

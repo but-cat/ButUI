@@ -1,32 +1,41 @@
 # 图片
-
-# 卡片
-卡片是内容容器,你可以将信息,表单和媒体等内容元素整合在卡片容器中展示。
+在文档和示例中插入具有响应行为的图像，可以选择向props添加轻量级样式。
 
 ## 基础用法
 
 ```vue
 <template>
-	<but-image :src="source" />
+<but-row :gutter="10">
+	<but-col :xs="3"><div class="img-purple">
+		<but-image :src="source" shape="responsive"/>
+	</div></but-col>
+	<but-col :xs="3"><div class="img-purple">
+		<but-image :src="source" shape="thumbnail"/>
+	</div></but-col>
+	<but-col :xs="3"><div class="img-purple">
+		<but-image :src="source" shape="rounded"/>
+	</div></but-col>
+	<but-col :xs="3"><div class="img-purple">
+		<but-image :src="source" shape="circle"/>
+	</div></but-col>
+</but-row>
 </template>
 <script>
 export default {
 	data() {
 		return {
+			col: {
+				xs: 3
+			},
 			source: require('@/assets/image/65040104_p0.jpg')
 		};
 	},
-	methods: {
-		dark() {
-			this.$color = 'light';
-		}
-	},
 };
 </script>
-<style module>
-.root {
-	width: 200px;
-	background: #eee;
+<style lang="less" scoped>
+.img-purple {
+	border-radius: 4px;
+	min-height: 36px;
 }
 </style>
 ```

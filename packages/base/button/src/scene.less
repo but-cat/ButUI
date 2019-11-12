@@ -4,7 +4,7 @@
 .bg-default {
 	// .default(var(@sceneText), @light-background);
 	.button;
-	color: var(--color);
+	color: var(--text-primary);
 	background-color: var(--background-variant);
 }
 .plain-default {
@@ -14,7 +14,7 @@
 
 	&:hover {																	// 悬浮
 		// background-color: fadeout(@color, 80%);
-		background-color: var(--color);
+		background-color: var(--text-primary);
 		// cursor: pointer;
 	}
 	&:active {																	// 点击
@@ -22,6 +22,32 @@
 		opacity: 0.5;
 	}
 }
+
+
+// 默认
+.bg-primary {
+	// .default(var(@sceneText), @light-background);
+	.button;
+	color: var(--primary);
+	background-color: var(--text-primary);
+}
+.plain-primary {
+	// .plain(var(@sceneText), @dark-background);
+	.button;
+	// color: @color;
+
+	&:hover {																	// 悬浮
+		// background-color: fadeout(@color, 80%);
+		background-color: var(--text-primary);
+		// cursor: pointer;
+	}
+	&:active {																	// 点击
+		transition: .1s ease-out;
+		opacity: 0.5;
+	}
+}
+
+
 
 // 主要
 .bg-primary {

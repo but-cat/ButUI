@@ -1,6 +1,12 @@
 <template>
-<button :class="[types, disableds]" :color="color" @click="handleClick">
-	<img v-if="!!icons" :src="icons" class="imgs"><slot/>
+<button :class="[type, scene, disableds]" :type="type" @click="handleClick">
+	<!-- <span class="submit">Submit</span> -->
+	<!-- <span class="loading"/> -->
+	<span class="background"/>
+	<span class="content">
+		<img v-if="!!icons" :src="icons" class="imgs"><slot/>
+	</span>
+	
 </button>
 </template>
 
@@ -13,17 +19,34 @@ export default {
 			value: String,
 			default: ''
 		},
-		type: {
-			value: String,
-			default: ''
+		scene: {
+			default: "primary",
+			validator (value) {
+				return ["primary", "success", "info", "warning", "danger"]
+				.some(item => item == value) ? value : "primary";
+			},
 		},
 		icon: {
 			value: String,
 			default: ''
 		},
-		plain: Boolean,
+		/**
+		 * 样式类型
+		 * 完整: contained, 带边框: outlined, 圆角: text
+		 */
+		type: {
+			default: "contained",
+			validator (value) {
+				return ["contained", "outlined", "text"]
+				.some(item => item == value) ? value : "contained";
+			},
+		},
 		disabled: Boolean,
-		circle: Boolean
+		circle: Boolean,
+		debounce: {
+			value: Boolean,
+			default: false
+		},
 	},
 	computed: {
 		icons() {
@@ -36,46 +59,32 @@ export default {
 				return this.icon;
 			
 		},
-		types() {
-			
-			// if(this.type){
-			// 	let Strings;
-			// 	if(!this.plain) Strings = 'bg-';
-			// 	else Strings = 'plain-';
-			// 	return Strings += this.type;
-			// }else {
-			// 	let Strings = 'plain-';
-			// 	return Strings += 'default';
-			// }
-
-			if(this.plain){
-				let Strings = 'plain-';
-				if(this.type){
-					return Strings += this.type;
-				}else {
-					return Strings += 'default';
-				}
-
-			}else {
-				let Strings = 'bg-';
-				if(this.type){
-					return Strings += this.type;
-				}else {
-					return Strings += 'default';
-				}
-			}
-		},
 		disableds() {
 			return this.disabled ? "disabled" : "";
-		},
-		color() {
-			return this.$color;
 		}
 	},
 	methods: {
-		handleClick(evt) {
-			if(!this.disabled)
-				this.$emit('click', evt);
+		handleClick(event) {
+			if(!this.disabled){
+				this.active(event.offsetX, event.offsetY);
+				this.$emit('click', event);
+			}
+		},
+		active(offsetX, offsetY) {
+			let active = document.createElement("div"),
+				color = this.type == "contained" ? "#FFF" : this.$scene[this.scene];
+
+			active.className = "active";
+			active.style = `
+				background-color: ${color};
+				left: ${offsetX-5}px;
+				top: ${offsetY-5}px;
+			`;
+			
+			this.$el.appendChild(active);
+			active.addEventListener('animationend', () => {
+				this.$el.removeChild(active);
+			},false);
 		}
 	}
 }
@@ -83,9 +92,9 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
-@import './scene.less';
+// @import './scene.less';
 
-.button {
+.button(@color, @text) {
     height: auto;
 	padding: 0 1.5rem;
 	
@@ -96,36 +105,87 @@ export default {
 	
 	line-height: 22px;
 
-	display: inline-flex;
-	justify-content: center;
-	align-content: center;
-	user-select: none;
+	// display: inline-flex;
+	// justify-content: center;
+	// align-content: center;
+	// user-select: none;
 	
-	vertical-align: middle;
+	// vertical-align: middle;
 
-	.imgs {
-		width: 22px;
-		height: 22px;
-		margin-right: 5px;
-		display: inline-block;
+	position: relative;
+	overflow: hidden;
+
+	// opacity: 0.5;
+	// .imgs {
+	// 	width: 18px;
+	// 	height: 18px;
+	// 	// margin-right: 5px;
+	// 	margin-left: -4px;
+	// 	margin-right: 8px;
+	// 	display: inline-block;
+	// }
+	// &:active {																	// 点击
+	// 	transition: .1s ease-out;
+	// 	opacity: 0.5;
+	// }
+
+	.content {
+		line-height: 22px;
+		display: inline-flex;
+		justify-content: center;
+		align-content: center;
+		user-select: none;
+		opacity: 1;
+		.imgs {
+			width: 18px;
+			height: 18px;
+			// margin-right: 5px;
+			margin-left: -4px;
+			margin-right: 8px;
+			display: inline-block;
+		}
+		pointer-events: none;
 	}
-	&:active {																	// 点击
-		transition: .1s ease-out;
-		opacity: 0.5;
+
+	.background {
+		top: 1px;
+		left: 0px;
+		width: 101%;
+		height: 101%;
+		z-index: 10;
+		position: absolute;
+		opacity: 0.15;
+		// pointer-events: none;
+	}
+
+	&[type=contained] {
+		color: @text;
+		background-color: @color;
+	}
+	&[type=outlined] {
+		color: @color;
+		border: 1px solid @color;
+		&:hover {
+			color: @text;
+			.background {
+				background-color: @color;
+			}
+		}
+	}
+	&[type=text] {
+		color: @color;
+		&:hover {
+			color: @text;
+			.background {
+				background-color: @color;
+			}
+		}
+
 	}
 }
 
-
-
-.default(@color, @background)  {
-	.button;
-	color: @color;
-	background-color: fadeout(@background, 10%);
-
-}
-
-.plain(@color, @background) {
-	.button;
+.text(@color, @background) {
+	// .button;
 	color: @color;
 
 	&:hover {																	// 悬浮
@@ -146,5 +206,31 @@ export default {
 	opacity: 0.5;
 	// text-decoration:line-through;
 	cursor: not-allowed;
+}
+
+
+// 主要
+.primary {
+	.button(@primary, @sceneText);
+}
+
+// 成功
+.success {
+	.button(@success, @sceneText)
+}
+
+// 信息
+.info {
+	.button(@info, @sceneText)
+}
+
+// 警告
+.warning {
+	.button(@warning, @sceneText)
+}
+
+// 危险
+.danger {
+	.button(@danger, @sceneText)
 }
 </style>

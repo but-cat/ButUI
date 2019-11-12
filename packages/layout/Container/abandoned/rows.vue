@@ -1,26 +1,29 @@
+<template>
+<main class="but-row" :style="{justifyContent: alignment}">
+	<slot></slot>
+</main>
+</template>
+
 <script>
 export default {
 	name: 'ButRow',
-
-	componentName: 'ButRow',
-
 	props: {
-		tag: {
-			type: String,
-			default: 'div'
-		},
-		gutter: Number,
-		type: String,
 		justify: {
 			type: String,
-			default: 'start'
+			default: 'row'
 		},
-		align: {
-			type: String,
-			default: 'top'
-		}
+		alignment: {
+			validator: function (value) {
+				return ["start", "end", "center", "between", "around"]
+				.some(item => item == value) ? value : "center";
+			}
+		},
+		gutter: {
+			type: Number,
+			default: 0
+		},
+		
 	},
-
 	computed: {
 		style() {
 			const ret = {};
@@ -29,22 +32,9 @@ export default {
 				ret.marginLeft = `-${this.gutter / 2}px`;
 				ret.marginRight = ret.marginLeft;
 			}
-
 			return ret;
 		}
 	},
-
-	render(h) {
-		return h(this.tag, {
-			class: [
-				'but-row',
-				this.justify !== 'start' ? `is-justify-${this.justify}` : '',
-				this.align !== 'top' ? `is-align-${this.align}` : '',
-				{ 'but-row--flex': this.type === 'flex' }
-			],
-			style: this.style
-		}, this.$slots.default);
-	}
 };
 </script>
 

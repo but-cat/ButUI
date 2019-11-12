@@ -6,13 +6,11 @@
 ## 基础布局
 ```vue
 <template>
-<but-row>
-	<but-col :col="col"><div class="grid-content bg-purple-light"></div></but-col>
-	<but-col :col="col"><div class="grid-content bg-purple"></div></but-col>
-	<but-col :col="col"><div class="grid-content bg-purple-light"></div></but-col>
-	<but-col :col="col"><div class="grid-content bg-purple"></div></but-col>
-	<but-col :col="col"><div class="grid-content bg-purple-light"></div></but-col>
-	<but-col :col="col"><div class="grid-content bg-purple"></div></but-col>
+<but-row :gutter="10">
+	<but-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple-light"></div></but-col>
+	<but-col :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple"></div></but-col>
+	<but-col :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple-light"></div></but-col>
+	<but-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple"></div></but-col>
 </but-row>
 </template>
 <script>

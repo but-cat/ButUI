@@ -42,53 +42,6 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
-.container {
-	width: 100%;
-	height: auto;
-	// position: relative;
-	// overflow: hidden;
-}
-.circle-container {
-	width: 100%;
-	height: 0px;
-	padding-bottom: 100%;
-	overflow:hidden;
-	margin: 0;
-	position:relative;
-}
-
-// 自适应图像（确保图像不会超出其父级）
-.responsive {
-	.img-responsive(inline-block);
-}
-// 圆角
-.rounded {
-	border-radius: @border-radius-large;
-	.img-responsive(inline-block);
-}
-
-// 带边框
-// Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
-.thumbnail {
-	padding: 4px;
-	line-height: @line-height-base;
-	background-color: var(--background);
-	border: 1px solid #ddd;
-	border-radius: @border-radius-base;
-	// .transition(all .2s ease-in-out);
-
-	.img-responsive(inline-block);												// 保持最大宽度为100％
-}
-
-// 圆形图片
-.circle {
-	border-radius: 50%; // 以百分比设置半径
-	position:absolute;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	// .img-responsive(inline-block);
-}
 
 // 图片
 img {
@@ -104,4 +57,58 @@ img {
 	height: auto;																// 第2部分：根据宽度缩放高度，否则会拉伸
 }
 
+.container {
+	width: 100%;
+	height: auto;
+	// position: relative;
+	// overflow: hidden;
+}
+.circle-container {
+	width: 100%;
+	height: 0px;
+	padding-bottom: 100%;
+	overflow:hidden;
+	margin: 0;
+	position:relative;
+	background: none;
+}
+
+// 自适应图像（确保图像不会超出其父级）
+.responsive {
+	.img-responsive(inline-block);
+}
+// 圆角
+.rounded {
+	border-radius: @border-radius-large;
+	.img-responsive(inline-block);
+}
+
+// 带边框
+// Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
+.thumbnail {
+	padding: .25rem;
+	line-height: @line-height-base;
+	background-color: #FFF;
+	border: 1px solid #ddd;
+	border-radius: @border-radius-base;
+	// .transition(all .2s ease-in-out);
+
+	// padding: ;
+    // background-color: #fff;
+    // border: 1px solid #dee2e6;
+    // border-radius: .25rem;
+
+	.img-responsive(inline-block);												// 保持最大宽度为100％
+}
+
+// 圆形图片
+.circle {
+	border-radius: 50%; // 以百分比设置半径
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 1;
+	// .img-responsive(inline-block);
+}
 </style>
