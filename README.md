@@ -38,7 +38,5 @@ $ yarn run lint
 ### 使用许可
 该项目以MIT协议条款下分发。但该项目尚未开发完成,组件并不健壮,笔者并不推荐被应用在任何项目中.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 每一个优雅的接口背后都有一个龌龊的实现.....(╯‵□′)╯︵┻━┻

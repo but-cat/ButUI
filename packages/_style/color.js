@@ -35,4 +35,10 @@ export default Vue => {
 	Vue.prototype.$scene = object									// 混入CSS全局变量
 	for (let key in object)
 		document.documentElement.style.setProperty(`--${key}`, object[key]);
+
+	// const unWatch = Vue.$watch('text', (newVal, oldVal) => {
+	// 	console.log(`${newVal} : ${oldVal}`);
+	// })
+	// unWatch(); // 手动注销watch
+
 }

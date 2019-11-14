@@ -3,7 +3,15 @@
 		"desc": "概览",
 		"name": "Overview",
 		"path": "/",
-		"component": "README"
+		"component": "conventions/README",
+		"list": [
+			{
+				"desc": "情景图标",
+				"name": "sceneImage",
+				"path": "/conventions/sceneIcon",
+				"component": "conventions/sceneIcon"
+			}
+		]
 	},
 
 	{

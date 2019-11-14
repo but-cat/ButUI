@@ -5,12 +5,12 @@
 基础的文字链接用法。
 ```html
 <div>
-  <but-link target="_blank" style="margin-left: 10px;">默认链接</but-link>
-  <but-link type="primary" style="margin-left: 10px;">主要链接</but-link>
-  <but-link type="success" style="margin-left: 10px;">成功链接</but-link>
-  <but-link type="warning" style="margin-left: 10px;">警告链接</but-link>
-  <but-link type="danger" style="margin-left: 10px;">危险链接</but-link>
-  <but-link type="info" style="margin-left: 10px;">信息链接</but-link>
+	<but-link style="margin-left: 10px;">主要链接</but-link>
+	<but-link scene="primary" style="margin-left: 10px;">主要链接</but-link>
+	<but-link scene="success" style="margin-left: 10px;">成功链接</but-link>
+	<but-link scene="warning" style="margin-left: 10px;">警告链接</but-link>
+	<but-link scene="danger" style="margin-left: 10px;">危险链接</but-link>
+	<but-link scene="info" style="margin-left: 10px;">信息链接</but-link>
 </div>
 ```
 

@@ -3,9 +3,9 @@
 	<!-- <span class="submit">Submit</span> -->
 	<!-- <span class="loading"/> -->
 	<span class="background"/>
-	<span class="content">
+	<div class="content">
 		<img v-if="!!icons" :src="icons" class="imgs"><slot/>
-	</span>
+	</div>
 	
 </button>
 </template>
@@ -52,11 +52,7 @@ export default {
 		icons() {
 			let iconSrc = this.icon.split('#')[1];
 			let icon = butIcon();
-			if(iconSrc){
-				return icon[iconSrc];
-			}
-			else
-				return this.icon;
+			return iconSrc ? icon[iconSrc] : this.icon;
 			
 		},
 		disableds() {
@@ -130,31 +126,33 @@ export default {
 	// }
 
 	.content {
-		line-height: 22px;
-		display: inline-flex;
+		height: 100%;
+		display:inline-flex;
 		justify-content: center;
 		align-content: center;
 		user-select: none;
-		opacity: 1;
+		vertical-align: middle;
+		align-items: center;
 		.imgs {
 			width: 18px;
 			height: 18px;
 			// margin-right: 5px;
 			margin-left: -4px;
 			margin-right: 8px;
-			display: inline-block;
+			display: block;
 		}
 		pointer-events: none;
 	}
 
 	.background {
-		top: 1px;
+		top: 0px;
 		left: 0px;
 		width: 101%;
 		height: 101%;
 		z-index: 10;
 		position: absolute;
 		opacity: 0.15;
+		cursor: pointer;
 		// pointer-events: none;
 	}
 

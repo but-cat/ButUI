@@ -5,6 +5,7 @@ const components = [															// 所有组件列表
 	require('&/layout').default,												// 布局类
 	require('&/media').default,													// 媒体类
 	require('&/ui').default,													// UI类
+	require('&/others').default,												// 杂项
 ];
 
 const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数

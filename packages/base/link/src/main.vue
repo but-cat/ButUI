@@ -1,5 +1,5 @@
 <template>
-<a :href="href" :color="color" :class="types" class="link"><slot/></a>
+<a :href="href" :color="color" :class="scene" class="link"><slot/></a>
 </template>
 
 <script>
@@ -10,19 +10,22 @@ export default {
 			value: String,
 			default: ''
 		},
-		type: {
-			value: String,
-			default: ''
+		scene: {
+			default: "",
+			validator (value) {
+				return ["primary", "success", "info", "warning", "danger"]
+				.some(item => item == value) ? value : "primary";
+			},
 		},
+		type: {
+			default: "text",
+			validator (value) {
+				return ["text", "button", "info"]
+				.some(item => item == value) ? value : "primary";
+			},
+		}
 	},
 	computed: {
-		types() {
-			if(this.type){
-				return this.type;
-			}else {
-				return 'default';
-			}
-		},
 		color() {
 			return this.$color;
 		}
@@ -32,11 +35,9 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
-@import './scene.less';
 
-.link(@color) {
-	color: @color;
-
+.link {
+	color: var(--text-accent);
 	display: inline-flex;
     flex-direction: row;
     align-items: center;
@@ -50,8 +51,35 @@ export default {
     font-size: 14px;
 	font-weight: 500;
 }
-
 .link:hover {
 	color: #409eff;
+}
+
+.link(@color) {
+	color: @color;
+}
+
+// 主要
+.primary {
+	.link(@primary);
+}
+
+// 成功
+.success {
+	.link(@success);
+}
+
+// 信息
+.info {
+	.link(@info);
+}
+
+// 警告
+.warning {
+	.link(@warning);
+}
+// 危险
+.danger {
+	.link(@danger);
 }
 </style>

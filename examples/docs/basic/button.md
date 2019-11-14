@@ -6,12 +6,11 @@
 ```html
 <div>
 	<but-button>默认</but-button>
-	<but-button scene="primary">主要</but-button>
 	<but-button scene="info">信息</but-button>
 	<but-button scene="success">成功</but-button>
-	<but-button scene="danger">注意</but-button>
 	<but-button scene="warning">警告</but-button>
-	<but-button icon="#chrome" scene="primary">图标</but-button>
+	<but-button scene="danger">危险</but-button>
+	<but-button :icon="$sceneIcon('info-sm', '#fff')" scene="info">图标</but-button>
 </div>
 ```
 
@@ -19,21 +18,19 @@
 ```html
 <div>
 	<but-button plain>默认</but-button>
-	<but-button scene="primary" type="outlined" plain="outlined">主要</but-button>
-	<but-button scene="info" type="outlined" plain="outlined">信息</but-button>
-	<but-button scene="success" type="outlined" plain="outlined">成功</but-button>
-	<but-button scene="danger" type="outlined" plain="outlined">注意</but-button>
-	<but-button scene="warning" type="outlined" plain="outlined">警告</but-button>
-	<but-button icon="#chrome" type="outlined" scene="primary" plain="outlined">图标</but-button>
+	<but-button :icon="$sceneIcon('info-sm')" scene="info" type="outlined">信息</but-button>
+	<but-button :icon="$sceneIcon('success-sm')" scene="success" type="outlined">成功</but-button>
+	<but-button :icon="$sceneIcon('warning-sm')" scene="warning" type="outlined">警告</but-button>
+	<but-button :icon="$sceneIcon('danger-sm')" scene="danger" type="outlined">危险</but-button>
+	<but-button icon="#chrome" type="outlined" scene="primary">图标</but-button>
 </div>
 <div>
-	<but-button plain>默认</but-button>
-	<but-button scene="primary" type="text" plain="outlined">主要</but-button>
-	<but-button scene="info" type="text" plain="outlined">信息</but-button>
-	<but-button scene="success" type="text" plain="outlined">成功</but-button>
-	<but-button scene="danger" type="text" plain="outlined">注意</but-button>
-	<but-button scene="warning" type="text" plain="outlined">警告</but-button>
-	<but-button icon="#chrome" type="text" scene="primary" plain="outlined">图标</but-button>
+	<but-button type="text">默认</but-button>
+	<but-button :icon="$sceneIcon('info-sm')" scene="info" type="text">信息</but-button>
+	<but-button :icon="$sceneIcon('success-sm')" scene="success" type="text">成功</but-button>
+	<but-button :icon="$sceneIcon('warning-sm')" scene="warning" type="text">警告</but-button>
+	<but-button :icon="$sceneIcon('danger-sm')" scene="danger" type="text">危险</but-button>
+	<but-button icon="#chrome" type="text" scene="primary">图标</but-button>
 </div>
 ```
 
@@ -47,8 +44,8 @@
 	<but-button scene="primary" disabled>主要</but-button>
 	<but-button scene="info" disabled>信息</but-button>
 	<but-button scene="success" disabled>成功</but-button>
-	<but-button scene="danger" disabled>注意</but-button>
 	<but-button scene="warning" disabled>警告</but-button>
+	<but-button scene="danger" disabled>危险</but-button>
 	<but-button icon="#chrome" scene="primary" disabled>图标</but-button>
 </div>
 ```
