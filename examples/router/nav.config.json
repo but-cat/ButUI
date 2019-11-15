@@ -10,6 +10,12 @@
 				"name": "sceneImage",
 				"path": "/conventions/sceneIcon",
 				"component": "conventions/sceneIcon"
+			},
+			{
+				"desc": "全局指令",
+				"name": "command",
+				"path": "/conventions/command",
+				"component": "conventions/command"
 			}
 		]
 	},
@@ -64,6 +70,12 @@
 				"name": "Range",
 				"path": "/from/range",
 				"component": "from/range"
+			},
+			{
+				"desc": "开关",
+				"name": "Switch",
+				"path": "/from/switch",
+				"component": "from/switch"
 			}
 		]
 	},

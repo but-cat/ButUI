@@ -2,7 +2,7 @@
 <button :class="[type, scene, disableds]" :type="type" @click="handleClick">
 	<!-- <span class="submit">Submit</span> -->
 	<!-- <span class="loading"/> -->
-	<span class="background"/>
+	<span :class="disableds" class="background"/>
 	<div class="content">
 		<img v-if="!!icons" :src="icons" class="imgs"><slot/>
 	</div>
@@ -129,10 +129,9 @@ export default {
 		height: 100%;
 		display:inline-flex;
 		justify-content: center;
-		align-content: center;
+		align-items: center;
 		user-select: none;
 		vertical-align: middle;
-		align-items: center;
 		.imgs {
 			width: 18px;
 			height: 18px;
@@ -154,6 +153,9 @@ export default {
 		opacity: 0.15;
 		cursor: pointer;
 		// pointer-events: none;
+		&:disabled {
+			cursor: not-allowed;
+		}
 	}
 
 	&[type=contained] {
@@ -203,7 +205,7 @@ export default {
 	// pointer-events: none;
 	opacity: 0.5;
 	// text-decoration:line-through;
-	cursor: not-allowed;
+	cursor: not-allowed !important;
 }
 
 

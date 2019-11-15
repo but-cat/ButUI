@@ -1,129 +1,102 @@
 <template>
-  <div class="md-switch" :class="[$mdActiveTheme, checkClasses]">
-    <div class="md-switch-container" @click.stop="toggleCheck">
-      <div class="md-switch-thumb">
-        <md-ripple md-centered :md-active.sync="rippleActive" :md-disabled="disabled">
-          <input :id="id" type="checkbox" v-bind="{ id, name, disabled, required, value }">
-        </md-ripple>
-      </div>
-    </div>
-
-    <label :for="id" class="md-switch-label" v-if="$slots.default" @click.prevent="toggleCheck">
-      <slot />
-    </label>
-  </div>
+<div :class="scene" class="switch" @click="toggle">
+	<div :class="[value ? 'no' : 'off', disableds]" class="bar"></div>
+	<div :class="[value ? 'no' : 'off']" class="container"></div>
+</div>
 </template>
 
 <script>
-  import MdComponent from 'core/MdComponent'
-  import MdCheckboxMixin from 'components/MdCheckbox/MdCheckboxMixin'
-  import MdUuid from 'core/utils/MdUuid'
-
-  export default new MdComponent({
-    name: 'MdSwitch',
-    mixins: [MdCheckboxMixin],
-    props: {
-      id: {
-        type: String,
-        default: () => 'md-switch-' + MdUuid()
-      }
-    }
-  })
+export default {
+	name: 'ButSwitch',
+	props: {
+		value: {
+			type: Boolean,
+			default: false
+		},
+		scene: {
+			type: String,
+			default: 'primary'
+		},
+		disabled: {
+			type: Boolean,
+			default: false
+		},
+	},
+	computed: {
+		disableds() {
+			return this.disabled ? "disableds" : "";
+		}
+	},
+	methods: {
+		toggle() {
+			if(!this.disabled){
+				this.$emit('input', !this.value);
+			}
+		}
+	}
+}
 </script>
+<style lang="less" scoped>
+@import '../../../_style/variables.less';
 
-<style lang="scss">
-  @import "~components/MdAnimation/variables";
-  @import "~components/MdElevation/mixins";
+.switch(@color) {
+	position: relative;
+	width: 26px;
+	height: 20px;
+	display:inline-flex;
+	justify-content: center;
+	align-items: center;
+	.container {
+		width: 100%;
+		height: 14px;
+		background-color: #e3ebec;
+		border-radius: 100px;
+		user-select: none;
+		transition: all .3s;
+		opacity: 0.5;
+	}
+	.bar {
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+		position: absolute;
+		z-index: 1;
+		border-radius: 100%;
+		box-shadow: 0 0 3px 0 rgba(105,115,133,.2);
+		transition: all .3s,width .3s;
+	}
+	.no {
+		left: 14px;
+		background-color: @color;
+	}
+	.off {
+		left: -8px;
+		background-color: #FFF;
+	}
+	/* 禁用状态 */
+	.disableds {
+		box-shadow: none;
+		cursor: not-allowed !important;
+	}
+}
 
-  $md-switch-width: 34px;
-  $md-switch-height: 14px;
-  $md-switch-size: 20px;
-  $md-switch-touch-size: 48px;
 
-  .md-switch {
-    width: auto;
-    margin: 16px 16px 16px 0;
-    display: inline-flex;
-    position: relative;
 
-    &:not(.md-disabled) {
-      cursor: pointer;
 
-      .md-switch-label {
-        cursor: pointer;
-      }
-    }
 
-    .md-switch-container {
-      width: $md-switch-width;
-      min-width: $md-switch-width;
-      height: $md-switch-height;
-      margin: 3px 0;
-      display: flex;
-      align-items: center;
-      position: relative;
-      border-radius: $md-switch-height;
-      transition: $md-transition-stand;
-    }
-
-    .md-switch-thumb {
-      @include md-elevation(1);
-      width: $md-switch-size;
-      height: $md-switch-size;
-      position: relative;
-      border-radius: 50%;
-      transition: $md-transition-stand;
-
-      &:before {
-        width: $md-switch-touch-size;
-        height: $md-switch-touch-size;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        z-index: 11;
-        transform: translate(-50%, -50%);
-        content: " ";
-      }
-
-      .md-ripple {
-        width: $md-switch-touch-size !important;
-        height: $md-switch-touch-size !important;
-        top: 50% !important;
-        left: 50% !important;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-      }
-
-      input {
-        position: absolute;
-        left: -999em;
-      }
-    }
-
-    .md-switch-label {
-      height: $md-switch-size;
-      padding-left: 16px;
-      position: relative;
-      line-height: $md-switch-size;
-    }
-  }
-
-  .md-switch.md-checked {
-    .md-switch-thumb {
-      transform: translate3d(15px, 0, 0);
-    }
-  }
-
-  .md-switch.md-required {
-    label:after {
-      position: absolute;
-      top: 2px;
-      right: 0;
-      transform: translateX(calc(100% + 2px));
-      content: "*";
-      line-height: 1em;
-      vertical-align: top;
-    }
-  }
+.primary {														// 主要
+	.switch(@primary);
+}
+.success {														// 成功
+	.switch(@success)
+}
+.info {															// 信息
+	.switch(@info)
+}
+.warning {														// 警告
+	.switch(@warning)
+}
+.danger {														// 危险
+	.switch(@danger)
+}
 </style>

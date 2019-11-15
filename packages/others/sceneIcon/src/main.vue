@@ -25,7 +25,6 @@ export default {
 	},
 	computed: {
 		icons() {
-			console.log(this.$sceneIcon("info-sm", "#66ccff"));
 			let icon = butIcon();
 			return icon[this.type];
 			// return this.$sceneIcon("error-sm", "#66ccff");

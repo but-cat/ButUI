@@ -11,6 +11,22 @@ Vue.use(vueHljs);
 // import ButUI from './../packages'
 Vue.use(require('./../packages/index').default);
 
+Vue.component('butcat', {
+	template: '<h2 @click="reversedMessage">{{duang}}</h2>',
+	props: {
+		duang: {
+			type: String,
+			default: ''
+		},
+	},
+	methods: {
+		// 计算属性的 getter
+		reversedMessage() {
+			this.$emit('duang', '这是暴露数据');
+		}
+	}
+})
+
 new Vue({
 	render: h => h(App),
 	router,

@@ -1,7 +1,8 @@
 export default [															// 表单组件
 	require('./input').default,
 	require('./radio').default,
-	require('./range').default
+	require('./range').default,
+	require('./switch').default
 ];
 
 // const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数

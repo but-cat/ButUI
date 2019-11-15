@@ -39,9 +39,12 @@ export default {
 }
 </style>
 ```
+## 创建图标
+butUI提供了一个全局函数用于创建这些图标;该函数默认返回一个base64编码的矢量图.
 
-
-
+```JavaScript
+Vue.$sceneIcon("info-sm", "#FFF");
+```
 
 ### 属性
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
