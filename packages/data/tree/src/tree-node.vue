@@ -1,7 +1,7 @@
 <template>
 <div :class="size">
 	<div class="infoRow">
-        <img @click='toggle' v-if="data.hasOwnProperty(children) && data[children].length > 0" :class="[ open ? 'expand' : 'folded']" class="arrow" src="../arrow.svg"/>
+        <img @click='toggle' v-if="data.hasOwnProperty(children) && data[children].length > 0" :class="[ open ? 'expand' : 'folded']" class="arrow" src="../../../assets/image/arrow.svg"/>
 		<img v-if="icon.iconKey" class="icon" :src="iconFilter(data)"/>
         <span @click='eventBroadcasting' class="name">{{data[nameKey]}}</span>
     </div>

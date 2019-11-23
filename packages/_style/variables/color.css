@@ -28,9 +28,9 @@
 	--icon: rgba(0.0,0.0,0.0, 0.54);							/* 图标颜色 */
 	--divider: rgba(0.0,0.0,0.0, 0.12);							/* 分隔线 */
 
-	/* 滚动条 */
-	--scrollbar: #757575;										/* 滚动条 */
-	--scrollbar-background: darken(#eee, 5%);					/* 滚动条 背景 */
+	/* 手柄 */
+	--handle: #757575;											/* 手柄 */
+	--handle-background: darken(#eee, 5%);						/* 手柄 背景 */
 
 	/* 提示 */
 	--tooltip: #616161;											/* 工具提示 */

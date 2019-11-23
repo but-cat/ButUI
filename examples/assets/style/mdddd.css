@@ -12,14 +12,14 @@ section {
 .demo-block{
   padding-top: 10px;
 }
-section ul {
+/* section ul {
   margin: 16px 0px;
   padding-left: 24px;
   list-style: disc;
 }
 section ul li{
   line-height: 1.8;
-}
+} */
 section .le {
   padding: 32px;
   border: 1px solid #e2ecf4;

@@ -1,5 +1,5 @@
 <template>
-<but-sandwich :head="300" @head="headSize" :tailHandle="false" :color="color">
+<but-sandwich :head="300" @head="headSize" :tailHandle="false">
 	<div slot="head" class="nav">
 		<but-tree :data="navList" @nodeEvent="eventPre" childrenKey="list" nameKey="desc" />
 	</div>
@@ -22,9 +22,9 @@ export default {
 		}
 	},
 	computed: {
-		color() {
-			return this.$color;
-		}
+		// color() {
+		// 	return this.$color;
+		// }
 	},
 	methods: {
 		createNav(config) {
@@ -61,7 +61,7 @@ export default {
 .nav {
 	height: 100%;
 	height: 100%;
-	background-color: rgba(240, 240, 240, 0.067);
+	background-color: #e5e9f2;
 	overflow: auto;
 
 	&[color=light]{

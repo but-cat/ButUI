@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import PropValidator from '&/core/utils/propValidator'
 import {butIcon} from '../../../assets/importIcon.js';
 export default {
 	name: 'ButButton',
@@ -21,10 +22,7 @@ export default {
 		},
 		scene: {
 			default: "primary",
-			validator (value) {
-				return ["primary", "success", "info", "warning", "danger"]
-				.some(item => item == value) ? value : "primary";
-			},
+			...PropValidator('scene', ["primary", "success", "info", "warning", "danger"])
 		},
 		icon: {
 			value: String,
@@ -36,10 +34,7 @@ export default {
 		 */
 		type: {
 			default: "contained",
-			validator (value) {
-				return ["contained", "outlined", "text"]
-				.some(item => item == value) ? value : "contained";
-			},
+			...PropValidator('type', ["contained", "outlined", "text"])
 		},
 		disabled: Boolean,
 		circle: Boolean,
@@ -98,32 +93,10 @@ export default {
 	height: 28px;
 	border-radius: 2px;
 	transition: .2s ease-out;
-	
 	line-height: 22px;
-
-	// display: inline-flex;
-	// justify-content: center;
-	// align-content: center;
-	// user-select: none;
-	
-	// vertical-align: middle;
 
 	position: relative;
 	overflow: hidden;
-
-	// opacity: 0.5;
-	// .imgs {
-	// 	width: 18px;
-	// 	height: 18px;
-	// 	// margin-right: 5px;
-	// 	margin-left: -4px;
-	// 	margin-right: 8px;
-	// 	display: inline-block;
-	// }
-	// &:active {																	// 点击
-	// 	transition: .1s ease-out;
-	// 	opacity: 0.5;
-	// }
 
 	.content {
 		height: 100%;
@@ -166,7 +139,7 @@ export default {
 		color: @color;
 		border: 1px solid @color;
 		&:hover {
-			color: @text;
+			// color: @color;
 			.background {
 				background-color: @color;
 			}
@@ -175,27 +148,12 @@ export default {
 	&[type=text] {
 		color: @color;
 		&:hover {
-			color: @text;
+			// color: @color;
 			.background {
 				background-color: @color;
 			}
 		}
 
-	}
-}
-
-.text(@color, @background) {
-	// .button;
-	color: @color;
-
-	&:hover {																	// 悬浮
-		// background-color: fadeout(@color, 80%);
-		background-color: var(--color);
-		// cursor: pointer;
-	}
-	&:active {																	// 点击
-		transition: .1s ease-out;
-		opacity: 0.5;
 	}
 }
 

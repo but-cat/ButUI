@@ -26,8 +26,8 @@ export default Vue => {
 		divider: "rgba(0.0,0.0,0.0, 0.12)",							/* 分隔线 */
 	
 		/* 滚动条 */
-		scrollbar: "#757575",										/* 滚动条 */
-		scrollbarBackground: "darken(#eee, 5%)",					/* 滚动条 背景 */
+		handle: "#757575",											/* 滚动条 */
+		handleBackground: "darken(#eee, 5%)",						/* 滚动条 背景 */
 	
 		/* 提示 */
 		tooltip: "#616161",											/* 工具提示 */

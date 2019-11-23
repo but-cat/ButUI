@@ -1,5 +1,5 @@
 <template>
-<div id="app" color="dark">
+<div id="app" >
 	<views/>
 </div>
 </template>
@@ -8,9 +8,9 @@
 export default {
 	name: 'app',
 	computed: {
-		color() {
-			return this.$color;
-		}
+		// color() {
+		// 	return this.$color;
+		// }
 	},
 	components: {
 		// HelloWorld
@@ -19,9 +19,11 @@ export default {
 }
 </script>
 <style lang="less">
-@import "./assets/style/table.less";
-@import "./assets/style/variables.less";
+// @import "./assets/style/table.less";
+// @import "./assets/style/variables.less";
 @import "./assets/style/typesetting.less";
+@color: var(--textPrimary);
+@background: var(--background);
 
 body {
 	margin: 0;
@@ -38,27 +40,22 @@ body {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px; */
-	&[color=light]{
-		.light(@light-text, @light-background);
-	}
-	&[color=dark] {
-		.light(@dark-text, @dark-background);
-	}
+	.typesetting(@color, @background);
 	
 }
 
-.light(@color, @background) {
-	color: @color;
-	.typesetting(@color, @background);
-	table {
-		.tableStyle(@color, @background);
-	}
-}
-.dark(@color, @background) {
-	color: @color;
-	.typesetting(@color, @background);
-	table {
-		.tableStyle(@color, @background);
-	}
-}
+// .light(@color, @background) {
+// 	// color: @color;
+// 	.typesetting(var(--textPrimary), var(--background));
+// 	table {
+// 		.tableStyle(var(--textPrimary), var(--background));
+// 	}
+// }
+// .dark(var(--textPrimary), var(--background)) {
+// 	color: @color;
+// 	.typesetting(var(--textPrimary), var(--background));
+// 	table {
+// 		.tableStyle(var(--textPrimary), var(--background));
+// 	}
+// }
 </style>

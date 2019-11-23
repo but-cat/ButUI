@@ -1,7 +1,7 @@
 export default [															// 表单组件
 	require('./input').default,
 	require('./radio').default,
-	require('./range').default,
+	require('./slider').default,
 	require('./switch').default
 ];
 

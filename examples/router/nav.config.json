@@ -67,9 +67,9 @@
 			},
 			{
 				"desc": "滑动条",
-				"name": "Range",
-				"path": "/from/range",
-				"component": "from/range"
+				"name": "Slider",
+				"path": "/from/slider",
+				"component": "from/slider"
 			},
 			{
 				"desc": "开关",
