@@ -4,6 +4,7 @@ const components = [															// 所有组件列表
 	require('&/form').default,													// 表单类
 	require('&/layout').default,												// 布局类
 	require('&/media').default,													// 媒体类
+	require('&/navigation').default,											// 导航类
 	require('&/ui').default,													// UI类
 	require('&/others').default,												// 杂项
 ];

@@ -149,6 +149,21 @@
 	},
 
 	{
+		"desc": "导航",
+		"name": "navigation",
+		"path": "/navigation/index",
+		"component": "navigation/index",
+		"list": [
+			{
+				"desc": "导航抽屉",
+				"name": "NavDrawer",
+				"path": "/navigation/navDrawer",
+				"component": "navigation/navDrawer"
+			}
+		]
+	},
+
+	{
 		"desc": "UI",
 		"name": "ui",
 		"path": "/ui/index",
@@ -165,12 +180,6 @@
 				"name": "Card",
 				"path": "/ui/card",
 				"component": "ui/card"
-			},
-			{
-				"desc": "导航抽屉",
-				"name": "NavDrawer",
-				"path": "/ui/navDrawer",
-				"component": "ui/navDrawer"
 			}
 		]
 	}

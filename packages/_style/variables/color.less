@@ -1,33 +1,35 @@
 // 情景
-// @primary:         #409EFF;								// 主要 #337ab7
-@primary:			 var(--primary);						// 主要 #4c6575
-@success:			 var(--success);						// 成功
-@info:				 var(--info);							// 信息
-@warning:			 var(--warning);						// 警告
-@danger:			 var(--danger);							// 错误
-@sceneText:			 var(--sceneText);
+// @primary:         #409EFF;										// 主要 #337ab7
+@primary:			 var(--primary, #5c87a1);										// 主要 #4c6575
+@success:			 var(--success, #67C23A);										// 成功
+@info:				 var(--info, #65ceee);											// 信息
+@warning:			 var(--warning, #f0ad4e);										// 警告
+@danger:			 var(--danger, #F56C6C);										// 错误
+@sceneText:			 var(--sceneText, #FFFFFF);
 
 // 背景
-@background:		 var(--background);						// 背景色
-@background-variant: var(--background-variant);				// 背景主题色
+@background:		 var(--background, #fff);										// 背景色
+@background-variant: var(--background-variant, #f7f7f7);							// 背景主题色
 
 // 文本
-@text-primary:		 var(--text-primary);					// 主体文本色
-@text-accent:		 var(--text-accent);					// 着重,强调性文本
-@text-hint:			 var(--text-hint);						// 暗示文本
+@text-primary:		 var(--text-primary, #6e6e6e);									// 主体文本色
+@text-accent:		 var(--text-accent, #3b3b3b);									// 着重,强调性文本
+@text-hint:			 var(--text-hint, #1a1a1a);										// 暗示文本
 
 // 禁用元素
-@disabled:			 var(--disabled);						// 被禁用的元素
-@disabled-background: var(--disabled-background);			// 被禁用的元素 背景
+@disabled:			 var(--disabled, rgba(0.0,0.0,0.0, 0.26));						// 被禁用的元素
+@disabled-background: var(--disabled-background, rgba(0.0,0.0,0.0, 0.12));			// 被禁用的元素 背景
 
 // 杂项
-@highlight:			 var(--highlight);						// 突出
-@icon:				 var(--icon);							// 图标颜色
-@divider:			 var(--divider);						// 分隔线
+@highlight:			 var(--highlight, rgba(0.0,0.0,0.0, 0.12));						// 突出
+@icon:				 var(--icon, rgba(0.0,0.0,0.0, 0.54));							// 图标颜色
+@divider:			 var(--divider, rgba(0.0,0.0,0.0, 0.12));						// 分隔线
 
 // 滚动条
-@handle:			 var(--scrollbar);						// 手柄
-@handle-background: var(--scrollbar-background);			// 手柄 背景
+@handle:			 var(--scrollbar, #757575);										// 手柄
+@handle-background: var(--scrollbar-background);										// 手柄 背景
+
+@modal-background: var(--modal-background, rgba(0,0,0,.32));						/* 模态框背景层 */
 
 // 提示
-@tooltip:			 var(--tooltip);						// 工具提示
+@tooltip:			 var(--tooltip, #616161);										// 工具提示
