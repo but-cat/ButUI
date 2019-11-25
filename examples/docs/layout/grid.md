@@ -22,7 +22,7 @@ export default {
 				md: 2
 			},
 		};
-	},
+	}
 };
 </script>
 <style>

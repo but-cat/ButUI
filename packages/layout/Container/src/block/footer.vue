@@ -1,16 +1,15 @@
 <template>
-<footer class="el-footer" :style="{ height }">
+<footer class="but-footer" :style="{height: (typeof this.height == 'string') ? this.height : `${this.height}px`}">
 	<slot/>
 </footer>
 </template>
 
 <script>
 export default {
-	name: 'ElFooter',
-	componentName: 'ElFooter',
+	name: 'ButFooter',
 	props: {
 		height: {
-			type: String,
+			type: [String, Number],
 			default: '60px'
 		}
 	}
@@ -19,15 +18,8 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../../_style/variables.less';
-.but-container {
+.but-footer {
 	padding: 0 20px;
     flex-shrink: 0;
-}
-
-.but-vertical {
-	flex-direction: column;
-}
-.but-horizontal {
-	flex-direction: row;
 }
 </style>

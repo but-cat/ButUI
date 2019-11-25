@@ -1,10 +1,12 @@
 <template>
-<div :style="{width: open ? size : '0px'}" :class="'modal-'+modal" class="but-drawer-container">
+<div :style="{width: open ? size : '0px',order: (direction === 'right') ? '1000': '-1000'}" 
+	:class="'modal-'+modal" class="but-drawer-container">
+
 	<transition name="drawer-container">
 		<div v-if="open" @click="close" :class="'modal-background-'+modal"
 			class="but-drawer-content"/>
 	</transition>
-	<transition name="drawer">
+	<transition :name="'drawer-'+direction">
 		<div v-if="open" :style="{width: size}" class="but-drawer" >
 			<slot/>
 		</div>
@@ -32,8 +34,8 @@ export default {
 		},
 		modal: {
 			type: String,
-			default: 'xs',
-			...PropValidator('modal', ["none", "open", "xs", "sm", "md", "lg"])	
+			default: 'none',
+			...PropValidator('modal', ["none", "open", "sm", "md", "lg"])	
 		}
 	},
 	data() {
@@ -67,7 +69,7 @@ export default {
 	flex-shrink: 0;
 	position: relative;
 
-	transition: .2s ease-out;
+	transition: .2s ease;
 
 	.but-drawer-content {
 		height: 100%;
@@ -89,20 +91,11 @@ export default {
 }
 
 
-
-.drawer-left {
-
-}
-
-.drawer-right {
-
-}
-
-
-.modal-xs {
+// 基于媒体查询的模态组件
+.modal-open {
 	.modal;
 }
-.modal-background-xs {
+.modal-background-open {
 	.modal-background;
 }
 @media (max-width: @screen-sm) {										/*当宽度大于768px时触发*/
@@ -145,20 +138,42 @@ export default {
 	z-index: @zindex-modal-background;
 }
 
-
+// 背景动画
 .drawer-container-enter-active, .drawer-container-leave-active {
-	transition: .2s ease-out;
+	transition: .2s ease-in;
 }
 .drawer-container-enter, .drawer-container-leave-to {
 	opacity: 0;
 }
 
-.drawer-enter-active, .drawer-leave-active {
-	transition: .2s ease-out;
+// .drawer-enter-active {
+// 	transition: .19s ease-out;
+// }
+// .drawer-leave-active {
+// 	transition: .2s ease-in;
+// }
+// .drawer-enter, .drawer-leave-to {
+// 	transform: translateX(-100%);
+// }
+// 左侧动画
+.drawer-left-enter-active {
+	transition: .16s ease-out;
 }
-.drawer-enter, .drawer-leave-to {
+.drawer-left-leave-active {
+	transition: .2s ease-in;
+}
+.drawer-left-enter, .drawer-left-leave-to {
 	transform: translateX(-100%);
 }
-
+// 右侧动画
+.drawer-right-enter-active {
+	transition: .19s ease-out;
+}
+.drawer-right-leave-active {
+	transition: .2s ease-in;
+}
+.drawer-right-enter, .drawer-right-leave-to {
+	transform: translateX(100%);
+}
 // v-enter
 </style>

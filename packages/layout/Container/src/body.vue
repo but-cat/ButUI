@@ -1,19 +1,18 @@
 <template>
-	<main class="but-main">
+	<main class="but-body">
 		<slot/>
 	</main>
 </template>
 
 <script>
 export default {
-	name: 'ElMain',
-	componentName: 'ElMain'
+	name: 'ButBody'
 };
 </script>
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
-.but-main {
+.but-body {
 	display: block;
     flex: 1;
     flex-basis: auto;

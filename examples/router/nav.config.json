@@ -86,6 +86,12 @@
 		"component": "layout/index",
 		"list": [
 			{
+				"desc": "应用容器",
+				"name": "Container",
+				"path": "/layout/container",
+				"component": "layout/container"
+			},
+			{
 				"desc": "栅格布局",
 				"name": "Grid",
 				"path": "/layout/grid",
@@ -159,6 +165,12 @@
 				"name": "Card",
 				"path": "/ui/card",
 				"component": "ui/card"
+			},
+			{
+				"desc": "导航抽屉",
+				"name": "NavDrawer",
+				"path": "/ui/navDrawer",
+				"component": "ui/navDrawer"
 			}
 		]
 	}

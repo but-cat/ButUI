@@ -32,6 +32,8 @@
 	--handle: #757575;											/* 手柄 */
 	--handle-background: darken(#eee, 5%);						/* 手柄 背景 */
 
+	--modal-background: rgba(0,0,0,.32);						/* 模态框背景层 */
+
 	/* 提示 */
 	--tooltip: #616161;											/* 工具提示 */
 }

@@ -1,16 +1,15 @@
 <template>
-<footer class="el-footer" :style="{ height }">
+<footer class="but-footer" :style="{height: (typeof this.height == 'string') ? this.height : `${this.height}px`}">
 	<slot/>
 </footer>
 </template>
 
 <script>
 export default {
-	name: 'ElFooter',
-	componentName: 'ElFooter',
+	name: 'ButFooter',
 	props: {
 		height: {
-			type: String,
+			type: [String, Number],
 			default: '60px'
 		}
 	}

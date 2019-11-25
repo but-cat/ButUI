@@ -1,38 +1,30 @@
 <template>
-  <aside class="but-aside" :style="{ width }">
-    <slot></slot>
-  </aside>
+<aside class="but-aside" :style="{width: (typeof this.width == 'string') ? this.width : `${this.width}px`}">
+	<slot/>
+</aside>
 </template>
 
 <script>
-  export default {
-    name: 'ElAside',
-
-    componentName: 'ElAside',
-
-    props: {
-      width: {
-        type: String,
-        default: '300px'
-      }
-    }
-  };
+export default {
+	name: 'ButAside',
+	props: {
+		width: {
+			type: [String, Number],
+			default: '300px'
+		}
+	},
+	computed: {
+		size() {
+			return ;
+		}
+	}
+};
 </script>
 
 <style lang="less" scoped>
 @import '../../../../_style/variables.less';
-.but-container {
-    display: flex;
-    flex: 1;
-    flex-basis: auto;
-    box-sizing: border-box;
-    min-width: 0;
-}
-
-.but-vertical {
-	flex-direction: column;
-}
-.but-horizontal {
-	flex-direction: row;
+.but-aside {
+	box-sizing: border-box;
+    flex-shrink: 0;
 }
 </style>

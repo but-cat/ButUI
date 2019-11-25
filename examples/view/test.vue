@@ -1,59 +1,33 @@
 <template>
-<div style="height: 100%;">
-	<but-sandwich :head="head" @head="headSize" :tail="tail" @tail="tailSize" >
-		<div slot="head" style="background-color: #FF0000; height: 100%;">{{head}}</div>
-		<div style="background-color: #FFF; height: 100%;">???</div>
-		<div slot="tail" v-if="tes" @click="Te" style="background-color: #0000FF; height: 100%;">{{tail}}</div>
-	</but-sandwich>
-
-	<but-listen/>
-</div>
+<but-container>
+	<but-drawer width="200px" :open="open">Aside</but-drawer>
+	<but-container>
+		<but-header>Header</but-header>
+		<but-body>
+			<but-button v-on:click="opens">drawer</but-button>
+		</but-body>
+	</but-container>
+</but-container>
 </template>
-
 <script>
 export default {
 	data() {
 		return {
-			navList: [],
-			head: 300,
-			tail: 300,
-			tes: 1
-		}
-	},
-	computed: {
-		color() {
-			return this.$color;
-		}
+			open: true
+		};
 	},
 	methods: {
-		headSize(value) {
-			this.head = value;
-		},
-		tailSize(value) {
-			this.tail = value;
-		},
-
-		eventPre(node) {
-			this.$router.push({
-				path: node.path
-			})
-		},
-		Te() {
-			this.tes ^= 1;
-		},
-		/*求div的绝对高度*/
-		getElementTop(element) {
-			return element.offsetParent ? element.offsetTop + this.getElementTop(element.offsetParent) : element.offsetTop;
-			/*返回: 如果还有父级元素 则 求当前元素的高度与父级元素的高度和 否则 返回当前元素的高度*/
+		opens() {
+			this.open = !this.open;
 		}
-	},
-	// beforeMount() {
-	// 	this.$el.ondragstart = () => false;
-	// 	event.preventDefault();
-	// }
-}
+	}
+};
 </script>
-
-<style lang="less" scoped>
-
+<style>
+.but-drawer>content {
+	background-color: #D3DCE6;
+	color: #333;
+	text-align: center;
+	line-height: 200px;
+}
 </style>

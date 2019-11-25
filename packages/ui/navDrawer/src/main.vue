@@ -1,12 +1,15 @@
 <template>
-<div :style="{width: open ? size : '0px'}" :class="'modal-'+modal" class="but-drawer-container">
+<div :style="{width: open ? size : '0px'}" 
+	:class="'modal-'+modal" class="but-drawer-container">
+
 	<transition name="drawer-container">
 		<div v-if="open" @click="close" :class="'modal-background-'+modal"
 			class="but-drawer-content"/>
 	</transition>
 	<transition name="drawer">
 		<div v-if="open" :style="{width: size}" class="but-drawer" >
-			<slot/>
+			<navigation></navigation>
+			<!-- <slot/> -->
 		</div>
 	</transition>
 </div>
@@ -14,26 +17,22 @@
 
 <script>
 import PropValidator from '&/core/utils/propValidator'
+import Navigation from './navigation.vue'
 export default {
-	name: 'ButDrawer',
+	name: 'ButNavDrawer',
 	props: {
 		width: {
 			type: [String, Number],
-			default: '300px'
+			default: '256px'
 		},
 		open: {
 			type: Boolean,
 			default: false
 		},
-		direction: {
-			type: String,
-			default: 'left',
-			...PropValidator('direction', ["left", "right"])
-		},
 		modal: {
 			type: String,
-			default: 'xs',
-			...PropValidator('modal', ["none", "open", "xs", "sm", "md", "lg"])	
+			default: 'open',
+			...PropValidator('modal', ["none", "open", "sm", "md", "lg"])	
 		}
 	},
 	data() {
@@ -56,18 +55,21 @@ export default {
 		containerOpen() {
 			this.container = this.open;
 		}
+	},
+	components: {
+		Navigation
 	}
 };
 </script>
 
 <style lang="less" scoped>
-@import '../../../../_style/variables.less';
+@import '../../../_style/variables.less';
 .but-drawer-container {
 	box-sizing: border-box;
 	flex-shrink: 0;
 	position: relative;
 
-	transition: .2s ease-out;
+	transition: .2s ease;
 
 	.but-drawer-content {
 		height: 100%;
@@ -89,20 +91,11 @@ export default {
 }
 
 
-
-.drawer-left {
-
-}
-
-.drawer-right {
-
-}
-
-
-.modal-xs {
+// 基于媒体查询的模态组件
+.modal-open {
 	.modal;
 }
-.modal-background-xs {
+.modal-background-open {
 	.modal-background;
 }
 @media (max-width: @screen-sm) {										/*当宽度大于768px时触发*/
@@ -145,20 +138,21 @@ export default {
 	z-index: @zindex-modal-background;
 }
 
-
+// 背景动画
 .drawer-container-enter-active, .drawer-container-leave-active {
-	transition: .2s ease-out;
+	transition: .2s ease-in;
 }
 .drawer-container-enter, .drawer-container-leave-to {
 	opacity: 0;
 }
-
-.drawer-enter-active, .drawer-leave-active {
-	transition: .2s ease-out;
+// 抽屉动画
+.drawer-enter-active {
+	transition: .16s ease-out;
+}
+.drawer-leave-active {
+	transition: .2s ease-in;
 }
 .drawer-enter, .drawer-leave-to {
 	transform: translateX(-100%);
 }
-
-// v-enter
 </style>

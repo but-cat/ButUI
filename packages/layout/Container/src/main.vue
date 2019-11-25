@@ -1,5 +1,5 @@
 <template>
-<section class="but-container" :class="isVertical">
+<section class="but-container" :class="'but-'+isVertical">
 	<slot/>
 </section>
 </template>
@@ -16,10 +16,10 @@ export default {
 				return 'vertical';
 			} else if (this.direction === 'horizontal') {
 				return 'horizontal';
-			} else return this.$slots && this.$slots.default ? this.$slots.default.some(vnode => {
-				const tag = vnode.componentOptions && vnode.componentOptions.tag;
-				return tag === 'but-header' || tag === 'but-footer';
-			}) : false;
+			} else return this.$slots && this.$slots.default.some(vnode => {				// 如果direction没有输入或配置错误,则根据子组件分配布局轴向
+				return ['but-aside', 'but-drawer']
+					.some(item => vnode.componentOptions.tag === item);
+			}) ? 'horizontal' : 'vertical';
 		}
 	}
 };
@@ -33,7 +33,10 @@ export default {
     flex: 1;
     flex-basis: auto;
     box-sizing: border-box;
-    min-width: 0;
+	min-width: 0;
+	overflow: hidden;
+	
+	position: relative;
 }
 
 .but-vertical {

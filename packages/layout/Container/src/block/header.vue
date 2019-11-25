@@ -1,38 +1,25 @@
 <template>
-  <header class="el-header" :style="{ height }">
-    <slot></slot>
-  </header>
+<header class="but-header" :style="{height: (typeof this.height == 'string') ? this.height : `${this.height}px`}">
+	<slot/>
+</header>
 </template>
 
 <script>
-  export default {
-    name: 'ElHeader',
-
-    componentName: 'ElHeader',
-
-    props: {
-      height: {
-        type: String,
-        default: '60px'
-      }
-    }
-  };
+export default {
+	name: 'ButHeader',
+	props: {
+		height: {
+			type: [String, Number],
+			default: '60px'
+		}
+	}
+};
 </script>
 
 <style lang="less" scoped>
 @import '../../../../_style/variables.less';
-.but-container {
-    display: flex;
-    flex: 1;
-    flex-basis: auto;
+.but-header {
     box-sizing: border-box;
-    min-width: 0;
-}
-
-.but-vertical {
-	flex-direction: column;
-}
-.but-horizontal {
-	flex-direction: row;
+    flex-shrink: 0;
 }
 </style>
