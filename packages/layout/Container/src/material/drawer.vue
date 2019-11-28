@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import PropValidator from '&/core/utils/propValidator'
+import PropValidator from '../../../core/utils/propValidator'
 export default {
 	name: 'ButDrawer',
 	props: {

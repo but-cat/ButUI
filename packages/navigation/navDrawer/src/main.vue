@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import PropValidator from '&/core/utils/propValidator'
+import PropValidator from '../../../core/utils/propValidator'
 import Navigation from './navigation.vue'
 export default {
 	name: 'ButNavDrawer',

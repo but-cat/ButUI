@@ -21,10 +21,11 @@ yarn-error.log*
 *.sw?
 
 # Ignore project files
-examples/
-packages/
-public/
 node_modules/
+examples/
+public/
+docs/
+lib/
 vue.config.js
 babel.config.js
 *.map

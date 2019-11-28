@@ -11,7 +11,7 @@ module.exports = {
 	chainWebpack: config => {											// 扩展 webpack 配置
 		config.resolve.alias
 			.set('@', path.resolve('examples'))							// @ 指向 examples 目录
-			.set('&', path.resolve('packages'))							// & 指向 packages 目录
+			// .set('&', path.resolve('packages'))							// & 指向 packages 目录
 
 		config.module													// 将 packages 和 examples 加入编译
 			.rule('js')

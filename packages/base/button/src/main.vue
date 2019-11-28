@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import PropValidator from '&/core/utils/propValidator'
+import PropValidator from '../../../core/utils/propValidator'
 import {butIcon} from '../../../assets/importIcon.js';
 export default {
 	name: 'ButButton',

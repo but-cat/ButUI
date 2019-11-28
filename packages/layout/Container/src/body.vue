@@ -15,7 +15,7 @@ export default {
 .but-body {
 	display: block;
     flex: 1;
-    flex-basis: auto;
-    padding: 20px;
+    // flex-basis: auto;
+    // padding: 20px;
 }
 </style>

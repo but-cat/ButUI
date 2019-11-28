@@ -87,7 +87,7 @@ export default {
 		},
 	},
 	components: {
-		butCollapse: require("&/base/collapse/src/main").default
+		butCollapse: require("../../../base/collapse/src/main").default
 	}
 }
 </script>

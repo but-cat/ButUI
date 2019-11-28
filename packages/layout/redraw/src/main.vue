@@ -40,6 +40,7 @@ export default {
 	width:100%;
 	height:100%;
 	position: static;
+	overflow: hidden;
 }
 .object {
 	display: block;

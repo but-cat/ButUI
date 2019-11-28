@@ -16,10 +16,9 @@ export default {
 				return 'vertical';
 			} else if (this.direction === 'horizontal') {
 				return 'horizontal';
-			} else return this.$slots && this.$slots.default.some(vnode => {				// 如果direction没有输入或配置错误,则根据子组件分配布局轴向
-				return ['but-aside', 'but-drawer']
-					.some(item => vnode.componentOptions.tag === item);
-			}) ? 'horizontal' : 'vertical';
+			} else return this.$slots && this.$slots.default.some(vnode => 				// 如果direction没有输入或配置错误,则根据子组件分配布局轴向
+				['but-aside', 'but-drawer'].some(item => (vnode.componentOptions ? vnode.componentOptions.tag : "") === item)
+			) ? 'horizontal' : 'vertical'
 		}
 	}
 };

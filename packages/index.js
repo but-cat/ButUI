@@ -1,12 +1,12 @@
 const components = [															// 所有组件列表
-	require('&/base').default,													// 基础类
-	require('&/data').default,													// 数据类
-	require('&/form').default,													// 表单类
-	require('&/layout').default,												// 布局类
-	require('&/media').default,													// 媒体类
-	require('&/navigation').default,											// 导航类
-	require('&/ui').default,													// UI类
-	require('&/others').default,												// 杂项
+	require('./base').default,													// 基础类
+	require('./data').default,													// 数据类
+	require('./form').default,													// 表单类
+	require('./layout').default,												// 布局类
+	require('./media').default,													// 媒体类
+	require('./navigation').default,											// 导航类
+	require('./ui').default,													// UI类
+	require('./others').default,												// 杂项
 ];
 
 const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数

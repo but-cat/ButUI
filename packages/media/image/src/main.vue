@@ -31,7 +31,7 @@ export default {
 	},
 	methods: {
 		notimgfound() {
-			this.source = require('&/assets/image/pictures.svg').default;
+			this.source = require('../../../assets/image/pictures.svg').default;
 		}
 	},
 	// mounted() {
