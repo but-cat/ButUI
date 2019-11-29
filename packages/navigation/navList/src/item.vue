@@ -1,19 +1,22 @@
 <template>
-<a class="but-list-item-link" href="#">
+<div class="but-list-item-link" @click="activeFX">
 	<div class="but-list-item">
 		<img v-if="icon" :src="icon" class="but-list-icons"/>
 		<span class="but-list-text"><slot/></span>
-		
 	</div>
-</a>
+</div>
 </template>
 
 <script>
 export default {
 	name: 'ButNavListItem',
 	props: {
-		src: String,
-		icon: String
+		// src: String,
+		icon: String,
+		scene: {
+			type: String,
+			default: "primary"
+		}
 	},
 	data() {
         return {
@@ -23,6 +26,27 @@ export default {
 	methods: {
 		notimgfound() {
 			this.source = require('../../../assets/image/pictures.svg').default;
+		},
+		
+		activeFX(event) {
+			this.active(event.offsetX, event.offsetY);
+		},
+		active(offsetX, offsetY) {
+			let active = document.createElement("div"),
+				color = this.type == "contained" ? "#FFF" : this.$scene[this.scene];
+
+			active.className = "active";
+			active.style = `
+				background-color: ${color};
+				left: ${offsetX-5}px;
+				top: ${offsetY-5}px;
+				z-index: 10000;
+			`;
+			
+			this.$el.appendChild(active);
+			active.addEventListener('animationend', () => {
+				this.$el.removeChild(active);
+			},false);
 		}
 	}
 }
@@ -34,7 +58,10 @@ export default {
 .but-list-item-link {
 	width: 95%;
     height: 40px;
-    margin: 4px;
+	margin: 4px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
 }
 
 .but-list-item {
@@ -61,7 +88,8 @@ export default {
 
 	display: inline-flex;
     user-select: none;
-    align-items: center;
+	align-items: center;
+	pointer-events: none;
     // justify-content: center;
     vertical-align: middle;
     font-size: 24px !important;
