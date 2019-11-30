@@ -8,7 +8,7 @@
 	</transition>
 	<transition name="navdrawer">
 		<div v-if="open" :style="{width: size}" class="but-navdrawer" >
-			<navigation :src="src"><slot/></navigation>
+			<navigation :img="img" :title="title" :subtext="subtext" :background="background"><slot/></navigation>
 		</div>
 	</transition>
 </div>
@@ -33,11 +33,11 @@ export default {
 			default: 'open',
 			...PropValidator('modal', ["none", "open", "sm", "md", "lg"])	
 		},
+		title: String,
+		subtext: String,
 
-		src: {
-			type: String,
-			default: 'img/65040104_p0.39fa516a.jpg'
-		},
+		img: String,
+		background: String
 	},
 	data() {
 		return {

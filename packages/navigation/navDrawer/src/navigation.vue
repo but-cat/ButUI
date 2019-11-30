@@ -1,9 +1,9 @@
 <template>
 <aside class="nav-drawer">
-	<div class="header">
-		<img :src="source" alt="No image" @error="notimgfound" class="avatar"/>
-		<div class="title">Title</div>
-		<div class="subtitle">subtext</div>
+	<div class="header" :style="{background: `url(${background}) center center / cover no-repeat`}">
+		<img v-if="img" :src="img" alt="No image" @error="notimgfound" class="avatar"/>
+		<div class="title">{{title}}</div>
+		<div class="subtitle">{{subtext}}</div>
 	</div>
 	<div class="content">
 		<slot/>
@@ -14,11 +14,14 @@
 <script>
 export default {
 	props: {
-		src: String
+		title: String,
+		subtext: String,
+		img: String,
+		background: String
 	},
 	data() {
         return {
-			source: this.src
+			source: this.img
         }
 	},
 	methods: {

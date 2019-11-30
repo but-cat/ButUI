@@ -1,6 +1,6 @@
 <template>
-<div class="but-list-item-link" @click="activeFX">
-	<div class="but-list-item">
+<div class="but-list-item-link">
+	<div class="but-list-item" @click="activeFX">
 		<img v-if="icon" :src="icon" class="but-list-icons"/>
 		<span class="but-list-text"><slot/></span>
 	</div>
@@ -29,6 +29,7 @@ export default {
 		},
 		
 		activeFX(event) {
+			this.$emit("click", event);
 			this.active(event.offsetX, event.offsetY);
 		},
 		active(offsetX, offsetY) {
@@ -65,16 +66,6 @@ export default {
 }
 
 .but-list-item {
-    // font-family: Roboto,sans-serif;
-    // -moz-osx-font-smoothing: grayscale;
-    // -webkit-font-smoothing: antialiased;
-    // font-size: .875rem;
-    // line-height: 1.375rem;
-    // font-weight: 500;
-    // letter-spacing: .0071428571em;
-    // text-decoration: inherit;
-	// text-transform: inherit;
-	
 	width: 100%;
     height: 100%;
     // margin: 8px;
@@ -89,14 +80,15 @@ export default {
 	display: inline-flex;
     user-select: none;
 	align-items: center;
-	pointer-events: none;
     // justify-content: center;
     vertical-align: middle;
-    font-size: 24px !important;
+	font-size: 24px !important;
+	transition: .12s;
 	margin: auto;
 	
 	&:hover {
 		background-color: rgba(123, 146, 146, 0.178);
+		transition: .12s;
 	}
 
 	.but-list-icons {
@@ -104,13 +96,15 @@ export default {
 		height: 24px;
 		position: absolute;
 		left: 8px;
+		pointer-events: none;
 	}
 
 	.but-list-text {
 		width: 142px;
 		line-height: 1.25em;
 		text-overflow: ellipsis;
-	    overflow: hidden;
+		overflow: hidden;
+		pointer-events: none;
 	}
 }
 </style>
