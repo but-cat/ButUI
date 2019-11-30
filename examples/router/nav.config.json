@@ -180,6 +180,12 @@
 				"name": "Card",
 				"path": "/ui/card",
 				"component": "ui/card"
+			},
+			{
+				"desc": "工具栏",
+				"name": "ToolsBar",
+				"path": "/ui/toolsbar",
+				"component": "ui/toolsbar"
 			}
 		]
 	}

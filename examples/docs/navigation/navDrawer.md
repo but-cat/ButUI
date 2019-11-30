@@ -9,7 +9,8 @@
 ```vue
 <template>
 <but-container>
-	<but-nav-drawer @close="opens" :open="open">
+	<but-nav-drawer @close="opens" :open="open" title="标题" subtext="副标题"
+	 :src="require('./../../assets/logo.png')" :background="require('./../../assets/logo.png')">
 		<but-nav-list>
 			<but-nav-list-item>Item</but-nav-list-item>
 			<but-nav-list-item>Item</but-nav-list-item>

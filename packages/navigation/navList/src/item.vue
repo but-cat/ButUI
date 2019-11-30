@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import ripples from "../../../core/effects/ripples"
+
 export default {
 	name: 'ButNavListItem',
 	props: {
@@ -30,24 +32,7 @@ export default {
 		
 		activeFX(event) {
 			this.$emit("click", event);
-			this.active(event.offsetX, event.offsetY);
-		},
-		active(offsetX, offsetY) {
-			let active = document.createElement("div"),
-				color = this.type == "contained" ? "#FFF" : this.$scene[this.scene];
-
-			active.className = "active";
-			active.style = `
-				background-color: ${color};
-				left: ${offsetX-5}px;
-				top: ${offsetY-5}px;
-				z-index: 10000;
-			`;
-			
-			this.$el.appendChild(active);
-			active.addEventListener('animationend', () => {
-				this.$el.removeChild(active);
-			},false);
+			ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
 		}
 	}
 }

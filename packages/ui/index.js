@@ -1,6 +1,7 @@
 export default [															// 所有组件列表
 	require('./carousel').default,											// 轮播组件
 	require('./card').default,												// 卡片组件
+	require('./toolsBar').default,											// 工具栏组件
 ];
 
 // (function(Vue) {
