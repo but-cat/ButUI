@@ -15,10 +15,9 @@ export default {
 	display: flex;
 	align-items: center;
 	padding: 0 10px;
-	border-left: 1px solid var(--handle);
 
-	&:not(:last-child){
-		border-left: none;
+	&:not(:first-child) {
+		border-left: 1px solid var(--handle);
 	}
 }
 </style>

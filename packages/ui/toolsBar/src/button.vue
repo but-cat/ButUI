@@ -16,6 +16,7 @@ export default {
 	},
 	methods: {
 		rip(event) {
+			this.$emit("click", event);
 			ripples(event, this.$scene.primary);								// 涟漪特效
 		}
 	}
@@ -28,6 +29,8 @@ export default {
 	height: 30px;
 	border-radius: 3px;
 	margin: 0 5px;
+	cursor: pointer;
+	
 	position: relative;
 	overflow: hidden;
 }

@@ -9,7 +9,7 @@
 export default (event, color = "#FFF") => {
 	let active = document.createElement("div");
 
-	active.className = "active";
+	active.className = "ripples";
 	active.style = `
 		background-color: ${color};
 		left: ${event.offsetX-5}px;

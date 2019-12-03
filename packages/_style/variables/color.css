@@ -40,7 +40,7 @@
 
 
 /* 点击动画 */
-.active {
+.ripples {
 	width:10px;
 	height:10px;
 	z-index: 10;
@@ -48,11 +48,11 @@
 	position: absolute;
 	margin: 0px;
 	opacity: 0;
-	animation: active;
+	animation: ripples;
 	animation-duration: .6s;
 	pointer-events: none;
 }
-@keyframes active {
+@keyframes ripples {
 	from {
 		opacity: 0.5;
 	}
