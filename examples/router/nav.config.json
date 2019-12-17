@@ -66,6 +66,12 @@
 				"component": "from/radio"
 			},
 			{
+				"desc": "复选框",
+				"name": "Checkbox",
+				"path": "/from/checkbox",
+				"component": "from/checkbox"
+			},
+			{
 				"desc": "滑动条",
 				"name": "Slider",
 				"path": "/from/slider",
@@ -159,6 +165,12 @@
 				"name": "NavDrawer",
 				"path": "/navigation/navDrawer",
 				"component": "navigation/navDrawer"
+			},
+			{
+				"desc": "标签栏",
+				"name": "Tab",
+				"path": "/navigation/tab",
+				"component": "navigation/tab"
 			}
 		]
 	},

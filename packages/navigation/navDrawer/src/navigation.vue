@@ -1,6 +1,6 @@
 <template>
 <aside class="nav-drawer">
-	<div class="header" :style="{background: `url(${background}) center center / cover no-repeat`}">
+	<div class="header" :style="{background: `linear-gradient(rgba(0, 0, 0, 0), rgba(31, 31, 31, 0.9)), url(${background}) center center / cover no-repeat`}">
 		<img v-if="img" :src="img" alt="No image" @error="notimgfound" class="avatar"/>
 		<div class="title">{{title}}</div>
 		<div class="subtitle">{{subtext}}</div>
@@ -63,9 +63,9 @@ export default {
 	.header {
 		text-align: left;
 
-	    flex-shrink: 0;
-	    box-sizing: border-box;
-	    min-height: 64px;
+		flex-shrink: 0;
+		box-sizing: border-box;
+		min-height: 64px;
 		padding: 0 16px 4px;
 		width: 100%;
 		box-sizing: border-box;
@@ -81,36 +81,36 @@ export default {
 		}
 		
 		.title {
-			color: @text-primary;
+			color: whitesmoke;
 
-		    font-size: 1.25rem;
-		    line-height: 2rem;
+			font-size: 1.25rem;
+			line-height: 2rem;
 			font-weight: 500;
 			
-		    letter-spacing: .0125em;
-		    text-decoration: inherit;
-		    text-transform: inherit;
-		    display: block;
+			letter-spacing: .0125em;
+			text-decoration: inherit;
+			text-transform: inherit;
+			display: block;
 			
 			margin-top: 20px;
 			margin-bottom: -4px;
 		}
 
 		.subtitle {
-			color: @text-primary;
+			color: beige;
 
-		    font-family: Roboto,sans-serif;
-		    font-size: .875rem;
-		    line-height: 1.25rem;
+			font-family: Roboto,sans-serif;
+			font-size: .875rem;
+			line-height: 1.25rem;
 			font-weight: 400;
 			
-		    letter-spacing: .0178571429em;
-		    text-decoration: inherit;
-		    text-transform: inherit;
-		    display: block;
+			letter-spacing: .0178571429em;
+			text-decoration: inherit;
+			text-transform: inherit;
+			display: block;
 			
 			margin-top: 0;
-		    margin-bottom: 0;
+			margin-bottom: 0;
 		}
 	}
 

@@ -2,7 +2,8 @@ export default [															// 表单组件
 	require('./input').default,
 	require('./radio').default,
 	require('./slider').default,
-	require('./switch').default
+	require('./switch').default,
+	require('./checkBox').default
 ];
 
 // const install = function (Vue) {												// 定义 install 方法，接收 Vue 作为参数

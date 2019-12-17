@@ -1,26 +1,39 @@
 <template>
-	<input @input="input(value)" :value="value" :placeholder="placeholder" :color="color" class="inputBar searchDay color" type="text">
+<div :class="[scene, disabled ? 'disabled' : '']" class="input-container">
+	<input @input="input" :value="value" :placeholder="placeholder" :class="disabled ? 'disabled' : ''" :disabled="disabled" type="input"/>
+	<label for="input" v-if="placeholder">{{placeholder}}</label>
+	<div class="bottom-line"></div>
+</div>
 </template>
 
 <script>
+import PropValidator from '../../../core/utils/propValidator'
+
 export default {
 	name: 'ButInput',
 	props: {
-		size: {
-			value: String,
-			default: ''
-		},
 		placeholder: {
 			value: String,
 			default: ''
 		},
+		scene: {
+			type: String,
+			default: 'primary',
+			...PropValidator('scene', ["primary", "success", "info", "warning", "danger"])
+		},
 		value: {
 			value: String,
 			default: ''
-		}
+		},
+		disabled: Boolean,
 	},
+	data: ()=>({
+		// placeholder: ''
+	}),
 	methods: {
-		input(value) {
+		input(event) {
+			var value = event.target.value;
+			console.log(value);
 			this.$emit('input', value);
 		}
 	},
@@ -33,62 +46,110 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
-// @import './scene.less';
 
-/* 搜索栏 */
-.inputBar {
+@width: 500px;
+@border-bottom-color: #d5d5d5;
+@transform-time: 0.3s;
+@scale: 0.9;
+
+.input-container {
 	width: 100%;
-	padding: 0px 6px;
+	position: relative;
 	display: flex;
-	align-items: center;
-	box-sizing: border-box;
+	flex-flow: column-reverse;
+	align-items: flex-start;
+	margin: 3px auto;
 
-	border-radius: 3px;
+	input {
+		order: 10;
+		outline: none;
+		border: none;
+		color: @text-primary;
+		width: 100%;
+		padding: 10px 0;
+		font-size: 20px;
+		border-bottom: 1px solid @border-bottom-color;
+		text-indent: 10px;
+		&::placeholder {
+			opacity: 0;
+		}
 
-    font-size: @font-size-large;
-	height: @font-size-base * 2;
-	
-	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	&:focus {
-		color: #495057;
-		.focus();
+		&:focus, &:not(:placeholder-shown) {
+			border-bottom: 1px solid rgba(0, 0, 0, 0);
+			transition: all 0.3s;
+		}
+
+		&:focus ~ div, &:not(:placeholder-shown) ~ div {
+			width: 100%;
+		}
+
+		&:focus + label, &:not(:placeholder-shown) + label {
+			color: @primary;
+			transform: translate(10px) scale(@scale);
+		}
+	}
+
+	label {
+		order: 100;
+		color: @primary;
+		transform-origin: left bottom;
+		transform: translate(0px, 30px);
+		transition: all 0.3s;
+	}
+
+	.bottom-line {
+		order: 2;
+		width: 0;
+		height: 2px;
+		background: @primary;
+		// background: @focus-border-color;
+		transition: all @transform-time;
 	}
 }
-// .searchDay {
-// 	background-color: rgb(255, 255, 255);
-// 	transition: .2s ease-out;
-// 	/* border: 1px solid #75757580; */
-// 	box-shadow: 0px 0px 2px rgba(117, 117, 117, 0.5);
-// }
-// .searchDay:hover {
-// 	background-color: rgb(255, 255, 255);
-// 	box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.5);
-// }
-.searchNight {
-	background-color: rgb(255, 255, 255);
-	box-shadow: 0px 0px 5px rgba(117, 117, 117, 0.5) inset;
-}
-
-
-.color {
-	&[color=light]{
-		color: @light-text-primary;
-		background-color: @light-background
-		// .default(@light-text-primary, @light-background);
-	}
-	&[color=dark] {
-		color: @dark-text-primary;
-		background-color: @dark-background
-		// .default(@light-text-primary, @light-background);
-	}
-}
 
 
 
-input{
-    overflow: hidden;
-	outline: 0px;
-    border: none;
+/* 禁用状态 */
+.disabled {
 	box-shadow: none;
+	// pointer-events: none;
+	opacity: 0.5;
+	// text-decoration:line-through;
+	cursor: not-allowed !important;
+}
+
+.input-container(@color) {
+	input {
+		&:focus + label, &:not(:placeholder-shown) + label {
+			color: @color;
+		}
+	}
+	label {
+		color: @color;
+	}
+	.bottom-line {
+		background: @color;
+	}
+}
+
+// 主要
+.primary {
+	.input-container(@primary);
+}
+// 成功
+.success {
+	.input-container(@success)
+}
+// 信息
+.info {
+	.input-container(@info)
+}
+// 警告
+.warning {
+	.input-container(@warning)
+}
+// 危险
+.danger {
+	.input-container(@danger)
 }
 </style>

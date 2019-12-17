@@ -2,7 +2,9 @@
 <button :class="[type, scene, disableds]" :type="type" @click="handleClick">
 	<!-- <span class="submit">Submit</span> -->
 	<!-- <span class="loading"/> -->
-	<span :class="disableds" class="background"/>
+	
+	<span :class="disableds" class="background"></span>
+	<span class="back"></span>
 	<div class="content">
 		<img v-if="!!icons" :src="icons" class="imgs"><slot/>
 	</div>
@@ -12,7 +14,9 @@
 
 <script>
 import PropValidator from '../../../core/utils/propValidator'
-import {butIcon} from '../../../assets/importIcon.js';
+import {butIcon} from '../../../assets/importIcon.js'
+import ripples from "../../../core/effects/ripples"
+
 export default {
 	name: 'ButButton',
 	props: {
@@ -57,26 +61,10 @@ export default {
 	methods: {
 		handleClick(event) {
 			if(!this.disabled){
-				this.active(event.offsetX, event.offsetY);
 				this.$emit('click', event);
+				ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
 			}
 		},
-		active(offsetX, offsetY) {
-			let active = document.createElement("div"),
-				color = this.type == "contained" ? "#FFF" : this.$scene[this.scene];
-
-			active.className = "active";
-			active.style = `
-				background-color: ${color};
-				left: ${offsetX-5}px;
-				top: ${offsetY-5}px;
-			`;
-			
-			this.$el.appendChild(active);
-			active.addEventListener('animationend', () => {
-				this.$el.removeChild(active);
-			},false);
-		}
 	}
 }
 </script>
@@ -106,14 +94,23 @@ export default {
 		user-select: none;
 		vertical-align: middle;
 		.imgs {
-			width: 18px;
-			height: 18px;
+			width: 16px;
+			height: 16px;
 			// margin-right: 5px;
 			margin-left: -4px;
 			margin-right: 8px;
 			display: block;
 		}
 		pointer-events: none;
+	}
+
+	.back {
+		top: 0px;
+		left: 0px;
+		width: 101%;
+		height: 101%;
+		z-index: 10;
+		position: absolute;
 	}
 
 	.background {
@@ -190,5 +187,29 @@ export default {
 // 危险
 .danger {
 	.button(@danger, @sceneText)
+}
+
+
+/* 点击动画 */
+.ripples {
+	width:10px;
+	height:10px;
+	z-index: 10;
+	border-radius: 50%;
+	position: absolute;
+	margin: 0px;
+	opacity: 0;
+	animation: ripples;
+	animation-duration: .6s;
+	pointer-events: none;
+}
+@keyframes ripples {
+	from {
+		opacity: 1;
+	}
+	to {
+		transform: scale(40,40);
+		opacity: 0;
+	}
 }
 </style>

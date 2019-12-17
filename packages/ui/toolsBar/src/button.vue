@@ -25,8 +25,8 @@ export default {
 
 <style lang="less" scoped>
 .button {
-	width: 30px;
-	height: 30px;
+	width: 24px;
+	height: 24px;
 	border-radius: 3px;
 	margin: 0 5px;
 	cursor: pointer;

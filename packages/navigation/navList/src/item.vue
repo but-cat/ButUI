@@ -1,6 +1,6 @@
 <template>
 <div class="but-list-item-link">
-	<div class="but-list-item" @click="activeFX">
+	<div class="but-list-item" @click="activeFX" :class="activated ? 'activated' : ''">
 		<img v-if="icon" :src="icon" class="but-list-icons"/>
 		<span class="but-list-text"><slot/></span>
 	</div>
@@ -18,7 +18,8 @@ export default {
 		scene: {
 			type: String,
 			default: "primary"
-		}
+		},
+		activated: Boolean
 	},
 	data() {
         return {
@@ -31,8 +32,10 @@ export default {
 		},
 		
 		activeFX(event) {
-			this.$emit("click", event);
-			ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
+			if(!this.activated){														// 处于激活状态时将不再抛出点击事件
+				this.$emit("click", event);
+				ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
+			}
 		}
 	}
 }
@@ -77,7 +80,7 @@ export default {
 	}
 
 	.but-list-icons {
-	    width: 24px;
+		width: 24px;
 		height: 24px;
 		position: absolute;
 		left: 8px;
@@ -91,5 +94,11 @@ export default {
 		overflow: hidden;
 		pointer-events: none;
 	}
+
+}
+.activated {
+	color: @primary;
+	background-color: rgba(123, 146, 146, 0.178);
+	// transition: .12s;
 }
 </style>

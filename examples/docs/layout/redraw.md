@@ -7,7 +7,7 @@
 ```vue
 <template>
 	<div style="height: 360px;">
-		<but-redraw @resize="resizeOut" style="background-color: #39c5bb;">
+		<but-redraw @resize="resizeOut" style="background-color: #99a9bf;">
 			<h1>容器的宽度为{{width}}px</h1>
 			<h1>高度为{{height}}px</h1>
 		</but-redraw>

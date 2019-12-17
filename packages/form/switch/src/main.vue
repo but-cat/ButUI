@@ -1,5 +1,5 @@
 <template>
-<div :class="scene" class="switch" @click="toggle">
+<div :class="[scene, disabled ? 'disableds' : '']" class="switch" @click="toggle">
 	<div :class="[value ? 'no' : 'off', disableds]" class="bar"></div>
 	<div :class="[value ? 'no' : 'off']" class="container"></div>
 </div>
@@ -49,7 +49,7 @@ export default {
 	.container {
 		width: 100%;
 		height: 14px;
-		background-color: #e3ebec;
+		background-color: #bcb4b4;
 		border-radius: 100px;
 		user-select: none;
 		transition: all .3s;
@@ -71,11 +71,12 @@ export default {
 	}
 	.off {
 		left: -8px;
-		background-color: #FFF;
+		background-color: #bcb4b4;
 	}
 	/* 禁用状态 */
 	.disableds {
 		box-shadow: none;
+		filter: grayscale(80%);
 		cursor: not-allowed !important;
 	}
 }
