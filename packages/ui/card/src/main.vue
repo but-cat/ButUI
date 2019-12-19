@@ -1,61 +1,59 @@
 <template>
-<div class="but-card" :class="shadow" :style="bodyStyle" :color="color">
+<div :class="shadow" :style="[bodyStyle, fillets]" class="but-card">
 	<slot/>
 </div>
 </template>
 
 <script>
+import PropValidator from '../../../core/utils/propValidator'
 export default {
 	name: 'ButCard',
 	props: {
 		bodyStyle: {
 			type: Object,
-			default: function () {
-				return {}
-			}
+			default: ()=>({
+				
+			})
 		},
 		elevation: {
 			type: Number,
-			default: 3
+			default: 3,
+			// ...PropValidator('scene', ["primary", "success", "info", "warning", "danger"])
+		},
+		fillet: {
+			type: Number,
+			default: 0
 		}
 	},
 	computed: {
 		shadow() {
-			return 'elevation-' + this.elevation;
+			return 'shadow-' + this.elevation;
 		},
-		color() {
-			return this.$color;
+		fillets() {
+			return {
+				borderRadius: this.fillet + 'px'
+			}
 		}
-	}
+	},
+	provide: ()=>({
+		radius: 3
+	})
 }
 </script>
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
 
-/* 循环创建海拔类 */
-// .generate-columns(@n, @i: 1) when (@i =< @n) {
-// 	.elevation-@{i} {
-// 		box-shadow: @elevation-3;
-// 	}
-// 	.generate-columns(@n, (@i + 1));
-// }
-// .generate-columns(23);
-
 .but-card {
-	&[color=light]{
-		color: @light-text-primary;
-		background-color: @light-background;
-	}
-	&[color=dark] {
-		color: @dark-text-primary;
-		background-color: @dark-background;
-	}
+	width: 100%;
+	// height: 100%;
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
 }
 
-.box {
-	position: relative;
-	left: 30px;
-	top: 20px;
-}
+
 </style>

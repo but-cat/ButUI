@@ -1,0 +1,44 @@
+# 卡片
+卡片是内容容器,你可以将信息,表单和媒体等内容元素整合在卡片容器中展示。
+
+## 基础用法
+
+```vue
+<template>
+<but-menu>
+	<but-button>信息</but-button>
+
+	<but-menu-content>
+		<but-menu-item>选项A</but-menu-item>
+		<but-menu-item>选项B</but-menu-item>
+		<but-menu-item>选项C</but-menu-item>
+
+		<but-menu>
+			<but-menu-item>选项D</but-menu-item>
+			
+			<but-menu-content>
+				<but-menu-item>选项1</but-menu-item>
+				<but-menu-item>选项2</but-menu-item>
+				<but-menu-item>选项3</but-menu-item>
+			</but-menu-content>
+		</but-menu>
+
+	</but-menu-content>
+<but-menu>
+</template>
+<script>
+export default {
+	data: ()=>({
+
+	})
+};
+</script>
+```
+
+
+
+
+### 属性
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| type | 类型 | String| — | — |

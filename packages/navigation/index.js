@@ -1,6 +1,7 @@
 export default [															// 所有组件列表
 	require('./navDrawer').default,											// 导航抽屉
 	require('./navList').default,											// 导航列表
+	require('./navMenu').default,											// 导航菜单
 ];
 
 // (function(Vue) {

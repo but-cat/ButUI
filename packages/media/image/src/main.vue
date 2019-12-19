@@ -1,6 +1,6 @@
 <template>
 <div :class="[shape=='circle' ? 'circle-container' : 'container']">
-	<img :src="source" :alt="alt" @error="notimgfound" :class="shape"/>
+	<img :src="src" :alt="alt" v-notimg="require('../../../assets/image/pictures.svg')" :class="shape"/>
 </div>
 </template>
 
@@ -23,20 +23,7 @@ export default {
 			},
 			default: "responsive"
 		}
-	},
-	data() {
-        return {
-			source: this.src
-        }
-	},
-	methods: {
-		notimgfound() {
-			this.source = require('../../../assets/image/pictures.svg').default;
-		}
-	},
-	// mounted() {
-	// 	this.source = require('&/assets/image/pictures.svg');
-	// }
+	}
 }
 </script>
 

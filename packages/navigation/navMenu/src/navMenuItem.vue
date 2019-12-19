@@ -1,19 +1,19 @@
 <template>
-<div class="but-list-item-link">
-	<div class="but-list-item" @click="activeFX" :class="activated ? 'activated' : ''">
+<!-- <div class="nav-menu-item"> -->
+	<div class="nav-menu-item" @click="activeFX" :class="activated ? 'activated' : ''">
 		<img v-if="icon" :src="icon" class="but-list-icons"/>
 		<span class="but-list-text"><slot/></span>
 	</div>
-</div>
+<!-- </div> -->
 </template>
 
 <script>
 import ripples from "../../../core/effects/ripples"
 
 export default {
-	name: 'ButNavListItem',
+	name: "ButNavMenuItem",
 	props: {
-		// src: String,
+		src: String,
 		icon: String,
 		scene: {
 			type: String,
@@ -21,11 +21,10 @@ export default {
 		},
 		activated: Boolean
 	},
-	data() {
-        return {
-			source: this.src
-        }
-	},
+	// inject: ['el'],
+	data: ()=>({
+		source: this.src
+	}),
 	methods: {
 		notimgfound() {
 			this.source = require('../../../assets/image/pictures.svg').default;
@@ -38,41 +37,32 @@ export default {
 			}
 		}
 	}
-}
+} 
 </script>
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
 
-.but-list-item-link {
-	width: 95%;
-    height: 40px;
-	margin: 4px;
-	cursor: pointer;
-	position: relative;
-	overflow: hidden;
-}
-
-.but-list-item {
-	width: 100%;
+.nav-menu-item {
+	width: 130px;
     height: 100%;
     // margin: 8px;
-	padding: 0 64px;
-	border-radius: 0.2rem;
-	display: inline-block;
+	// padding: 0 64px;
+	// border-radius: 0.2rem;
+	// display: inline-block;
 	// background-color: aliceblue;
 	box-sizing: border-box;
 
 	position: relative;
+	overflow: hidden;
 
-	display: inline-flex;
-    user-select: none;
+	// display: flex;
+	// user-select: none;
 	align-items: center;
-    // justify-content: center;
+    justify-content: center;
     vertical-align: middle;
 	font-size: 24px !important;
 	transition: .12s;
-	margin: auto;
 	
 	&:hover {
 		background-color: rgba(123, 146, 146, 0.178);
@@ -99,7 +89,9 @@ export default {
 }
 .activated {
 	color: @primary;
-	background-color: rgba(123, 146, 146, 0.178);
+	// background-color: rgba(123, 146, 146, 0.178);
+	// border: 3px ;
+	border-bottom: 3px solid @primary;
 	// transition: .12s;
 }
 </style>

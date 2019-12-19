@@ -19,7 +19,20 @@
 			}
 		]
 	},
-
+	{
+		"desc": "全局指令",
+		"name": "Command",
+		"path": "/command/index",
+		"component": "command/index",
+		"list": [
+			{
+				"desc": "图片加载失败指令",
+				"name": "notImage",
+				"path": "/command/notimg",
+				"component": "command/notimg"
+			}
+		]
+	},
 	{
 		"desc": "基础组件",
 		"name": "Basic",
@@ -167,10 +180,16 @@
 				"component": "navigation/navDrawer"
 			},
 			{
-				"desc": "标签栏",
-				"name": "Tab",
-				"path": "/navigation/tab",
-				"component": "navigation/tab"
+				"desc": "导航列表",
+				"name": "NavList",
+				"path": "/navigation/navList",
+				"component": "navigation/navList"
+			},
+			{
+				"desc": "导航菜单",
+				"name": "NavMenu",
+				"path": "/navigation/navMenu",
+				"component": "navigation/navMenu"
 			}
 		]
 	},

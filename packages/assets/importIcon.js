@@ -21,11 +21,13 @@ function butIcon() {
 		emoSurprised: require('./icon/emo-surprised.svg'),
 		emoThumbsup: require('./icon/emo-thumbsup.svg'),
 
+		// 情景图标
 		info: require('./scene/info.svg'),
 		pass: require('./scene/pass.svg'),
 		warning: require('./scene/warning.svg'),
-		error: require('./scene/error.svg')
+		error: require('./scene/error.svg'),
 		
+		pictures: require('./image/pictures.svg')
 	}
 }
 
