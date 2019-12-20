@@ -17,7 +17,7 @@ export default {
 		},
 		elevation: {
 			type: Number,
-			default: 3,
+			default: 0,
 			// ...PropValidator('scene', ["primary", "success", "info", "warning", "danger"])
 		},
 		fillet: {
@@ -48,6 +48,7 @@ export default {
 	width: 100%;
 	// height: 100%;
 	position: relative;
+	background-color: @background;
 
 	display: flex;
 	flex-direction: column;

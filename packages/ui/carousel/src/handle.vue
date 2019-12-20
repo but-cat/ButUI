@@ -1,15 +1,15 @@
 <template>
 <div class="handle">
 <ul :class="!action ? 'hide' : ''" class="indicators">
-	<li class="arrow" @click="red">
+	<!-- <li class="arrow" @click="red">
 		<img class="arrow" src="../../../assets/image/arrow.svg" alt="←" style="transform: rotate(180deg);">
-	</li>
+	</li> -->
 	<li v-for="item in max" :key="item" @click="response(item)" class="indicator ">
 		<button :class="(present+1 == item) ? 'light' : ''" class="button"><!----></button>
 	</li>
-	<li class="arrow" @click="add">
+	<!-- <li class="arrow" @click="add">
 		<img class="arrow" src="../../../assets/image/arrow.svg" alt="→">
-	</li>
+	</li> -->
 </ul>
 </div>
 </template>

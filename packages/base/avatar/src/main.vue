@@ -1,6 +1,6 @@
 <template>
 <div class="but-avatar">
-	<img :src="src" :alt="alt" v-notimg="require('../../../assets/image/pictures.svg')" class="circle"/>
+	<img :src="src" :alt="alt" v-notimg="'https://www.bing.com/th?id=OHR.MauiEucalyptus_ZH-CN5616197787_1920x1080.jpg'" class="circle"/>
 	<slot/>
 </div>
 </template>v-
@@ -46,7 +46,7 @@ export default {
 	display: flex;
 	flex-direction: row;
 	// justify-content: space-between;
-	align-items: stretch;
+	align-items: center;
 
 
 	// 图片
@@ -55,8 +55,9 @@ export default {
 		vertical-align: middle;
 		border-radius: 50%; // 以百分比设置半径
 
-		width: 64px;
-		height: 64px;
+		width: 58px;
+		height: 58px;
+		// border: 2px solid var(--background);
 	}
 }
 </style>

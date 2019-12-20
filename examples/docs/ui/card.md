@@ -28,14 +28,12 @@
 	
 	<but-col :xs="8">
 		<but-card :elevation="5" :fillet="3">
+			<but-card-media :src="peapr" order="head"/>
 			<but-card-header>
 				<but-title>
 					Title goes here
 					<small slot="small">Subtitle here</small>
 				</but-title>
-
-				<but-card-media :src="peapr"/>
-				
 			</but-card-header>
 
 			<but-card-actions>

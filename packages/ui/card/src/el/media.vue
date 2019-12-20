@@ -1,26 +1,55 @@
 <template>
 <div class="but-card-media">
-	<img :src="src" :alt="alt" @onerror="notimgfound">
+	<img v-if="src" :src="src" :alt="alt" :style="radiu" @onerror="notimgfound">
 </div>
 </template>
 
 <script>
+import PropValidator from '../../../../core/utils/propValidator'
 export default {
 	name: "butCardMedia",
+	inject: ['radius'],
 	props: {
 		src: {
 			type: String,
-			default: "@/assets/image/65040104_p0.jpg"
+			default: ""
 		},
 		alt: {
 			type: String,
 			default: "Responsive image"
+		},
+		order: {
+			type: String,
+			default: "",
+			...PropValidator('order', ["", "head", "bottom", "covered"])
 		}
 	},
 	data:()=>({
 
 	}),
-	inject: ['radius'],
+	computed: {
+		radiu() {
+			switch (this.order) {
+				case "head":
+					return {
+						borderTopLeftRadius: this.radius+'px',
+						borderTopRightRadius: this.radius+'px',
+						order: 10000
+					}
+				case "bottom":
+					return {
+						borderBottomLeftRadius: this.radius+'px',
+						borderBottomRightRadius: this.radius+'px',
+						order: -10000
+					}
+				case "covered":
+					return {
+						borderRadius: this.radius+'px'
+					}
+			}
+			return new Object;
+		}
+	},
 	methods: {
 		notimgfound() {
 			this.source = "https://www.bing.com/th?id=OHR.MauiEucalyptus_ZH-CN5616197787_1920x1080.jpg";
@@ -38,7 +67,6 @@ export default {
 	// line-height: 22px;
 
 	width: 100%;
-	padding: 0 8px;
 	box-sizing: border-box;
 	flex: 1;
 

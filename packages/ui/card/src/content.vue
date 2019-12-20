@@ -23,6 +23,7 @@ export default {
 	padding-top: 0px;
     font-size: 14px;
 	line-height: 22px;
+	text-align: left;
 	
 	flex: 1;
 }

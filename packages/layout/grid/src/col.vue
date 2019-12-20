@@ -119,6 +119,26 @@ export default {
 		}
 	}
 
+
+	.but-col-xs-0 {
+		display: none;
+	}
+	@media (min-width: @screen-sm) {										/*当宽度大于768px时触发*/
+		.but-col-sm-0 {
+			display: none;
+		}
+	}
+	@media (min-width: @screen-md) {										/*当宽度大于992px时触发*/
+		.but-col-md-0 {
+			display: none;
+		}
+	}
+	@media (min-width: @screen-lg) {										/*当宽度大于1200px时触发*/
+		.but-col-lg-0 {
+			display: none;
+		}
+	}
+
 }
 .cont(@grid-columns);
 </style>
