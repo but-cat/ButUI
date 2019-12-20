@@ -1,6 +1,7 @@
 export default [																// 所有组件列表
 	require('./container').default,												// 栅格布局容器
 	require('./grid').default,
+	require('./page').default,
 	require('./sandwich').default,												// 三明治布局容器
 	require('./redraw').default,												// 容器监听组件
 ];

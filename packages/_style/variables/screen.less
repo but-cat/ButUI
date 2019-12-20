@@ -10,29 +10,23 @@
 
 
 // 媒体查询在需要提供最大值时不会重叠
-@screen-xs-max:              (@screen-sm - 1);
-@screen-sm-max:              (@screen-md - 1);
-@screen-md-max:              (@screen-lg - 1);
-@screen-lg-max:              (@screen-xl - 1);
+@screen-xs-max:				(@screen-sm - 1);
+@screen-sm-max:				(@screen-md - 1);
+@screen-md-max:				(@screen-lg - 1);
+@screen-lg-max:				(@screen-xl - 1);
 
 //== 容器尺寸
-//
+@grid-gutter-width:         30px;
 //## 为不同的屏幕尺寸定义".container"类的最大宽度。
 
-// Small screen / tablet
-// @container-tablet:             (720px + @grid-gutter-width);
-//** For `@screen-sm-min` and up.
-// @container-sm:                 @container-tablet;
+//** 对于`@screen-sm-min`及以上.
+@container-sm:				(720px + @grid-gutter-width);
 
-// Medium screen / desktop
-// @container-desktop:            (940px + @grid-gutter-width);
-//** For `@screen-md-min` and up.
-// @container-md:                 @container-desktop;
+//** 对于`@screen-md-min`及以上.
+@container-md:				(940px + @grid-gutter-width);
 
-// Large screen / wide desktop
-// @container-large-desktop:      (1140px + @grid-gutter-width);
-//** For `@screen-lg-min` and up.
-// @container-lg:                 @container-large-desktop;
+//** 对于`@screen-lg-min`及以上.
+@container-lg:				(1140px + @grid-gutter-width);
 
 
 

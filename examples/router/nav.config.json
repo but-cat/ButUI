@@ -117,6 +117,12 @@
 				"component": "layout/grid"
 			},
 			{
+				"desc": "页面容器",
+				"name": "Page",
+				"path": "/layout/page",
+				"component": "layout/page"
+			},
+			{
 				"desc": "三段式布局",
 				"name": "Sandwich",
 				"path": "/layout/sandwich",
