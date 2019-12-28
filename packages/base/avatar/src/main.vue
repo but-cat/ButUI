@@ -27,11 +27,7 @@ export default {
 	},
 	data: ()=>({
 		errorUserPhoto: 'https://www.bing.com/th?id=OHR.ValleyForge_ZH-CN8129420249_1920x1080.jpg'
-	}),
-	mounted() {
-		console.log();
-		
-	}
+	})
 }
 </script>
 

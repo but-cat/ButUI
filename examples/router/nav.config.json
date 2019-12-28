@@ -1,18 +1,18 @@
 [
 	{
-		"desc": "概览",
+		"title": "概览",
 		"name": "Overview",
 		"path": "/",
 		"component": "conventions/README",
 		"list": [
 			{
-				"desc": "情景图标",
+				"title": "情景图标",
 				"name": "sceneImage",
 				"path": "/conventions/sceneIcon",
 				"component": "conventions/sceneIcon"
 			},
 			{
-				"desc": "全局指令",
+				"title": "全局指令",
 				"name": "command",
 				"path": "/conventions/command",
 				"component": "conventions/command"
@@ -20,13 +20,13 @@
 		]
 	},
 	{
-		"desc": "全局指令",
+		"title": "全局指令",
 		"name": "Command",
 		"path": "/command/index",
 		"component": "command/index",
 		"list": [
 			{
-				"desc": "图片加载失败指令",
+				"title": "图片加载失败指令",
 				"name": "notImage",
 				"path": "/command/notimg",
 				"component": "command/notimg"
@@ -34,26 +34,26 @@
 		]
 	},
 	{
-		"desc": "基础组件",
+		"title": "基础组件",
 		"name": "Basic",
 		"path": "/basic/index",
 		"component": "basic/index",
 		"list": [
 
 			{
-				"desc": "按钮",
+				"title": "按钮",
 				"name": "Button",
 				"path": "/basic/Button",
 				"component": "basic/button"
 			},
 			{
-				"desc": "超链接",
+				"title": "超链接",
 				"name": "Link",
 				"path": "/basic/link",
 				"component": "basic/link"
 			},
 			{
-				"desc": "排版",
+				"title": "排版",
 				"name": "Typesetting",
 				"path": "/basic/typesetting",
 				"component": "basic/typesetting"
@@ -61,37 +61,37 @@
 		]
 	},
 	{
-		"desc": "表单",
+		"title": "表单",
 		"name": "From",
 		"path": "/from/index",
 		"component": "from/index",
 		"list": [
 			{
-				"desc": "输入框",
+				"title": "输入框",
 				"name": "Input",
 				"path": "/from/input",
 				"component": "from/input"
 			},
 			{
-				"desc": "单选",
+				"title": "单选",
 				"name": "Radio",
 				"path": "/from/radio",
 				"component": "from/radio"
 			},
 			{
-				"desc": "复选框",
+				"title": "复选框",
 				"name": "Checkbox",
 				"path": "/from/checkbox",
 				"component": "from/checkbox"
 			},
 			{
-				"desc": "滑动条",
+				"title": "滑动条",
 				"name": "Slider",
 				"path": "/from/slider",
 				"component": "from/slider"
 			},
 			{
-				"desc": "开关",
+				"title": "开关",
 				"name": "Switch",
 				"path": "/from/switch",
 				"component": "from/switch"
@@ -99,37 +99,37 @@
 		]
 	},
 	{
-		"desc": "布局容器",
+		"title": "布局容器",
 		"name": "Layout",
 		"path": "/layout/index",
 		"component": "layout/index",
 		"list": [
 			{
-				"desc": "应用容器",
+				"title": "应用容器",
 				"name": "Container",
 				"path": "/layout/container",
 				"component": "layout/container"
 			},
 			{
-				"desc": "栅格布局",
+				"title": "栅格布局",
 				"name": "Grid",
 				"path": "/layout/grid",
 				"component": "layout/grid"
 			},
 			{
-				"desc": "页面容器",
+				"title": "页面容器",
 				"name": "Page",
 				"path": "/layout/page",
 				"component": "layout/page"
 			},
 			{
-				"desc": "三段式布局",
+				"title": "三段式布局",
 				"name": "Sandwich",
 				"path": "/layout/sandwich",
 				"component": "layout/sandwich"
 			},
 			{
-				"desc": "重绘监听容器",
+				"title": "重绘监听容器",
 				"name": "Redraw",
 				"path": "/layout/redraw",
 				"component": "layout/redraw"
@@ -138,19 +138,19 @@
 	},
 
 	{
-		"desc": "数据",
+		"title": "数据",
 		"name": "Data",
 		"path": "/data/index",
 		"component": "data/index",
 		"list": [
 			{
-				"desc": "表格",
+				"title": "表格",
 				"name": "Table",
 				"path": "/data/table",
 				"component": "data/table"
 			},
 			{
-				"desc": "树形组件",
+				"title": "树形组件",
 				"name": "Tree",
 				"path": "/data/tree",
 				"component": "data/tree"
@@ -159,13 +159,13 @@
 	},
 	
 	{
-		"desc": "媒体",
+		"title": "媒体",
 		"name": "Media",
 		"path": "/media/index",
 		"component": "media/index",
 		"list": [
 			{
-				"desc": "图片",
+				"title": "图片",
 				"name": "Image",
 				"path": "/media/image",
 				"component": "media/image"
@@ -174,52 +174,58 @@
 	},
 
 	{
-		"desc": "导航",
+		"title": "导航",
 		"name": "navigation",
 		"path": "/navigation/index",
 		"component": "navigation/index",
 		"list": [
 			{
-				"desc": "导航抽屉",
+				"title": "导航抽屉",
 				"name": "NavDrawer",
 				"path": "/navigation/navDrawer",
 				"component": "navigation/navDrawer"
 			},
 			{
-				"desc": "导航列表",
+				"title": "导航列表",
 				"name": "NavList",
 				"path": "/navigation/navList",
 				"component": "navigation/navList"
 			},
 			{
-				"desc": "导航菜单",
+				"title": "导航菜单",
 				"name": "NavMenu",
 				"path": "/navigation/navMenu",
 				"component": "navigation/navMenu"
+			},
+			{
+				"title": "导航条",
+				"name": "NavBar",
+				"path": "/navigation/navBar",
+				"component": "navigation/navBar"
 			}
 		]
 	},
 
 	{
-		"desc": "UI",
+		"title": "UI",
 		"name": "ui",
 		"path": "/ui/index",
 		"component": "ui/index",
 		"list": [
 			{
-				"desc": "轮播",
+				"title": "轮播",
 				"name": "Carousel",
 				"path": "/ui/carousel",
 				"component": "ui/carousel"
 			},
 			{
-				"desc": "卡片",
+				"title": "卡片",
 				"name": "Card",
 				"path": "/ui/card",
 				"component": "ui/card"
 			},
 			{
-				"desc": "工具栏",
+				"title": "工具栏",
 				"name": "ToolsBar",
 				"path": "/ui/toolsbar",
 				"component": "ui/toolsbar"

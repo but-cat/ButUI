@@ -5,7 +5,7 @@ export default {
 	props: {
 		span: {
 			type: Number,
-			default: 24
+			default: 12
 		},
 		tag: {
 			type: String,
@@ -118,27 +118,27 @@ export default {
 			margin-left: percentage((@index / @grid-columns));
 		}
 	}
-
-
-	.but-col-xs-0 {
-		display: none;
-	}
-	@media (min-width: @screen-sm) {										/*当宽度大于768px时触发*/
-		.but-col-sm-0 {
-			display: none;
-		}
-	}
-	@media (min-width: @screen-md) {										/*当宽度大于992px时触发*/
-		.but-col-md-0 {
-			display: none;
-		}
-	}
-	@media (min-width: @screen-lg) {										/*当宽度大于1200px时触发*/
-		.but-col-lg-0 {
-			display: none;
-		}
-	}
-
 }
 .cont(@grid-columns);
+
+.hidden-xs {
+	@media (max-width: @screen-xs-max) {
+		display: none !important;
+	}
+}
+.hidden-sm {
+	@media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+		display: none !important;
+	}
+}
+.hidden-md {
+	@media (min-width: @screen-md) and (max-width: @screen-md-max) {
+		display: none !important;
+	}
+}
+.hidden-lg {
+	@media (min-width: @screen-lg) {
+		display: none !important;
+	}
+}
 </style>

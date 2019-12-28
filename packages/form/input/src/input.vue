@@ -33,7 +33,6 @@ export default {
 	methods: {
 		input(event) {
 			var value = event.target.value;
-			console.log(value);
 			this.$emit('input', value);
 		}
 	},

@@ -27,7 +27,7 @@
 	</but-col>
 	
 	<but-col :xs="8">
-		<but-card :elevation="5" :fillet="3">
+		<but-card :elevation="5" fillet="5">
 			<but-card-media :src="peapr" order="head"/>
 			<but-card-header>
 				<but-title>
@@ -87,3 +87,10 @@ export default {
 | bodyStyle | 传入样式 | Object | — | — |
 | elevation | 海拔阴影 | Object | — | none |
 | fillet | 圆角参数 | Number | — | 0 |
+
+
+### but-card 可选参数
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| src | 资源链接 | String | — | — |
+| order | 位置 | String | head, bottom, covered | '' |

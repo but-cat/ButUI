@@ -32,19 +32,19 @@ export default {
 			switch (this.order) {
 				case "head":
 					return {
-						borderTopLeftRadius: this.radius+'px',
-						borderTopRightRadius: this.radius+'px',
+						borderTopLeftRadius: this.radius,
+						borderTopRightRadius: this.radius,
 						order: 10000
 					}
 				case "bottom":
 					return {
-						borderBottomLeftRadius: this.radius+'px',
-						borderBottomRightRadius: this.radius+'px',
+						borderBottomLeftRadius: this.radius,
+						borderBottomRightRadius: this.radius,
 						order: -10000
 					}
 				case "covered":
 					return {
-						borderRadius: this.radius+'px'
+						borderRadius: this.radius
 					}
 			}
 			return new Object;

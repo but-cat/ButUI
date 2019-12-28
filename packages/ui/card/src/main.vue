@@ -1,5 +1,5 @@
 <template>
-<div :class="shadow" :style="[bodyStyle, fillets]" class="but-card">
+<div :class="shadow" :style="[bodyStyle, {borderRadius: this.fillets}]" class="but-card">
 	<slot/>
 </div>
 </template>
@@ -30,14 +30,14 @@ export default {
 			return 'shadow-' + this.elevation;
 		},
 		fillets() {
-			return {
-				borderRadius: this.fillet + 'px'
-			}
+			return this.fillet + 'px';
 		}
 	},
-	provide: ()=>({
-		radius: 3
-	})
+	provide(){
+		return {
+			radius: this.fillets
+		}
+	}
 }
 </script>
 
