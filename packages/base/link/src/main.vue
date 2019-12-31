@@ -48,8 +48,6 @@ export default {
     outline: none;
     cursor: pointer;
     padding: 0;
-    font-size: 14px;
-	font-weight: 500;
 }
 .link:hover {
 	color: #409eff;

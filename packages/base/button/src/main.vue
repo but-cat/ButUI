@@ -82,6 +82,7 @@ export default {
 	border-radius: 2px;
 	transition: .2s ease-out;
 	line-height: 22px;
+	cursor: pointer;
 
 	position: relative;
 	overflow: hidden;
@@ -187,29 +188,5 @@ export default {
 // 危险
 .danger {
 	.button(@danger, @sceneText)
-}
-
-
-/* 点击动画 */
-.ripples {
-	width:10px;
-	height:10px;
-	z-index: 10;
-	border-radius: 50%;
-	position: absolute;
-	margin: 0px;
-	opacity: 0;
-	animation: ripples;
-	animation-duration: .6s;
-	pointer-events: none;
-}
-@keyframes ripples {
-	from {
-		opacity: 1;
-	}
-	to {
-		transform: scale(40,40);
-		opacity: 0;
-	}
 }
 </style>

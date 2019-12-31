@@ -11,7 +11,7 @@ export default {
 			default: ''
 		},
 		activated: {
-			type: Boolean,
+			type: [String, Boolean],
 			default: false
 		},
 	}

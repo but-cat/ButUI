@@ -54,6 +54,7 @@ export default {
 | logoSrc | logo资源地址 | String | — | — |
 | position | 定位,true为相对于屏幕,false相对于父级容器 | Boolean | true/false | false |
 | response | logo资源地址 | String | — | — |
+| hide | 隐藏导航条 | Boolean | true/false | false |
 
 #### 可供插入的slot
 | 名称      | 说明    | 

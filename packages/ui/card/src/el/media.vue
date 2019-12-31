@@ -18,6 +18,10 @@ export default {
 			type: String,
 			default: "Responsive image"
 		},
+		size: {
+			type: [String, Number],
+			default: 200
+		},
 		order: {
 			type: String,
 			default: "",
@@ -34,12 +38,14 @@ export default {
 					return {
 						borderTopLeftRadius: this.radius,
 						borderTopRightRadius: this.radius,
+						height: this.size+"px",
 						order: 10000
 					}
 				case "bottom":
 					return {
 						borderBottomLeftRadius: this.radius,
 						borderBottomRightRadius: this.radius,
+						height: this.size+"px",
 						order: -10000
 					}
 				case "covered":
@@ -73,6 +79,7 @@ export default {
 	// 图片
 	img {
 		vertical-align: middle;
+		object-fit: cover;
 		width: 100%;
 	}
 }
