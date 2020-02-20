@@ -1,61 +1,57 @@
 <template>
-<div :style="{width: open ? size : bar?'50px':'0px',order: '-1000'}" 
-	:class="'modal-'+modal" class="but-drawer-container">
+<div :style="{width: open ? size : '0px'}" 
+	:class="'modal-'+modal" class="but-navdrawer-container">
 
-	<!-- 偏移组件 -->
-	<transition name="drawer-container">
+	<transition name="navdrawer-container">
 		<div v-if="open" @click="close" :class="'modal-background-'+modal"
-			class="but-drawer-content"/>
+			class="but-navdrawer-content"/>
 	</transition>
-	<transition name="drawer">
-		<div v-if="open&&!bar" :style="{width: size}" class="but-drawer" >
+	<transition name="navdrawer">
+		<div v-if="open" :style="{width: size}" class="but-navdrawer" >
+			<!-- <slot/> -->
 			<!-- 菜单选项 -->
-			<div class="but-drawer-item">
+			<div class="item">
 				<slot/>
 			</div>
 			<!-- 常驻选项 -->
-			<div class="but-drawer-menu">
+			<div class="menu">
 				<slot name="menu"/>
+				<!-- <span>常驻选项</span> -->
 			</div>
 		</div>
 	</transition>
-
-	<!-- 导航条状态 -->
-	<div v-if="bar" :style="{width: !open?'50px':size}" class="but-drawer" >
-		<!-- 菜单选项 -->
-		<div class="but-drawer-item">
-			<slot/>
-		</div>
-		<!-- 常驻选项 -->
-		<div class="but-drawer-menu">
-			<slot name="menu"/>
-		</div>
-	</div>
 </div>
 </template>
 
 <script>
 import PropValidator from '../../../core/utils/propValidator'
+// import Navigation from './navigation.vue'
 export default {
 	name: 'ButNavDrawer',
 	props: {
 		width: {
 			type: [String, Number],
-			default: '300px'
+			default: '256px'
 		},
 		open: {
 			type: Boolean,
 			default: false
 		},
-		bar: {
-			type: Boolean,
-			default: true
-		},
 		modal: {
 			type: String,
 			default: 'sm',
-			...PropValidator('modal', ["none", "open", "sm", "md", "lg"])
+			...PropValidator('modal', ["none", "open", "sm", "md", "lg"])	
+		},
+		type: {
+			type: String,
+			default: 'bar',
+			...PropValidator('type', ["none", "none", "bar"])	
 		}
+		// title: String,
+		// subtext: String,
+
+		// img: String,
+		// background: String
 	},
 	data() {
 		return {
@@ -78,6 +74,9 @@ export default {
 			this.container = this.open;
 		}
 	},
+	components: {
+		// Navigation
+	},
 	provide(){
 		return {
 			opens: this.open
@@ -88,29 +87,28 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
-.but-drawer-container {
+.but-navdrawer-container {
 	box-sizing: border-box;
 	flex-shrink: 0;
 	position: relative;
 
 	transition: .2s ease;
 
-	.but-drawer-content {
+	.but-navdrawer-content {
 		height: 100%;
 		z-index: @zindex-navbar;
-		background-color: var(--modal-background);
+		background-color: @modal-background;
 		position: absolute;
 		top: 0;
 		left: 0;
 	}
 
-	.but-drawer {
+	.but-navdrawer {
+		width: 100%;
 		height: 100%;
-		background-color: var(--background);
 		z-index: @zindex-navbar;
 		position: absolute;
 		pointer-events: auto;
-		transition: .2s ease-in;
 		top: 0;
 		left: 0;
 
@@ -118,9 +116,9 @@ export default {
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-between;
-		.but-drawer-item {
-			width: 100%;
 
+		.menu {
+			width: 100%;
 			overflow: hidden;
 
 			display: flex;
@@ -128,7 +126,7 @@ export default {
 			flex-direction: column;
 		}
 
-		.but-drawer-menu {
+		.options {
 			width: 100%;
 			overflow: hidden;
 
@@ -188,33 +186,20 @@ export default {
 }
 
 // 背景动画
-.drawer-container-enter-active, .drawer-container-leave-active {
+.navdrawer-container-enter-active, .navdrawer-container-leave-active {
 	transition: .2s ease-in;
 }
-.drawer-container-enter, .drawer-container-leave-to {
+.navdrawer-container-enter, .navdrawer-container-leave-to {
 	opacity: 0;
 }
-
-// 左侧动画
-.drawer-enter-active {
+// 抽屉动画
+.navdrawer-enter-active {
 	transition: .16s ease-out;
 }
-.drawer-leave-active {
+.navdrawer-leave-active {
 	transition: .2s ease-in;
 }
-.drawer-enter, .drawer-leave-to {
+.navdrawer-enter, .navdrawer-leave-to {
 	transform: translateX(-100%);
-}
-
-// 左侧动画
-.bar-enter-active {
-	transition: .16s ease-out;
-}
-.bar-leave-active {
-	transition: .2s ease-in;
-}
-.bar-enter, .bar-leave-to {
-	// transform: translateX(-100%);
-	width: 50px;
 }
 </style>

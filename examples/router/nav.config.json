@@ -186,12 +186,6 @@
 				"component": "navigation/navDrawer"
 			},
 			{
-				"title": "导航列表",
-				"name": "NavList",
-				"path": "/navigation/navList",
-				"component": "navigation/navList"
-			},
-			{
 				"title": "导航菜单",
 				"name": "NavMenu",
 				"path": "/navigation/navMenu",

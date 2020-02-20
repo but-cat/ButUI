@@ -1,8 +1,8 @@
 <template>
 <div class="but-list-item-link">
 	<div class="but-list-item" @click="activeFX" :class="activated ? 'activated' : ''">
-		<img v-if="icon" :src="icon" class="but-list-icons"/>
-		<span class="but-list-text"><slot/></span>
+		<img :src="src" class="but-list-icons"/>
+		<span v-if="opens" class="but-list-text"><slot/></span>
 	</div>
 </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 	name: 'ButNavListItem',
 	inject: ['opens'],
 	props: {
-		// src: String,
+		src: String,
 		icon: String,
 		scene: {
 			type: String,
@@ -24,7 +24,8 @@ export default {
 	},
 	data() {
         return {
-			source: this.src
+			source: this.src,
+			// srcs: require('../../../assets/image/pictures.svg').default
         }
 	},
 	methods: {
@@ -81,10 +82,10 @@ export default {
 	}
 
 	.but-list-icons {
-		width: 24px;
-		height: 24px;
+		width: 30px;
+		height: 30px;
 		position: absolute;
-		left: 8px;
+		left: 9px;
 		pointer-events: none;
 	}
 

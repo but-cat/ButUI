@@ -6,33 +6,33 @@
 ```vue 
 <template>
 <but-container>
-	<but-aside width="200px">Aside</but-aside>
+	<but-aside width="200px" class="dem-aside">Aside</but-aside>
 	<but-container>
-		<but-header>Header</but-header>
-		<but-body>Main</but-body>
+		<but-header class="dem-header">Header</but-header>
+		<but-body class="dem-body">Main</but-body>
 	</but-container>
 </but-container>
 </template>
 <style>
-.but-header, .but-footer {
+.dem-header, .dem-footer {
 	background-color: #B3C0D1;
 	color: #333;
 	text-align: center;
-	line-height: 60px;
+	height: 100%;
 }
 
-.but-aside {
+.dem-aside {
 	background-color: #D3DCE6;
 	color: #333;
 	text-align: center;
-	line-height: 200px;
 }
 
-.but-body {
+.dem-body {
 	background-color: #E9EEF3;
 	color: #333;
 	text-align: center;
-	line-height: 260px;
+	height: 820px;
+	padding: 200px 0;
 }
 </style>
 ```
@@ -46,7 +46,7 @@
 ```vue 
 <template>
 <but-container>
-	<but-drawer width="200px" @close="opens" :open="open">Aside</but-drawer>
+	<but-drawer width="200px" class="dem-drawer" @close="opens" :open="open">Aside</but-drawer>
 	<but-container>
 		<but-header>Header</but-header>
 		<but-body>
@@ -70,11 +70,11 @@ export default {
 };
 </script>
 <style>
-.but-drawer {
+.dem-drawer {
 	background-color: #D3DCE6;
 	color: #333;
 	text-align: center;
-	line-height: 200px;
+	height: 200px;
 }
 </style>
 ```

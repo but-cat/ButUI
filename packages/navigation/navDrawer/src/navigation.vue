@@ -13,6 +13,7 @@
 
 <script>
 export default {
+	inject: ['opens'],
 	props: {
 		title: String,
 		subtext: String,
@@ -41,23 +42,10 @@ export default {
 	
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
+	flex-shrink: 0;
+	order: -1000;
 
 	background-color: @background;
-    // border-color: rgba(0,0,0,.12);
-    // background-color: #fff;
-    // border-radius: 0 0 0 0;
-    // z-index: 6;
-
-    // box-sizing: border-box;
-    // height: 100%;
-    // border-right-width: 1px;
-	// border-right-style: solid;
-	
-    // transition-property: -webkit-transform;
-    // transition-property: transform;
-    // transition-property: transform,-webkit-transform;
-	// transition-timing-function: cubic-bezier(.4,0,.2,1);
 	
 	// 头部信息 用于展示用户信息或软件信息
 	.header {

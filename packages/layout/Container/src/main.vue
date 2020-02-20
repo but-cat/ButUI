@@ -17,7 +17,7 @@ export default {
 			} else if (this.direction === 'horizontal') {
 				return 'horizontal';
 			} else return this.$slots && this.$slots.default.some(vnode => 				// 如果direction没有输入或配置错误,则根据子组件分配布局轴向
-				['but-aside', 'but-drawer'].some(item => (vnode.componentOptions ? vnode.componentOptions.tag : "") === item)
+				['but-aside', 'but-drawer', 'but-nav-drawer'].some(item => (vnode.componentOptions ? vnode.componentOptions.tag : "") === item)	// 如果子节点中包含'but-aside', 'but-drawer'选项时,选择水平轴向
 			) ? 'horizontal' : 'vertical'
 		}
 	}

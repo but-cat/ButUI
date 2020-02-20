@@ -1,8 +1,9 @@
 <template>
 <div class="but-list-item-link">
 	<div class="but-list-item" @click="activeFX" :class="activated ? 'activated' : ''">
-		<img v-if="icon" :src="icon" class="but-list-icons"/>
-		<span class="but-list-text"><slot/></span>
+		<img v-if="icon" :src="srcs" class="but-list-icons"/>
+		<!-- <span class="but-list-text"><slot/></span> -->
+		<!-- ????? -->
 	</div>
 </div>
 </template>
@@ -24,7 +25,8 @@ export default {
 	},
 	data() {
         return {
-			source: this.src
+			source: this.src,
+			srcs: require('../../../assets/image/pictures.svg').default
         }
 	},
 	methods: {
@@ -64,7 +66,7 @@ export default {
 	// background-color: aliceblue;
 	box-sizing: border-box;
 
-	position: relative;
+	// position: relative;
 
 	display: inline-flex;
     user-select: none;

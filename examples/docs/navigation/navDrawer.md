@@ -1,26 +1,26 @@
 # 导航抽屉
 导航抽屉从左侧滑入，其中包含应用程序的导航目标。
 
-注意,导航抽屉的父元素只能是 &lt;el-container&gt;;
-建议将其放置在根&lt;el-container&gt;容器下,因为在modal状态下将占据整个屏幕.
+注意,导航抽屉的父元素只能是 &lt;but-container&gt;;
+建议将其放置在根&lt;but-container&gt;容器下,因为在modal状态下将占据整个屏幕.
 
 ## 基础用法
 
 ```vue
 <template>
 <but-container>
-	<but-nav-drawer @close="opens" :open="open" title="标题" subtext="副标题"
+	<but-nav-drawer @close="opens" :open="open" title="标题" subtext="副标题" class="dem-aside"
 	 :src="require('./../../assets/logo.png')" :background="require('./../../assets/logo.png')">
-		<but-nav-list>
-			<but-nav-list-item>Item</but-nav-list-item>
-			<but-nav-list-item>Item</but-nav-list-item>
-			<but-nav-list-item>Item</but-nav-list-item>
-		</but-nav-list>
+		<but-nav-list-item :src="source">Item</but-nav-list-item>
+		<but-nav-list-item :src="source">Item</but-nav-list-item>
+		<but-nav-list-item :src="source">Item</but-nav-list-item>
+
+		<but-nav-list-item :src="source" slot="menu">Item</but-nav-list-item>
 	</but-nav-drawer>
 
 	<but-container>
-		<but-header>Header</but-header>
-		<but-body class="navdrawer">
+		<but-header class="dem-header">Header</but-header>
+		<but-body class="dem-body">
 			<but-button @click="opens">drawer</but-button>
 		</but-body>
 	</but-container>
@@ -30,7 +30,8 @@
 export default {
 	data() {
 		return {
-			open: true
+			open: true,
+			source: require('@/assets/image/pictures.svg')
 		};
 	},
 	methods: {
@@ -42,7 +43,7 @@ export default {
 </script>
 <style>
 .navdrawer {
-	line-height: 600px;
+	/* line-height: 600px; */
 }
 </style>
 ```
@@ -61,3 +62,25 @@ export default {
 | 参数      | 说明    | 抛出参数      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | close | 模态窗/窗口关闭请求 | — | — | — |
+
+
+## 题头信息
+安置再导航抽屉中的题头组件,通常用于展示用户信息
+
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| title | 标题 | String | — | — |
+| subtext | 简介 | String | — | — |
+| img | 图像(头像)url | String | — | — |
+| background | 背景url | String | — | — |
+
+
+## 导航列表
+安置在导航抽屉中的按钮元素。
+
+### 属性
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| name | 标签名称 | String | — | — |
+| activated | 激活状态 | Boolean | true/false | false |
+| icon | 图标url | String | — | — |

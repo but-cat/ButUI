@@ -12,11 +12,6 @@ export default {
 			type: [String, Number],
 			default: '300px'
 		}
-	},
-	computed: {
-		size() {
-			return ;
-		}
 	}
 };
 </script>
