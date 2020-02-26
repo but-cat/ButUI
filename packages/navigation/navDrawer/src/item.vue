@@ -82,8 +82,8 @@ export default {
 	}
 
 	.but-list-icons {
-		width: 30px;
-		height: 30px;
+		width: 26px;
+		height: 26px;
 		position: absolute;
 		left: 9px;
 		pointer-events: none;

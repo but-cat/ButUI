@@ -70,7 +70,7 @@
 <script>
 export default {
 	data: ()=>({
-		// avatar: require('@/assets/image/lollipop.svg'),
+		avatar: require('@/assets/lollipop.svg'),
 		peapr: require('@/assets/image/78034265_p0.jpg'),
 		miku: require('@/assets/image/65040104_p0.jpg')
 	}),

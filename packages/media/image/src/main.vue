@@ -1,6 +1,6 @@
 <template>
 <div :class="[shape=='circle' ? 'circle-container' : 'container']">
-	<img :src="src" :alt="alt" v-notimg="require('../../../assets/image/pictures.svg')" :class="shape"/>
+	<img :src="src" :alt="alt" :class="shape"/>
 </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
 <div class="but-avatar">
-	<img :src="src" :alt="alt" v-notimg="'https://www.bing.com/th?id=OHR.MauiEucalyptus_ZH-CN5616197787_1920x1080.jpg'" class="circle"/>
+	<img :src="src" :alt="alt" class="circle"/>
 	<slot/>
 </div>
 </template>v-
