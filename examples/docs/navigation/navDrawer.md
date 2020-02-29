@@ -13,7 +13,7 @@
 	 :src="require('./../../assets/logo.png')" :background="require('./../../assets/logo.png')">
 		<but-nav-list-item :src="source">Item</but-nav-list-item>
 		<but-nav-list-item :src="source">Item</but-nav-list-item>
-		<but-nav-list-item :src="source">Item</but-nav-list-item>
+		<but-nav-list-item :src="source" :disabled="true">Item</but-nav-list-item>
 
 		<but-nav-list-item :src="source" slot="menu">Item</but-nav-list-item>
 	</but-nav-drawer>

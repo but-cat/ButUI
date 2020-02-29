@@ -1,6 +1,6 @@
 <template>
 <div class="but-list-item-link">
-	<div class="but-list-item" @click="activeFX" :class="activated ? 'activated' : ''">
+	<div class="but-list-item" @click="activeFX" :class="[activated ? 'activated' : '',disableds ? 'disableds' : '']">
 		<img :src="src" class="but-list-icons"/>
 		<span v-if="opens" class="but-list-text"><slot/></span>
 	</div>
@@ -20,7 +20,8 @@ export default {
 			type: String,
 			default: "primary"
 		},
-		activated: Boolean
+		activated: Boolean,
+		disabled: Boolean,
 	},
 	data() {
         return {
@@ -28,13 +29,19 @@ export default {
 			// srcs: require('../../../assets/image/pictures.svg').default
         }
 	},
+	computed: {
+		// 指定disableds属性
+		disableds() {
+			return this.disabled ? "disableds" : "";
+		}
+	},
 	methods: {
 		notimgfound() {
 			this.source = require('../../../assets/image/pictures.svg').default;
 		},
 		
 		activeFX(event) {
-			if(!this.activated){														// 处于激活状态时将不再抛出点击事件
+			if(!this.activated && !this.disabled){														// 处于激活状态时将不再抛出点击事件
 				this.$emit("click", event);
 				ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
 			}
@@ -103,5 +110,16 @@ export default {
 	color: @primary;
 	background-color: rgba(123, 146, 146, 0.178);
 	// transition: .12s;
+}
+
+.disableds {
+	// color: @primary;
+	// background-color: rgba(123, 146, 146, 0.178);
+	box-shadow: none;
+	// pointer-events: none;
+	opacity: 0.5;
+	// text-decoration:line-through;
+	cursor: not-allowed !important;
+	filter: grayscale(60%);
 }
 </style>

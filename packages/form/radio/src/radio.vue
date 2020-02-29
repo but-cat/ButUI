@@ -57,7 +57,7 @@ export default {
 }
 
 .radio {
-	margin: 0.5rem;
+	margin: 0 0.5rem;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;

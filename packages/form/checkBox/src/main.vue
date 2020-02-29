@@ -1,8 +1,8 @@
 <template>
-<div :class="[scene, disabled ? 'disabled' : '']" @click="toggle(value)" class="cb-container">
-    <input :checked="value" type="checkbox" style="display:none;">
-    <label for="checkbox" :class="disabled ? 'disabled' : ''" class="cb-label"></label>
-	<div class="content"><slot/></div>
+<div :class="[scene, disabled ? 'disabled' : '']" @click="toggle(value)" class="but-checkbox">
+    <input :checked="value" type="checkbox" style="display:none;"><!-- 实际操作的input组件 -->
+    <label for="checkbox" :class="disabled ? 'disabled' : ''" class="but-label"></label><!-- 复选框 -->
+	<div class="content"><slot/></div><!-- 文本 -->
 </div>
 </template>
 
@@ -24,11 +24,13 @@ export default {
 		disabled: Boolean,
 	},
 	computed: {
+		// 指定disableds属性
 		disableds() {
 			return this.disabled ? "disableds" : "";
 		}
 	},
 	methods: {
+		// 处理拨动动作
 		toggle() {
 			if(!this.disabled){
 				this.$emit('input', !this.value);
@@ -49,13 +51,15 @@ export default {
 @background-color:#fff;
 @font-color:#dcdcdc;
 @duration: .4s;
-.cb-container{
+.but-checkbox{
 	display: flex;
 	// justify-content: center;
 	// margin-top: 60px;
+	align-items: center;
+	position: relative;
 
-	input[type=checkbox]:checked + .cb-label,
-	.cb-label.checked{
+	input[type=checkbox]:checked + .but-label,
+	.but-label.checked{
 
 		&::after{
 			border-color:@checked-color;
@@ -71,13 +75,14 @@ export default {
 
 	}
 
-	.cb-label{
+	.but-label{
 		height: @checkbox-height;
 		width: @checkbox-height;
 		border-radius: 2px;
 		background: @unchecked-bg;
 		border: @checkbox-height * .1 solid @unchecked-color;
-		position: relative;
+		// position: relative;
+		position: absolute;
 		display: inline-block;
 		box-sizing: border-box;
 		transition: border-color ease @duration/2;
@@ -107,7 +112,7 @@ export default {
 
 	.content{
 		width: 100%;
-		margin-left: 10px;
+		margin-left: 26px;
 	}
 }
 
@@ -122,9 +127,9 @@ export default {
 }
 
 
-.cb-container(@checked-bg){
-	input[type=checkbox]:checked + .cb-label,
-	.cb-label.checked{
+.but-container(@checked-bg){
+	input[type=checkbox]:checked + .but-label,
+	.but-label.checked{
 		background: @checked-bg;
 		border-color: @checked-bg;
 	}
@@ -142,23 +147,23 @@ export default {
 
 // 主要
 .primary {
-	.cb-container(@primary);
+	.but-container(@primary);
 }
 // 成功
 .success {
-	.cb-container(@success)
+	.but-container(@success)
 }
 // 信息
 .info {
-	.cb-container(@info)
+	.but-container(@info)
 }
 // 警告
 .warning {
-	.cb-container(@warning)
+	.but-container(@warning)
 }
 // 危险
 .danger {
-	.cb-container(@danger)
+	.but-container(@danger)
 }
 
 @keyframes dothabottomcheck{

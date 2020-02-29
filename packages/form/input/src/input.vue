@@ -67,6 +67,7 @@ export default {
 		width: 100%;
 		padding: 10px 0;
 		font-size: 20px;
+		background-color: transparent;
 		border-bottom: 1px solid @border-bottom-color;
 		text-indent: 10px;
 		&::placeholder {
@@ -100,6 +101,7 @@ export default {
 		order: 2;
 		width: 0;
 		height: 2px;
+		transform: scale(1, 0.9);																	// 解决线粗细不统一的问题
 		background: @primary;
 		// background: @focus-border-color;
 		transition: all @transform-time;
