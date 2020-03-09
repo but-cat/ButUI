@@ -3,6 +3,7 @@ export default [																// base类所有组件列表
 	require('./button').default,
 	require('./link').default,
 	require('./docs').default,
+	require('./menu').default,
 	require('./typesetting').default,
 	require('./avatar').default,
 	require('./collapse').default												// 折叠组件

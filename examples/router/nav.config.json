@@ -47,6 +47,12 @@
 				"component": "basic/button"
 			},
 			{
+				"title": "菜单",
+				"name": "Menu",
+				"path": "/basic/Menu",
+				"component": "basic/menu"
+			},
+			{
 				"title": "超链接",
 				"name": "Link",
 				"path": "/basic/link",
