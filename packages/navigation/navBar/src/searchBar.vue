@@ -1,6 +1,6 @@
 <template>
 <div class="searchBar">
-	<input @input="input" :value="value" :class="disabled ? 'disabled' : ''" :placeholder="placeholder" type="text">
+	<input @input="input" @keydown.enter="search" :value="value" :class="disabled ? 'disabled' : ''" :placeholder="placeholder" type="text">
 	<button @click="search" class="button">
 		<svg version="1.1" x="0px" y="0px" width="24px" viewBox="0 0 484.925 484.925">
 			<path fill="#6E6E6E" d="M466.775,378.763l-42.9-42.9c-7-7-18.4-7-25.5,0c-7,7-7,18.4,0,25.5l42.9,42.9c10.2,10.2,10.2,26.7,0,36.9

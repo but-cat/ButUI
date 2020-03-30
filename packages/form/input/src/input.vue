@@ -1,6 +1,6 @@
 <template>
 <div :class="[scene, disabled ? 'disabled' : '']" class="input-container">
-	<input @input="input" :value="value" :placeholder="placeholder" :class="disabled ? 'disabled' : ''" :disabled="disabled" type="input"/>
+	<input @input="input" :value="value" :placeholder="placeholder" :class="disabled ? 'disabled' : ''" :disabled="disabled" :type="type"/>
 	<label for="input" v-if="placeholder">{{placeholder}}</label>
 	<div class="bottom-line"></div>
 </div>
@@ -20,6 +20,10 @@ export default {
 			type: String,
 			default: 'primary',
 			...PropValidator('scene', ["primary", "success", "info", "warning", "danger"])
+		},
+		type: {
+			value: String,
+			default: 'input'
 		},
 		value: {
 			value: String,

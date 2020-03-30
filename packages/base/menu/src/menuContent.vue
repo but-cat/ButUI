@@ -71,7 +71,7 @@ export default {
 @import '../../../_style/variables.less';
 
 .but-menu-content {
-	position: absolute;
+	position: fixed;
 	z-index: @zindex-popover;
 	top: 0;
 	left: 0;

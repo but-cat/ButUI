@@ -135,6 +135,7 @@ export default {
 	}
 	&[type=outlined] {
 		color: @color;
+		backdrop-filter: blur(20px);
 		border: 1px solid @color;
 		&:hover {
 			// color: @color;
@@ -145,6 +146,7 @@ export default {
 	}
 	&[type=text] {
 		color: @color;
+		backdrop-filter: blur(20px);
 		&:hover {
 			// color: @color;
 			.background {

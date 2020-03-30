@@ -1,5 +1,6 @@
 export default [															// data类所有组件列表
 	require('./table').default,
+	require('./timeline').default,
 	require('./tree').default,
 ];
 

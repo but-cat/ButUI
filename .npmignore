@@ -21,6 +21,7 @@ yarn-error.log*
 *.sw?
 
 # Ignore project files
+设计/
 node_modules/
 examples/
 public/

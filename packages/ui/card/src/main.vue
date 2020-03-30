@@ -16,12 +16,12 @@ export default {
 			})
 		},
 		elevation: {
-			type: Number,
+			type: [Number,String],
 			default: 0,
 			// ...PropValidator('scene', ["primary", "success", "info", "warning", "danger"])
 		},
 		fillet: {
-			type: Number,
+			type: [Number,String],
 			default: 0
 		}
 	},

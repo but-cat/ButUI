@@ -36,14 +36,14 @@ export default {
 		}
 	},
 	methods: {
-		notimgfound() {
-			this.source = require('../../../assets/image/pictures.svg').default;
-		},
-		
+		// notimgfound() {
+		// 	this.source = require('../../../assets/image/pictures.svg').default;
+		// },
 		activeFX(event) {
 			if(!this.activated && !this.disabled){														// 处于激活状态时将不再抛出点击事件
 				this.$emit("click", event);
-				ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
+				// ripples(event, this.type == "contained" ? "#FFF" : this.$scene[this.scene]);
+				ripples(event, this.type == "contained" ? "#FFF" : this.$but_scene[this.scene]);
 			}
 		}
 	}

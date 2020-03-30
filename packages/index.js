@@ -1,4 +1,5 @@
 const components = [															// 所有组件列表
+	// require('./_style').default,												// 样式配置
 	require('./base').default,													// 基础类
 	require('./command').default,												// 全局指令类
 	require('./data').default,													// 数据类
