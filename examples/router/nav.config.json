@@ -156,7 +156,13 @@
 				"component": "data/table"
 			},
 			{
-				"title": "树形组件",
+				"title": "时间线",
+				"name": "Timeline",
+				"path": "/data/timeline",
+				"component": "data/timeline"
+			},
+			{
+				"title": "树形菜单",
 				"name": "Tree",
 				"path": "/data/tree",
 				"component": "data/tree"

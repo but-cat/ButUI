@@ -1,5 +1,5 @@
 <template>
-<ul class="timeline" :style="offset">
+<ul class="timeline" :style="offset" style="--line-offset: 160px;">
 	<li class="item" v-for="(item, index) in value" :key="index">
 		<div class="date">{{item[keyName.date]}}</div>
 		<div class="info">
@@ -23,7 +23,7 @@ export default {
 			}])
 		},
 		lineOffset: {
-			value: Number,
+			value: [Number, String],
 			default: 160
 		},
 		keyName: {
@@ -37,7 +37,7 @@ export default {
 	},
 	computed: {
 		offset() {
-			return `--lineOffset: ${this.lineOffset}px;`
+			return `--line-offset: ${this.lineOffset}px;`
 		}
 	}
 }
@@ -45,7 +45,10 @@ export default {
 
 <style lang="less" scoped>
 @import '../../../_style/variables.less';
+@lineOffset: var(--line-offset);
 .timeline {
+	--line-offset: "160px";
+
 	margin: 0;
 	padding: 0;
 	min-height: 100%;
@@ -59,16 +62,16 @@ export default {
 		width: 4px;
 		height: 100%;
 		flex: 1;
-		left: var(--lineOffset);
+		left: @lineOffset;
 		top: 0;
 		// z-index: 1;
 		position: absolute;
-		background-color: @backgroundVariant;
+		background-color: @background-variant;
 	}
 	.item {
-		width: calc(100% - var(--lineOffset));
+		width: calc(~"100% - var(--line-offset)");
 		position: relative;
-		margin: 30px var(--lineOffset);
+		margin: 30px @lineOffset;
 		margin-right: 0;
 		padding: 0;
 
@@ -77,8 +80,10 @@ export default {
 
 		.date {
 			width: 140px;
-			margin-top: 6px;
+			// margin-top: 6px;
+			padding: 10px 20px;
 			position: absolute;
+			text-align: right;
 			transform: translateX(-100%);
 		}
 
@@ -106,8 +111,8 @@ export default {
 
 		&::before {
 			content: "";
-			width: 20px;
-			height: 20px;
+			width: 10px;
+			height: 10px;
 			border-radius: 50%;
 			border: 5px solid @primary;
 			background-color: @background;
